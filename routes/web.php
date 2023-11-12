@@ -25,6 +25,7 @@ Route::get('/about', function () {
     return 'Hiiii';
 });
 
+
 Route::get('/home', function () {
     return 'gatel';
 });
