@@ -20,3 +20,11 @@ Route::get('/', function () {
 Route::get('/hello', function () {
     return 'Hello World';
 });
+
+Route::get('/about', function () {
+    return 'Hiiii';
+});
+
+Route::get('/home', function () {
+    return 'gatel';
+});
