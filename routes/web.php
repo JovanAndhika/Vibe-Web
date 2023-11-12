@@ -34,3 +34,17 @@ Route::get('/home', function () {
 Route::get('/home', function () {
     return 'gatel';
 });
+
+Route::get('/about', function () {
+    return 'Hellllooooo';
+});
+
+
+Route::get('/about', function () {
+    return 'Hellllooooo';
+});
+
+
+Route::get('/about', function () {
+    return 'Hellllooooo';
+});
