@@ -11,6 +11,7 @@
         <h1>{{ $m->title }}</h1>
         <p>{{ $m->artist }}</p>
         <p>{{ $m->genre }}</p>
+        <p>Hahahahaha</p>
     @endforeach
 </body>
 </html>
