@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\MusicController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MusicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,9 @@ Route::get('/', function () {
 
 Route::get('/testing', [MusicController::class, 'index']);
 
-
 Route::get('/hello', function () {
     return 'Hello World';
 });
+
+Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/admin/addsong', [AdminController::class, 'add_song']);
