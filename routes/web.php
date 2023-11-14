@@ -20,8 +20,10 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/play', function () {
-    return view('play');
+Route::get('/nowPlaying', function () {
+    return view('nowPlaying', [
+        "active" => 'nowPlaying'
+    ]);
 });
 
 Route::get('/testing', [MusicController::class, 'index']);

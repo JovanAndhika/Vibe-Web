@@ -9,13 +9,19 @@
           </div>
 
           <div class="container-fluid text-center justify-content-center align-content-center flex-nowrap mb-4">
+
+            {{-- @JovanAndhika @JackGame31 search dari user masuk ke input ini (untuk query) --}}
               <input type="text" class="form-control fontMonsseratRegular" placeholder="What to listen to?" aria-label="Username"
                   aria-describedby="addon-wrapping">
+
+                  
           </div>
 
           <div class="container-fluid d-flex justify-content-center text-center mb-5">
               <div class="container-fluid">
                   <div class="btn-group fontMonsseratExtraBold">
+
+                    {{-- ini harus buat listener js kek e. jadi kalau pencet "Search by Title", jadi ne query ne mungkin "SELECT * FROM songs WHERE title = searched" --}}
                       <button type="button" class="btn btn-outline-primary ">Search by Artist</button>
                       <button type="button" class="btn btn-outline-primary ">Search by Title</button>
                   </div>
@@ -27,12 +33,21 @@
           </div>
 
           <div class="container-fluid scrollable-div">
+
+            {{-- @JovanAndhika @JackGame31 Ini template untuk row search result nya --}}
               <ul class="list-group list-group-horizontal text-center outlined">
-                  <li class="list-group-item h-100 bg-dark text-white outlined" style="width: 60%;">Ghost</li>
-                  <li class="list-group-item h-100 bg-dark text-white outlined" style="width: 30%;">Justin Bieber</li>
-                  <li class="list-group-item h-100 bg-dark text-white outlined" style="width: 10%;"><a href="nowplaying.html"><i class="bi bi-play-fill text-white"></i></a></li>
+                  <li class="list-group-item h-100 bg-dark text-white outlined" style="width: 60%;">Ghost{{-- ini title --}}</li>
+                  <li class="list-group-item h-100 bg-dark text-white outlined" style="width: 30%;">Justin Bieber{{-- ini artist --}}</li>
+                  <li class="list-group-item h-100 bg-dark text-white outlined" style="width: 10%;"><a href="nowplaying.html"><i class="bi bi-play-fill text-white"></i></a>{{-- ini button play nya, nanti redirect ke nowplaying.html, dengan lagu yang dipilih itu. --}}</li>
               </ul>
-              <ul class="list-group list-group-horizontal text-center outlined">
+
+
+
+
+
+
+              
+              {{-- <ul class="list-group list-group-horizontal text-center outlined">
                   <li class="list-group-item h-100 bg-dark text-white outlined" style="width: 60%;">As it Was</li>
                   <li class="list-group-item h-100 bg-dark text-white outlined" style="width: 30%;">Harry Styles</li>
                   <li class="list-group-item h-100 bg-dark text-white outlined" style="width: 10%;"><a href="nowplaying.html"><i
@@ -49,7 +64,7 @@
                   <li class="list-group-item h-100 bg-dark text-white outlined" style="width: 30%;">Diskoria</li>
                   <li class="list-group-item h-100 bg-dark text-white outlined" style="width: 10%;"><a href="nowplaying.html"><i
                               class="bi bi-play-fill text-white"></i></a></li>
-              </ul>
+              </ul> --}}
               
 
               
