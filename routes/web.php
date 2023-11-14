@@ -44,6 +44,11 @@ Route::get('/library', function () {
     ]);
 });
 
+Route::get('/opening', function () {
+    return view('opening', [
+        "title" => "opening"
+    ]);
+});
 
 
 Route::get('/testing', [MusicController::class, 'index']);

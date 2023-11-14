@@ -12,6 +12,12 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
+    <style>
+        body {
+          background-color: black;
+        }
+      </style>
+
     <!-- connect jquery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -25,44 +31,24 @@
 
     <!-- connect fonts -->
     <link rel="stylesheet" type="text/css" href="fonts.css">
-    <link rel="stylesheet" type="text/css" href="navbar.css">
-    <link rel="stylesheet" type="text/css" href="library.css">
+
+    <div class="container-fluid text-center mb-5 p-4">
+    <a class="navbar-brand fontMonsseratExtraBold" style="font-size: 50px; color: rgb(77, 205, 205);"
+    href="#mainSection">Vibeeeeeee.</a>
+    </div>
+
+    <div class="container-fluid d-flex justify-content-center text-center mb-5">
+        <div class="container-fluid">
+            <div class="btn-group fontMonsseratExtraBold">
 
 
-    <!-- for resizable and scrollable div -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-    <style>
-        .scrollable-div {
-            height: 100vh;
-            overflow-y: auto;
-        }
+                <button type="button" class="btn btn-outline-light ">Log In</button>
+                <button type="button" class="btn btn-outline-light ">Create Yur Account!</button>
+            </div>
+        </div>
 
-        /* kasih border ke handle */
-        .ui-resizable-handle {
-            border: 3px solid #494949;
-            background: #5f5f5f;
-        }
 
-        ::-webkit-scrollbar {
-            display: none;
-        }
-
-        .outlined {
-            border: 1px solid #fff; /* Adjust as needed */
-            box-sizing: border-box;
-        }
-    </style>
-
-</head>
-<body class="bg-dark text-white">
-
-@include('partials.navup')
-@include('partials.navleft')
-
-            
-
-            @yield('container')
-
+   
             <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
             <script>
