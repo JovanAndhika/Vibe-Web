@@ -15,7 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('search', [
+        "active" => 'search'
+    ]);
+});
+
+Route::get('/play', function () {
+    return view('play');
 });
 
 Route::get('/testing', [MusicController::class, 'index']);
