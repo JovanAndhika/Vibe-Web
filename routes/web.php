@@ -20,9 +20,31 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/play', function () {
-    return view('play');
+Route::get('/nowPlaying', function () {
+    return view('nowPlaying', [
+        "active" => 'nowPlaying'
+    ]);
 });
+
+Route::get('/discoverPlaylist', function () {
+    return view('discoverPlaylist', [
+        "active" => 'discoverPlaylist'
+    ]);
+});
+
+Route::get('/history', function () {
+    return view('history', [
+        "active" => 'history'
+    ]);
+});
+
+Route::get('/library', function () {
+    return view('library', [
+        "active" => 'library'
+    ]);
+});
+
+
 
 Route::get('/testing', [MusicController::class, 'index']);
 
