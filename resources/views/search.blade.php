@@ -2,6 +2,10 @@
 @section('container')
 
 
+<style>
+    
+</style>
+
 <div class="col scrollable-div p-4">
     <div class="container-fluid d-flex flex-column">
         <div class="container-fluid flex-grow-1 p-5">
@@ -46,33 +50,68 @@
             </div>
 
             <div class="container-fluid my-5">
-                <div class="row" id="mainRow">
+                <div class="row h-100" id="mainRow">
 
-                    <div class="col-lg-2 col-md-3 col-sm-6 cardCol">
-                        <div class="card text-dark mb-3 border-1 border-dark" style="background-color: rgb(231, 203, 203);">
-                            <div class="card-header border-1 border-dark d-flex justify-content-between align-items-center">
-                                <h3>Title</h3>
-                                <button type="button" class="btn-close cardCloseButton" aria-label="Close"
-                                data-dismiss="this">
-                                </button>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="height: 150px; '); ">
+                        <div class="card text-dark mb-3 border-1 border-dark h-100" style="background-size: cover; background-image: url('img/search/jazzCover.png');">
+                            <div class="card-body text-center d-flex align-items-center justify-content-center">
+                                <h1 class="fontMonsseratSemiBold" style="color: white; font-size: 30px;"> Jazz</h1>
                             </div>
-                            <div class="card-body">
-                                <p class="card-text">Note here</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 fontMonsseratSemiBold" style="height: 150px">
+                        <div class="card text-dark mb-3 border-1 border-dark h-100" style="background-color: rgb(231, 203, 203); ">
+                            <div class="card-body text-center d-flex justify-content-center align-items-center">
+                                <p class="card-text"> Pop</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 fontMonsseratSemiBold" style="height: 150px">
+                        <div class="card text-dark mb-3 border-1 border-dark h-100" style="background-color: rgb(231, 203, 203); ">
+                            <div class="card-body text-center d-flex justify-content-center align-items-center">
+                                <p class="card-text"> Dangdut</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 fontMonsseratSemiBold" style="height: 150px">
+                        <div class="card text-dark mb-3 border-1 border-dark h-100" style="background-color: rgb(231, 203, 203); ">
+                            <div class="card-body text-center d-flex justify-content-center align-items-center">
+                                <p class="card-text"> K-pop</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 fontMonsseratSemiBold" style="height: 150px">
+                        <div class="card text-dark mb-3 border-1 border-dark h-100" style="background-color: rgb(231, 203, 203); ">
+                            <div class="card-body text-center d-flex justify-content-center align-items-center">
+                                <p class="card-text"> Rock</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 fontMonsseratSemiBold" style="height: 150px">
+                        <div class="card text-dark mb-3 border-1 border-dark h-100" style="background-color: rgb(231, 203, 203); ">
+                            <div class="card-body text-center d-flex justify-content-center align-items-center">
+                                <p class="card-text"> Classical</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 fontMonsseratSemiBold" style="height: 150px">
+                        <div class="card text-dark mb-3 border-1 border-dark h-100" style="background-color: rgb(231, 203, 203); ">
+                            <div class="card-body text-center d-flex justify-content-center align-items-center">
+                                <p class="card-text"> EDM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 fontMonsseratSemiBold" style="height: 150px">
+                        <div class="card text-dark mb-3 border-1 border-dark h-100" style="background-color: rgb(231, 203, 203); ">
+                            <div class="card-body text-center d-flex justify-content-center align-items-center">
+                                <p class="card-text"> DJ Remix</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-2 col-md-3 col-sm-6 cardCol">
-                        <div class="card text-dark mb-3 border-1 border-dark" style="background-color: rgb(231, 203, 203);">
-                            <div class="card-header border-1 border-dark d-flex justify-content-between align-items-center">
-                                <h3>Title</h3>
-                                <button type="button" class="btn-close cardCloseButton" aria-label="Close" data-dismiss="this"></button>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">Note here</p>
-                            </div>
-                        </div>
-                    </div>
+                
+
+        
 
 
                 </div>
