@@ -21,11 +21,12 @@ class AdminController extends Controller
     }
 
 
-    public function store_song(Request $request){
+    public function store_song(Request $request)
+    {
 
-    
+
         $data = $request->validate([
-            'file_path' => 'image|mimes:jpg,png',
+            'file_path' => 'nullable',
             'title' => 'required',
             'artist' => 'required',
             'genre' => 'required',
@@ -35,25 +36,25 @@ class AdminController extends Controller
         ]);
 
 
-        $file_name = '';
 
-        if ($request->hasFile('choose')) {
-            $destinationPath = 'storage/app/public/listofsongs/';
-            $files = $request->file('choose'); // will get all files
-        
-           
+        if ($request->hasFile('chfile')) {
+            $destinationPath = 'listofsongs';
+            $files = $request->file('chfile'); // will get all files
+
+
             $file_name = $files->getClientOriginalName(); //Get file original name
-            $files->move($destinationPath , $file_name); // move files to destination folder
+            $files->move($destinationPath, $file_name); // move files to destination folder
         }
 
-        //WRITE TO DATABASE
-        $data = new Admin();
-        $data->title = $request->title;
-        $data->artist = $request->artist;
-        $data->genre = $request->genre;
-        $data->file_path = 'storage/app/public/listofsongs/'.$file_name.'.mp3';
-        $data->release_date = $request->release_date;
-        $data->save();
+            //WRITE TO DATABASE
+            $data = new Admin();
+            $data->title = $request->title;
+            $data->artist = $request->artist;
+            $data->genre = $request->genre;
+            $data->file_path = 'test';
+            $data->release_date = $request->release_date;
+            $data->save();
+        
 
 
         return redirect(route('admin.add'));

@@ -71,7 +71,7 @@
 
         <div class="mt-4 mb-3">
 
-            <form mwthod="post" action="{{route('admin.store')}}" enctype="multipart/form-data">
+            <form mwthod="post" action="{{url('/admin/store')}}" enctype="multipart/form-data">
                 @csrf
                 @method('post')
                 <div class="col-lg-7">
@@ -94,7 +94,7 @@
 
                 <div class="col-lg-7">
                     <label for="choose" class="form-label">Insert song file .mp3</label>
-                    <input class="form-control" type="file" id="choose" name="choose">
+                    <input class="form-control" type="file" id="chfile" name="chfile">
                     </br>
                 </div>
 

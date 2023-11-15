@@ -27,4 +27,4 @@ Route::get('/hello', function () {
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/addsong', [AdminController::class, 'add_song'])->name('admin.add');
-Route::match(['get', 'post'], '/admin/storesong', [AdminController::class, 'store_song'])->name('admin.store');
+Route::match(['get', 'post'], '/admin/store', [AdminController::class, 'store_song'])->name('admin.store');
