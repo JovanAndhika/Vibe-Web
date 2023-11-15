@@ -71,7 +71,9 @@
 
         <div class="mt-4 mb-3">
 
-            <form>
+            <form mwthod="post" action="{{route('admin.store')}}">
+                @csrf
+                @method('post')
                 <div class="col-lg-7">
                     <label class="form-label">Title</label>
                     <input class="form-control" type="text" autofocus="true" name="title" id="title" placeholder="Insert title">
@@ -104,15 +106,13 @@
                 </div>
 
                 <div>
-                    <button class="btn btn-primary btn-md col-lg-1 mt-3" name="submit" value="ya">+Add</button>
+                    <input class="btn btn-primary btn-md col-lg-1 mt-3" name="submit" id="submit" value="add"></input>
                 </div>
 
             </form>
 
         </div>
     </div>
-
-
 
 
 </body>
