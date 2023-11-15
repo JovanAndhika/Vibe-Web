@@ -71,7 +71,7 @@
 
         <div class="mt-4 mb-3">
 
-            <form mwthod="post" action="{{route('admin.store')}}">
+            <form mwthod="post" action="{{route('admin.store')}}" enctype="multipart/form-data">
                 @csrf
                 @method('post')
                 <div class="col-lg-7">
@@ -106,9 +106,9 @@
                 </div>
 
                 <div>
-                    <input class="btn btn-primary btn-md col-lg-1 mt-3" name="submit" id="submit" value="add"></input>
+                    <input class="btn btn-primary btn-md col-lg-1 mt-3" type="submit" name="submit" id="submit" value="add"></input>
                 </div>
-
+                
             </form>
 
         </div>

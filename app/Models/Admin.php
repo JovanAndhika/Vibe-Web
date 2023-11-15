@@ -13,6 +13,8 @@ class Admin extends Model
         'title',
         'artist',
         'genre',
-        'release_date'
+        'release_date',
+        'updated_at',
+        'created_at'
     ];
 }
