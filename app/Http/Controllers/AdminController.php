@@ -23,39 +23,25 @@ class AdminController extends Controller
 
     public function store_song(Request $request)
     {
-        return $request->file('chfile')->store('listofsongs');
+        // validasi
         $data = $request->validate([
-            'file_path' => 'nullable',
             'title' => 'required',
             'artist' => 'required',
             'genre' => 'required',
-            'release_date' => 'required',
-            'updated_at' => 'nullable',
-            'created_at' => 'nullable'
+            'chfile' => 'required',
+            'release_date' => 'required'
         ]);
-
-
 
         if ($request->hasFile('chfile')) {
             $destinationPath = 'listofsongs';
             $files = $request->file('chfile'); // will get files
-
-
-            $file_name = $files->getClientOriginalName(); //Get file original name
-            $files->store($destinationPath, $file_name); // store files to destination folder
+            $path = $files->store($destinationPath); // store files to destination folder
+            $data['file_path'] = $path;
         }
 
-            //WRITE TO DATABASE
-            $data = new Admin();
-            $data->title = $request->title;
-            $data->artist = $request->artist;
-            $data->genre = $request->genre;
-            $data->file_path = $request->chfile;
-            $data->release_date = $request->release_date;
-            $data->save();
-        
+        // insert to database
+        Admin::create($data);
 
-
-        return redirect(route('admin.add'));
+        return back()->with('success', 'Song has been added');
     }
 }

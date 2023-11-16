@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('genre');
             $table->string('file_path')->nullable(true);
             $table->date('release_date');
-            $table->timestamp('updated_at')->nullable(true);
-            $table->timestamp('created_at')->nullable(true);
+            $table->timestamps();
         });
     }
 

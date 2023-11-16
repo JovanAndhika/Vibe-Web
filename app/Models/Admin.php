@@ -14,8 +14,6 @@ class Admin extends Model
         'artist',
         'genre',
         'file_path',
-        'release_date',
-        'updated_at',
-        'created_at'
+        'release_date'
     ];
 }
