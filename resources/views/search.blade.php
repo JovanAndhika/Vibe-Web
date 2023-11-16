@@ -27,8 +27,8 @@
 
                     <!-- @DanielCJ12479 @JackGame31 @JovanAndhika @royJuanAndika @terrGit ini harus buat listener js kek e. jadi kalau pencet "Search by Title", jadi ne query ne mungkin "SELECT * FROM songs WHERE title = $searched" -->
 
-                        <button type="button" class="btn btn-outline-primary ">Search by Artist</button>
-                        <button type="button" class="btn btn-outline-primary ">Search by Title</button>
+                        <button type="button" class="btn btn-outline-light  ">Search by Artist</button>
+                        <button type="button" class="btn btn-outline-light ">Search by Title</button>
                     </div>
                 </div>
             </div>
@@ -80,51 +80,43 @@
             <div class="container-fluid my-5">
                 <div class="row h-100" id="mainRow">
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
-                        <img src="img/search/jazzCover.png" alt="" class="img-fluid rounded hoverable genre">
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                        <img src="img/search/jazzCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
                     </div>
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
-                        <img src="img/search/popCover.png" alt="" class="img-fluid rounded hoverable genre">
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                        <img src="img/search/popCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
                     </div>
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
-                        <img src="img/search/dangdutCover.png" alt="" class="img-fluid rounded hoverable genre">
-                    </div>
-                    
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
-                        <img src="img/search/kpopCover.png" alt="" class="img-fluid rounded hoverable genre">
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
-                        <img src="img/search/rockCover.png" alt="" class="img-fluid rounded hoverable genre">
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
-                        <img src="img/search/classicalCover.png" alt="" class="img-fluid rounded hoverable genre">
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
-                        <img src="img/search/danceCover.png" alt="" class="img-fluid rounded hoverable genre">
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
-                        <img src="img/search/phonkCover.png" alt="" class="img-fluid rounded hoverable genre">
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                        <img src="img/search/dangdutCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
                     </div>
                     
-                    
-                    
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                        <img src="img/search/kpopCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                    </div>
 
-                
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                        <img src="img/search/rockCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                    </div>
 
-        
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                        <img src="img/search/classicalCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                    </div>
 
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                        <img src="img/search/danceCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                    </div>
 
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                        <img src="img/search/phonkCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                    </div>
                 </div>
-        </div> 
+            </div> 
+            
 
-    </div>
         </div>
+    </div>
 
         
 </div>
