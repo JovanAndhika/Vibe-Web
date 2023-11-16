@@ -51,7 +51,7 @@
             box-sizing: border-box;
         }
 
-        .card:hover {
+        .genre:hover {
             transform: scale(1.04); 
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); 
         }
