@@ -66,12 +66,18 @@
     <div class="container-md p-3">
         <br>
         <h1>Add Song</h1>
-
+        @if($errors->any())
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
+        @endif
 
 
         <div class="mt-4 mb-3">
 
-            <form method="get" action="/admin/store" enctype="multipart/form-data">
+            <form method="post" action="/admin/store" enctype="multipart/form-data">
                 @csrf
                 <div class="col-lg-7">
                     <label class="form-label">Title</label>

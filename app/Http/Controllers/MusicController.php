@@ -12,7 +12,8 @@ class MusicController extends Controller
     //Controller Admin
     public function index()
     {
-        return view('adminCRUD.adminHome');
+        $musics = Music::all();
+        return view('adminCRUD.adminHome', ['musics' => $musics]);
     }
 
     public function add_song()

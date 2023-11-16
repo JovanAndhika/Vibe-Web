@@ -91,19 +91,23 @@
         </thead>
 
         <tbody>
-
+          @foreach($musics as $music)
           <tr>
             <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{{$music->title}}</td>
+            <td>{{$music->artist}}</td>
+            <td>{{$music->genre}}</td>
+            <td><audio controls>
+                <source src="storage/{{$music->file_path}}" type="audio/mpeg">
+              </audio></td>
+            <td>{{$music->release_date}}</td>
             <td>
               <a href="" class="btn btn-secondary btn-sm mb-2 mt-2">Edit</a>
               <button class="btn btn-danger btn-sm mb-2 mt-2" name="hapus_data" id="hapus_data">Delete</button>
             </td>
           </tr>
+          @endforeach
+
         </tbody>
       </table>
     </div>

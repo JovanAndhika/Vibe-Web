@@ -27,4 +27,4 @@ Route::get('/hello', function () {
 
 Route::get('/admin', [MusicController::class, 'index'])->name('admin.index');
 Route::get('/admin/addsong', [MusicController::class, 'add_song'])->name('admin.add');
-Route::get('/admin/store', [MusicController::class, 'store_song'])->name('admin.store');
+Route::post('/admin/store', [MusicController::class, 'store_song'])->name('admin.store');
