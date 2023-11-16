@@ -2,6 +2,10 @@
 @section('container')
 
 
+<style>
+    
+</style>
+
 <div class="col scrollable-div p-4">
     <div class="container-fluid d-flex flex-column">
         <div class="container-fluid flex-grow-1 p-5">
@@ -46,33 +50,46 @@
             </div>
 
             <div class="container-fluid my-5">
-                <div class="row" id="mainRow">
+                <div class="row h-100" id="mainRow">
 
-                    <div class="col-lg-2 col-md-3 col-sm-6 cardCol">
-                        <div class="card text-dark mb-3 border-1 border-dark" style="background-color: rgb(231, 203, 203);">
-                            <div class="card-header border-1 border-dark d-flex justify-content-between align-items-center">
-                                <h3>Title</h3>
-                                <button type="button" class="btn-close cardCloseButton" aria-label="Close"
-                                data-dismiss="this">
-                                </button>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">Note here</p>
-                            </div>
-                        </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
+                        <img src="img/search/jazzCover.png" alt="" class="img-fluid rounded hoverable genre">
                     </div>
 
-                    <div class="col-lg-2 col-md-3 col-sm-6 cardCol">
-                        <div class="card text-dark mb-3 border-1 border-dark" style="background-color: rgb(231, 203, 203);">
-                            <div class="card-header border-1 border-dark d-flex justify-content-between align-items-center">
-                                <h3>Title</h3>
-                                <button type="button" class="btn-close cardCloseButton" aria-label="Close" data-dismiss="this"></button>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">Note here</p>
-                            </div>
-                        </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
+                        <img src="img/search/popCover.png" alt="" class="img-fluid rounded hoverable genre">
                     </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
+                        <img src="img/search/dangdutCover.png" alt="" class="img-fluid rounded hoverable genre">
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
+                        <img src="img/search/kpopCover.png" alt="" class="img-fluid rounded hoverable genre">
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
+                        <img src="img/search/rockCover.png" alt="" class="img-fluid rounded hoverable genre">
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
+                        <img src="img/search/classicalCover.png" alt="" class="img-fluid rounded hoverable genre">
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
+                        <img src="img/search/danceCover.png" alt="" class="img-fluid rounded hoverable genre">
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
+                        <img src="img/search/phonkCover.png" alt="" class="img-fluid rounded hoverable genre">
+                    </div>
+                    
+                    
+                    
+
+                
+
+        
 
 
                 </div>
