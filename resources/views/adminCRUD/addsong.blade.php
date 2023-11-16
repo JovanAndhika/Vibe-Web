@@ -71,42 +71,41 @@
 
         <div class="mt-4 mb-3">
 
-            <form mwthod="post" action="{{url('/admin/store')}}" enctype="multipart/form-data">
+            <form method="post" action="/admin/store" enctype="multipart/form-data">
                 @csrf
-                @method('post')
                 <div class="col-lg-7">
                     <label class="form-label">Title</label>
                     <input class="form-control" type="text" autofocus="true" name="title" id="title" placeholder="Insert title">
-                    </br>
+                    <br>
                 </div>
 
                 <div class="col-lg-7">
                     <label class="form-label">Artist</label>
                     <input class="form-control" type="text" name="artist" id="artist" placeholder="Insert singer">
-                    </br>
+                    <br>
                 </div>
 
                 <div class="col-lg-7">
                     <label class="form-label">Genre</label>
                     <input class="form-control" type="text" name="genre" id="genre" placeholder="Insert genre">
-                    </br>
+                    <br>
                 </div>
 
                 <div class="col-lg-7">
                     <label for="choose" class="form-label">Insert song file .mp3</label>
                     <input class="form-control" type="file" id="chfile" name="chfile">
-                    </br>
+                    <br>
                 </div>
 
 
                 <div class="col-lg-7">
                     <label class="form-label">Release date</label>
                     <input class="form-control" type="date" name="release_date" id="release_date" placeholder="Insert genre">
-                    </br>
+                    <br>
                 </div>
 
                 <div>
-                    <input class="btn btn-primary btn-md col-lg-1 mt-3" type="submit" name="submit" id="submit" value="add"></input>
+                    <input class="btn btn-primary btn-md col-lg-1 mt-3" type="submit" name="submit" id="submit" value="add">
                 </div>
                 
             </form>

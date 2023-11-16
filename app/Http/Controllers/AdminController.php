@@ -23,7 +23,7 @@ class AdminController extends Controller
 
     public function store_song(Request $request)
     {
-
+        dd($request);
 
         $data = $request->validate([
             'file_path' => 'nullable',
