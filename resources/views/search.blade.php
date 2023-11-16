@@ -52,62 +52,40 @@
             <div class="container-fluid my-5">
                 <div class="row h-100" id="mainRow">
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="height: 150px; '); ">
-                        <div class="card text-dark mb-3 border-1 border-dark h-100" style="background-size: cover; background-image: url('img/search/jazzCover.png');">
-                            <div class="card-body text-center d-flex align-items-center justify-content-center">
-                                <h1 class="fontMonsseratSemiBold" style="color: white; font-size: 30px;"> Jazz</h1>
-                            </div>
-                        </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
+                        <img src="img/search/jazzCover.png" alt="" class="img-fluid rounded hoverable genre">
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 fontMonsseratSemiBold" style="height: 150px">
-                        <div class="card text-dark mb-3 border-1 border-dark h-100" style="background-color: rgb(231, 203, 203); ">
-                            <div class="card-body text-center d-flex justify-content-center align-items-center">
-                                <p class="card-text"> Pop</p>
-                            </div>
-                        </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
+                        <img src="img/search/popCover.png" alt="" class="img-fluid rounded hoverable genre">
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 fontMonsseratSemiBold" style="height: 150px">
-                        <div class="card text-dark mb-3 border-1 border-dark h-100" style="background-color: rgb(231, 203, 203); ">
-                            <div class="card-body text-center d-flex justify-content-center align-items-center">
-                                <p class="card-text"> Dangdut</p>
-                            </div>
-                        </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
+                        <img src="img/search/dangdutCover.png" alt="" class="img-fluid rounded hoverable genre">
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 fontMonsseratSemiBold" style="height: 150px">
-                        <div class="card text-dark mb-3 border-1 border-dark h-100" style="background-color: rgb(231, 203, 203); ">
-                            <div class="card-body text-center d-flex justify-content-center align-items-center">
-                                <p class="card-text"> K-pop</p>
-                            </div>
-                        </div>
+                    
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
+                        <img src="img/search/kpopCover.png" alt="" class="img-fluid rounded hoverable genre">
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 fontMonsseratSemiBold" style="height: 150px">
-                        <div class="card text-dark mb-3 border-1 border-dark h-100" style="background-color: rgb(231, 203, 203); ">
-                            <div class="card-body text-center d-flex justify-content-center align-items-center">
-                                <p class="card-text"> Rock</p>
-                            </div>
-                        </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
+                        <img src="img/search/rockCover.png" alt="" class="img-fluid rounded hoverable genre">
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 fontMonsseratSemiBold" style="height: 150px">
-                        <div class="card text-dark mb-3 border-1 border-dark h-100" style="background-color: rgb(231, 203, 203); ">
-                            <div class="card-body text-center d-flex justify-content-center align-items-center">
-                                <p class="card-text"> Classical</p>
-                            </div>
-                        </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
+                        <img src="img/search/classicalCover.png" alt="" class="img-fluid rounded hoverable genre">
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 fontMonsseratSemiBold" style="height: 150px">
-                        <div class="card text-dark mb-3 border-1 border-dark h-100" style="background-color: rgb(231, 203, 203); ">
-                            <div class="card-body text-center d-flex justify-content-center align-items-center">
-                                <p class="card-text"> EDM</p>
-                            </div>
-                        </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
+                        <img src="img/search/danceCover.png" alt="" class="img-fluid rounded hoverable genre">
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 fontMonsseratSemiBold" style="height: 150px">
-                        <div class="card text-dark mb-3 border-1 border-dark h-100" style="background-color: rgb(231, 203, 203); ">
-                            <div class="card-body text-center d-flex justify-content-center align-items-center">
-                                <p class="card-text"> DJ Remix</p>
-                            </div>
-                        </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px; '); ">
+                        <img src="img/search/phonkCover.png" alt="" class="img-fluid rounded hoverable genre">
                     </div>
+                    
+                    
+                    
 
                 
 
