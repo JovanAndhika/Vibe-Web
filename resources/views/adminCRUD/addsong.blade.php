@@ -71,7 +71,9 @@
 
         <div class="mt-4 mb-3">
 
-            <form>
+            <form mwthod="post" action="{{url('/admin/store')}}" enctype="multipart/form-data">
+                @csrf
+                @method('post')
                 <div class="col-lg-7">
                     <label class="form-label">Title</label>
                     <input class="form-control" type="text" autofocus="true" name="title" id="title" placeholder="Insert title">
@@ -92,7 +94,7 @@
 
                 <div class="col-lg-7">
                     <label for="choose" class="form-label">Insert song file .mp3</label>
-                    <input class="form-control" type="file" id="choose" name="choose">
+                    <input class="form-control" type="file" id="chfile" name="chfile">
                     </br>
                 </div>
 
@@ -104,15 +106,13 @@
                 </div>
 
                 <div>
-                    <button class="btn btn-primary btn-md col-lg-1 mt-3" name="submit" value="ya">+Add</button>
+                    <input class="btn btn-primary btn-md col-lg-1 mt-3" type="submit" name="submit" id="submit" value="add"></input>
                 </div>
-
+                
             </form>
 
         </div>
     </div>
-
-
 
 
 </body>

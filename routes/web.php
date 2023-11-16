@@ -25,5 +25,6 @@ Route::get('/hello', function () {
     return 'Hello World';
 });
 
-Route::get('/admin', [AdminController::class, 'index']);
-Route::get('/admin/addsong', [AdminController::class, 'add_song']);
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin/addsong', [AdminController::class, 'add_song'])->name('admin.add');
+Route::match(['get', 'post'], '/admin/store', [AdminController::class, 'store_song'])->name('admin.store');
