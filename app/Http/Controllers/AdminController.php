@@ -39,11 +39,11 @@ class AdminController extends Controller
 
         if ($request->hasFile('chfile')) {
             $destinationPath = 'listofsongs';
-            $files = $request->file('chfile'); // will get all files
+            $files = $request->file('chfile'); // will get files
 
 
             $file_name = $files->getClientOriginalName(); //Get file original name
-            $files->move($destinationPath, $file_name); // move files to destination folder
+            $files->store($destinationPath, $file_name); // store files to destination folder
         }
 
             //WRITE TO DATABASE
@@ -51,7 +51,7 @@ class AdminController extends Controller
             $data->title = $request->title;
             $data->artist = $request->artist;
             $data->genre = $request->genre;
-            $data->file_path = 'test';
+            $data->file_path = $request->chfile;
             $data->release_date = $request->release_date;
             $data->save();
         
