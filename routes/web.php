@@ -25,6 +25,6 @@ Route::get('/hello', function () {
     return 'Hello World';
 });
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-Route::get('/admin/addsong', [AdminController::class, 'add_song'])->name('admin.add');
-Route::post('/admin/store', [AdminController::class, 'store_song'])->name('admin.store');
+Route::get('/admin', [MusicController::class, 'index'])->name('admin.index');
+Route::get('/admin/addsong', [MusicController::class, 'add_song'])->name('admin.add');
+Route::get('/admin/store', [MusicController::class, 'store_song'])->name('admin.store');

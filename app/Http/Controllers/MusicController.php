@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Music;
 
-class AdminController extends Controller
+
+class MusicController extends Controller
 {
     //Controller Admin
     public function index()
@@ -40,8 +40,7 @@ class AdminController extends Controller
         }
 
         // insert to database
-        Admin::create($data);
-
+        Music::create($data);
         return back()->with('success', 'Song has been added');
     }
 }

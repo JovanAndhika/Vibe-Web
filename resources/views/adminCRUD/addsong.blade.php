@@ -71,7 +71,7 @@
 
         <div class="mt-4 mb-3">
 
-            <form method="post" action="/admin/store" enctype="multipart/form-data">
+            <form method="get" action="/admin/store" enctype="multipart/form-data">
                 @csrf
                 <div class="col-lg-7">
                     <label class="form-label">Title</label>
