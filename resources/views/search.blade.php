@@ -30,19 +30,47 @@
             </div>
 
             <div class="container-fluid text-center">
-                <h1 class="fontMonsseratRegular" style="font-size: 20px;">Results</h1>
+                <h1 class="fontMonsseratSemiBold" style="font-size: 20px;">Results</h1>
             </div>
 
             <div class="container-fluid ">
-                {{-- @JovanAndhika @JackGame31 Ini template untuk row search result nya --}}
-                <ul class="list-group list-group-horizontal text-center outlined">
+                <table class="table table-striped table-hover table-dark">
+                        <thead>
+                          <tr>
+                            <th class="fontMonsseratSemiBold" scope="col">Song</th>
+                            <th class="fontMonsseratSemiBold" scope="col">Artist</th>
+                            <th class="fontMonsseratSemiBold" scope="col"></th>
 
-                    <li class="list-group-item h-100 bg-dark text-white outlined" style="width: 60%;">Ghost<!-- @JackGame31 @JovanAndhika ini title --></li>
+                           
+                          </tr>
+                        </thead>
+                        <tbody class="text-left">
+                          <tr>
+                            <th>Ghost<!-- @JackGame31 @JovanAndhika ini title --></th>
+                            <th>Justin Bieber <!-- @JackGame31 @JovanAndhika ini artist --></th>
+                            <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th> <!-- @JackGame31 @JovanAndhika ini button play nya, nanti redirect ke nowplaying.html, dengan lagu yang dipilih itu. -->
 
-                    <li class="list-group-item h-100 bg-dark text-white outlined" style="width: 30%;">Justin Bieber <!-- @JackGame31 @JovanAndhika ini artist --></li>
+                          
+                          </tr>
+                          <tr>
+                            <th>Sasageyo</th>
+                            <th>Hiroyuki Sawano</th>
+                            <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
 
-                    <li class="list-group-item h-100 bg-dark text-white outlined" style="width: 10%;"><a href="nowplaying.html"><i class="bi bi-play-fill text-white"></i></a> <!-- @JackGame31 @JovanAndhika ini button play nya, nanti redirect ke nowplaying.html, dengan lagu yang dipilih itu. --></li>
-                </ul>
+             
+                          </tr>
+                          <tr>
+                            <th>Happy Ya Ya</th>
+                            <th>Guru Sekolah Minggu</th>
+                            <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
+
+                            
+                          </tr>
+                        </tbody>
+                      </table>
+                
+
+                
             </div>
 
             <div class="container-fluid my-5">
@@ -77,8 +105,6 @@
 
                 </div>
         </div> 
-
-
 
     </div>
         </div>

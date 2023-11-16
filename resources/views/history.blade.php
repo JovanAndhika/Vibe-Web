@@ -34,7 +34,7 @@
 
                 <div class="container-fluid text-left mb-5" id= "2">
                     <h4 class="fontMonsseratSemiBold">Monday, 14 Nov 2023</h4>
-                    <table class="table table-striped table-hover table-dark">
+                    <table class="table table-striped table-hover table-dark fontMonsseratRegular">
                         <thead>
                           <tr>
                             <th scope="col">Song</th>
@@ -42,7 +42,7 @@
                             <th scope="col">Time</th>
                             <th scope="col"></th>
 
-                           
+                            
                           </tr>
                         </thead>
                         <tbody>
