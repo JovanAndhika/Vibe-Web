@@ -57,7 +57,7 @@
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); 
         }
 
-        
+
 
     </style>
 
@@ -68,8 +68,8 @@
 @include('partials.navleft')
 
             
-
-            @yield('container')
+                @yield('container')
+            
 
             <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>

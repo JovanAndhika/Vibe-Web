@@ -1,12 +1,7 @@
 @extends('layouts.main')
 @section('container')
 
-
-<style>
-    
-</style>
-
-<div class="col scrollable-div p-4">
+<div class="col scrollable-div p-4" id="jumphere">
     <div class="container-fluid d-flex flex-column">
         <div class="container-fluid flex-grow-1 p-5">
 
