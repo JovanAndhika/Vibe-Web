@@ -102,7 +102,7 @@
               </audio></td>
             <td>{{$music->release_date}}</td>
             <td>
-              <a href="" class="btn btn-secondary btn-sm mb-2 mt-2">Edit</a>
+              <a href="{{route('admin.edit', ['music' => $music])}}" class="btn btn-secondary btn-sm mb-2 mt-2">Edit</a>
               <button class="btn btn-danger btn-sm mb-2 mt-2" name="hapus_data" id="hapus_data">Delete</button>
             </td>
           </tr>

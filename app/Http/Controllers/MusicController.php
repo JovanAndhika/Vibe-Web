@@ -16,11 +16,11 @@ class MusicController extends Controller
         return view('adminCRUD.adminHome', ['musics' => $musics]);
     }
 
+
     public function add_song()
     {
         return view('adminCRUD.addsong');
     }
-
 
     public function store_song(Request $request)
     {
@@ -43,5 +43,24 @@ class MusicController extends Controller
         // insert to database
         Music::create($data);
         return back()->with('success', 'Song has been added');
+    }
+
+
+    public function edit_song(Music $music){
+        
+        return view('adminCRUD.editsong', ['music' => $music]);
+    }
+
+    public function update_song(Music $music, Request $request){
+        // validasi
+        $data = $request->validate([
+            'title' => 'required',
+            'artist' => 'required',
+            'genre' => 'required',
+            'release_date' => 'required'
+        ]);
+
+        $music->update($data);
+        return redirect(route('admin.edit', ['music' => $music]))->with('success', 'edit confirmed');
     }
 }
