@@ -48,8 +48,13 @@
         }
 
         .outlined {
-            border: 1px solid #fff; /* Adjust as needed */
+            border: 1px solid #fff; 
             box-sizing: border-box;
+        }
+
+        .genre:hover {
+            transform: scale(1.04); 
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); 
         }
     </style>
 
