@@ -76,35 +76,35 @@
                 <div class="row h-100" id="mainRow">
 
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-                        <img src="img/search/jazzCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                        <img src="{{ asset('img/search/jazzCover.png') }}" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-                        <img src="img/search/popCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                        <img src="{{ asset('img/search/popCover.png') }}" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-                        <img src="img/search/dangdutCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                        <img src="{{ asset('img/search/dangdutCover.png') }}" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
                     </div>
                     
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-                        <img src="img/search/kpopCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                        <img src="{{ asset('img/search/kpopCover.png') }}" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-                        <img src="img/search/rockCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                        <img src="{{ asset('img/search/rockCover.png') }}" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-                        <img src="img/search/classicalCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                        <img src="{{ asset('img/search/classicalCover.png') }}" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-                        <img src="img/search/danceCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                        <img src="{{ asset('img/search/danceCover.png') }}" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-                        <img src="img/search/phonkCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                        <img src="{{ asset('img/search/phonkCover.png') }}" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
                     </div>
                 </div>
             </div> 

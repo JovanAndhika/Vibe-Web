@@ -24,9 +24,9 @@
     </script>
 
     <!-- connect fonts -->
-    <link rel="stylesheet" type="text/css" href="fonts.css">
-    <link rel="stylesheet" type="text/css" href="navbar.css">
-    <link rel="stylesheet" type="text/css" href="library.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('navbar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('library.css') }}">
 
 
     <!-- for resizable and scrollable div -->
