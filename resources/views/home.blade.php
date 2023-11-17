@@ -13,8 +13,8 @@
                     <h1 class="fontMonsseratRegular" style="font-size: 25px;">Greetings, Roy <!--@JovanAndhika @JackGame31 masukkin nama user--> ! </h1>
                 </div>
 
-                <div class="container-fluid text-center mb-5">
-                    <h1 class="fontMonsseratRegular" style="font-size: 20px;">Not sure what to listen yet? Here's list of our songs.</h1>
+                <div class="container-fluid text-center mb-3">
+                    <h1 class="fontMonsseratRegular" style="font-size: 18px;">Not sure what to listen yet? Here's list of our songs.</h1>
                 </div>
 
                 <div class="container-fluid ">
