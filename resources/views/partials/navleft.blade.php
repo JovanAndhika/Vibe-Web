@@ -6,7 +6,11 @@ class="col-3 p-0 m-0 fontMonsseratExtraBold d-flex align-items-center justify-co
         <a class="nav-link text-white @if($active == 'nowPlaying') active @endif" href="/nowPlaying#jumphere">Now Playing</a>
     </li>
 
-    <!-- active -->
+    <li class="nav-item d-inline-flex align-items-center my-3">
+        <i class="bi bi bi-house text-white @if($active == 'home') active @endif"></i>
+        <a class="nav-link text-white @if($active == 'home') active @endif" href="/home#jumphere">Home</a>
+    </li>
+
     <li class="nav-item d-inline-flex align-items-center my-3">
         <i class="bi bi-search text-white @if($active == 'search') active @endif"></i>
         <a class="nav-link text-white @if($active == 'search') active @endif" href="/#jumphere">Search</a>
