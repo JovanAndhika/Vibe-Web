@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 
@@ -15,12 +16,6 @@ use App\Http\Controllers\Admin\AdminController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/search', function () {
-    return view('search', [
-        "active" => 'search'
-    ]);
-});
 
 Route::get('/nowPlaying', function () {
     return view('nowPlaying', [
@@ -68,8 +63,12 @@ Route::group(['middleware' => 'guest'], function(){
 Route::group(['middleware' => 'auth'], function(){
     // role user
     Route::group(['middleware' => 'user', 'prefix' => 'user', 'as' => 'user.'], function () {
-        // TODO: ini sementara. PR buat user controller
-        Route::get('/', function () { return view('user.temp_index'); })->name('index');
+        Route::get('/', [UserController::class, 'index'])->name('index');
+        Route::get('/search', [UserController::class, 'search'])->name('search');
+        Route::get('/nowPlaying', [UserController::class, 'nowPlaying'])->name('nowPlaying');
+        Route::get('/discoverPlaylist', [UserController::class, 'discoverPlaylist'])->name('discoverPlaylist');
+        Route::get('/history', [UserController::class, 'history'])->name('history');
+        Route::get('/library', [UserController::class, 'library'])->name('library');
     });
 
     // role admin
