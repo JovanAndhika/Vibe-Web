@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Music;
-
+use Illuminate\Support\Facades\Storage;
 
 class MusicController extends Controller
 {
@@ -29,7 +29,7 @@ class MusicController extends Controller
             'title' => 'required',
             'artist' => 'required',
             'genre' => 'required',
-            'chfile' => 'required',
+            'chfile' => 'required|file|max:25000',
             'release_date' => 'required'
         ]);
 
@@ -60,7 +60,28 @@ class MusicController extends Controller
             'release_date' => 'required'
         ]);
 
+        if($request->file('chfile')){
+            if($request->oldsong){
+                $request->validate(['chfile' => 'required|file|max:25000']);
+                Storage::delete($request->oldsong);
+            }
+            $destinationPath = 'listofsongs';
+            $files = $request->file('chfile'); // will get files
+            $path = $files->store($destinationPath); // store files to destination folder
+            $data['file_path'] = $path;
+        }
+
         $music->update($data);
         return redirect(route('admin.edit', ['music' => $music]))->with('success', 'edit confirmed');
+    }
+
+
+    public function destroy_song(Music $music){
+        if($music->file_path){
+            Storage::delete($music->file_path);
+        }
+
+        Music::destroy($music->id);
+        return redirect(route('admin.index', ['music' => $music]));
     }
 }

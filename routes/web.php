@@ -39,11 +39,12 @@ Route::group(['middleware' => 'auth'], function(){
 
     // admin
     Route::group(['middleware' => 'admin', 'as' => 'admin.'], function () {
-        Route::get('/admin', [MusicController::class, 'index'])->name('index');
-        Route::get('/admin/addsong', [MusicController::class, 'add_song'])->name('add');
-        Route::post('/admin/store', [MusicController::class, 'store_song'])->name('store');
-        Route::get('/admin/editsong/{music}', [MusicController::class, 'edit_song'])->name('edit');
-        Route::put('/admin/update/{music}', [MusicController::class, 'update_song'])->name('update');
+        Route::get('/', [MusicController::class, 'index'])->name('index');
+        Route::get('/addsong', [MusicController::class, 'add_song'])->name('add');
+        Route::post('/store', [MusicController::class, 'store_song'])->name('store');
+        Route::get('/editsong/{music}', [MusicController::class, 'edit_song'])->name('edit');
+        Route::put('/update/{music}', [MusicController::class, 'update_song'])->name('update');
+        Route::delete('/destroy/{music}', [MusicController::class, 'destroy_song'])->name('destroy');
     });
 
     // logout

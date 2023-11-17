@@ -84,7 +84,7 @@
 
 
   <section class="my-4">
-    <div class="px-5 container-fluid table-responsive-lg">
+    <div class="px-5 container-fluid table-responsive-md">
       <table id="song_list" class="table table-striped dataTable no-footer" style="width:100%">
         <thead>
           <tr>
@@ -110,8 +110,14 @@
               </audio></td>
             <td>{{$music->release_date}}</td>
             <td>
-              <a href="{{route('admin.edit', ['music' => $music])}}" class="btn btn-secondary btn-sm mb-2 mt-2">Edit</a>
-              <button class="btn btn-danger btn-sm mb-2 mt-2" name="hapus_data" id="hapus_data">Delete</button>
+              <div class="mt-1 d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="{{route('admin.edit', ['music' => $music])}}" class="btn btn-secondary btn-sm">Edit</a>
+                <form action="{{route('admin.destroy', ['music' => $music])}}" method="post">
+                  @method('delete')
+                  @csrf
+                  <button class="confirm-delete btn btn-danger btn-sm" name="hapus_data" id="hapus_data">Delete</button>
+                </form>
+              </div>
             </td>
           </tr>
           @endforeach
@@ -124,8 +130,9 @@
 
   <script>
     $(document).ready(function() {
-      $('#song_list').on('click', '.hapus_data', function() {
-
+      $('.confirm-delete').click(function (event) {
+        let form = $(this).closest("form");
+        event.preventDefault();
         Swal.fire({
           title: 'Are you sure?',
           text: "You won't be able to revert this!",
@@ -136,7 +143,7 @@
           confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
           if (result.isConfirmed) {
-            $(this).siblings('.confirmdelete').submit();
+            form.submit();
             Swal.fire(
               'Deleted!',
               'Your data has been deleted.',
@@ -149,7 +156,7 @@
     });
 
     $('#song_list').dataTable({
-      "ordering": false
+      "ordering": true
     });
   </script>
 
