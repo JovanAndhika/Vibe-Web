@@ -86,10 +86,8 @@
             <script>
                 function checkSize(width) {
                     if(width <= 260) {
-                        // Hide all elements except the logo
                         $('.resizable').find('span').hide();
                     } else {
-                        // Show all elements when the width is more than 200px
                         $('.resizable').find('*').show();
                     }
                 }
@@ -99,11 +97,9 @@
                     var size = localStorage.getItem('divSize');
                     if(size) {
                         $('.resizable').css('width', size);
-                        // checkSize(ui.size.width);
                         checkSize(size);
                     }
 
-                    // Delay the initialization of resizable
                     setTimeout(function() {
                         $(".resizable").resizable({
                             handles: 'e',
