@@ -10,163 +10,53 @@
                 </div>
 
                 <div class="container-fluid text-center mb-5">
-                    <h1 class="fontMonsseratRegular" style="font-size: 25px;">Greetings, {{ auth()->user()->username }} ! </h1>
+                    <h1 class="fontMonsseratRegular" style="font-size: 25px;">Greetings, {{ auth()->user()->username }} !
+                    </h1>
                 </div>
 
                 <div class="container-fluid text-center mb-3">
-                    <h1 class="fontMonsseratRegular" style="font-size: 18px;">Not sure what to listen yet? Here's list of our songs.</h1>
+                    <h1 class="fontMonsseratRegular" style="font-size: 18px;">Not sure what to listen yet? Here's list of
+                        our songs.</h1>
                 </div>
 
                 <div class="container-fluid ">
-                <table class="table table-striped table-hover table-dark">
-                        <thead>
-                          <tr>
-                            <th class="fontMonsseratSemiBold" scope="col">Song</th>
-                            <th class="fontMonsseratSemiBold" scope="col">Artist</th>
-                            <th class="fontMonsseratSemiBold" scope="col"></th>
+                    {{-- pengecekan search --}}
+                    @if ($musics->isEmpty())
+                        {{-- jika tidak ada music --}}
+                        <div class="container-fluid text-center">
+                            <h1 class="fontMonsseratSemiBold" style="font-size: 20px;">No results found</h1>
+                        </div>
+                    @else
+                        {{-- jika ada --}}
+                        {{-- judul --}}
+                        <div class="container-fluid text-center">
+                            <h1 class="fontMonsseratSemiBold" style="font-size: 20px;">Results</h1>
+                        </div>
 
-                           
-                          </tr>
-                        </thead>
-                        <tbody class="text-left">
-                            <tr>
-                                <th>Ghost<!-- @JackGame31 @JovanAndhika ini title --></th>
-                                <th>Justin Bieber <!-- @JackGame31 @JovanAndhika ini artist --></th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th> <!-- @JackGame31 @JovanAndhika ini button play nya, nanti redirect ke nowplaying.html, dengan lagu yang dipilih itu. -->
-                            </tr>
-
-                            <tr>
-                                <th>Sasageyo</th>
-                                <th>Hiroyuki Sawano</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Happy Ya Ya</th>
-                                <th>Guru Sekolah Minggu</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Sasageyo</th>
-                                <th>Hiroyuki Sawano</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Happy Ya Ya</th>
-                                <th>Guru Sekolah Minggu</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Sasageyo</th>
-                                <th>Hiroyuki Sawano</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Happy Ya Ya</th>
-                                <th>Guru Sekolah Minggu</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Happy Ya Ya</th>
-                                <th>Guru Sekolah Minggu</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Sasageyo</th>
-                                <th>Hiroyuki Sawano</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Happy Ya Ya</th>
-                                <th>Guru Sekolah Minggu</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Happy Ya Ya</th>
-                                <th>Guru Sekolah Minggu</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Sasageyo</th>
-                                <th>Hiroyuki Sawano</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Happy Ya Ya</th>
-                                <th>Guru Sekolah Minggu</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Happy Ya Ya</th>
-                                <th>Guru Sekolah Minggu</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Sasageyo</th>
-                                <th>Hiroyuki Sawano</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Happy Ya Ya</th>
-                                <th>Guru Sekolah Minggu</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Happy Ya Ya</th>
-                                <th>Guru Sekolah Minggu</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Sasageyo</th>
-                                <th>Hiroyuki Sawano</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Happy Ya Ya</th>
-                                <th>Guru Sekolah Minggu</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Happy Ya Ya</th>
-                                <th>Guru Sekolah Minggu</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Sasageyo</th>
-                                <th>Hiroyuki Sawano</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Happy Ya Ya</th>
-                                <th>Guru Sekolah Minggu</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Happy Ya Ya</th>
-                                <th>Guru Sekolah Minggu</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Sasageyo</th>
-                                <th>Hiroyuki Sawano</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                            <tr>
-                                <th>Happy Ya Ya</th>
-                                <th>Guru Sekolah Minggu</th>
-                                <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-                            </tr>
-                        </tbody>
-                      </table>
-                
-
-                
-            </div>
-
-
-                
-
-
-
+                        {{-- tabel --}}
+                        <div class="container-fluid ">
+                            <table class="table table-striped table-hover table-dark">
+                                <thead>
+                                    <tr>
+                                        <th class="fontMonsseratSemiBold" scope="col">Song</th>
+                                        <th class="fontMonsseratSemiBold" scope="col">Artist</th>
+                                        <th class="fontMonsseratSemiBold" scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-left">
+                                    @foreach ($musics as $music)
+                                        <tr>
+                                            <th>{{ $music->title }}</th>
+                                            <th>{{ $music->artist }}</th>
+                                            <th><a href="{{ route('user.nowPlaying') }}?music_id={{ $music->id }}"><i
+                                                        class="bi bi-play-fill text-white"></i></a></th>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
+                </div>
             </div>
         </div>
     </div>
