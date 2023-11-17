@@ -19,8 +19,8 @@
         
         <h1 class="p-3">Ready to Start Your New Adventure?</h1>
         <div class="buttons">
-            <a href="/regist" class="btn btn-outline-dark font-weight-semibold mb-3">Create Account</a>
-            <a href="/login" class="btn btn-outline-dark font-weight-semibold mb-3">Login</a>
+            <a href="{{ route('register') }}" class="btn btn-outline-dark font-weight-semibold mb-3">Create Account</a>
+            <a href="{{ route('login') }}" class="btn btn-outline-dark font-weight-semibold mb-3">Login</a>
         </div>
     </div>
     </div>

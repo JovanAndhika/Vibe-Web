@@ -16,7 +16,7 @@ use App\Http\Controllers\Admin\AdminController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/search', function () {
     return view('search', [
         "active" => 'search'
     ]);
@@ -46,28 +46,20 @@ Route::get('/library', function () {
     ]);
 });
 
-Route::get('/opening', function () {
-    return view('opening', [
-        "title" => "opening"
-    ]);
-});
-
-Route::get('/regist', function () {
-    return view('regist', [
-        "title" => "regist"
-    ]);
-});
-
-Route::get('/login', function () {
-    return view('login', [
-        "title" => "login"
-    ]);
-});
-
 // Before Login
 Route::group(['middleware' => 'guest'], function(){
+    // home
+    Route::get('/', function(){
+        return view('opening', [
+            "title" => "opening"
+        ]);
+    })->name('home');
+
+    // register
     Route::get('/register', [RegisterController::class, 'index'])->name('register');
     Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+
+    // login
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'authenticate'])->name('login.store');
 });

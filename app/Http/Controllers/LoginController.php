@@ -9,7 +9,9 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('temp_login');
+        return view('login', [
+            "title" => "login"
+        ]);
     }
 
     public function authenticate(Request $request)

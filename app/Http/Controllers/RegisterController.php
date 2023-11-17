@@ -10,7 +10,9 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        return view('temp_register');
+        return view('regist', [
+            "title" => "regist"
+        ]);
     }
 
     public function store(Request $request)
@@ -36,6 +38,6 @@ class RegisterController extends Controller
         User::create($validatedData);
         
         // return ke page login
-        return redirect()->route('login')->with('success', 'Register successfull');
+        return redirect()->route('login')->with('success', 'Register successfull! Please Login');
     }
 }
