@@ -107,7 +107,7 @@
                 <form action="{{route('admin.destroy', ['music' => $music])}}" method="post">
                   @method('delete')
                   @csrf
-                  <button class="btn btn-danger btn-sm" name="hapus_data" id="hapus_data">Delete</button>
+                  <button class="confirm-delete btn btn-danger btn-sm" name="hapus_data" id="hapus_data">Delete</button>
                 </form>
               </div>
             </td>
@@ -122,8 +122,9 @@
 
   <script>
     $(document).ready(function() {
-      $('#song_list').on('click', '.hapus_data', function() {
-
+      $('.confirm-delete').click(function (event) {
+        let form = $(this).closest("form");
+        event.preventDefault();
         Swal.fire({
           title: 'Are you sure?',
           text: "You won't be able to revert this!",
@@ -134,7 +135,7 @@
           confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
           if (result.isConfirmed) {
-            $(this).siblings('.confirmdelete').submit();
+            form.submit();
             Swal.fire(
               'Deleted!',
               'Your data has been deleted.',
