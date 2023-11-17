@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('artist');
             $table->string('genre');
+            $table->string('file_path')->nullable(true);
+            $table->date('release_date');
             $table->timestamps();
         });
     }
