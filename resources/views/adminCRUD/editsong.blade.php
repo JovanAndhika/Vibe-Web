@@ -99,6 +99,18 @@
                 </div>
 
                 <div class="col-lg-7">
+                    <label for="choose" class="form-label">Insert song file .mp3</label>
+                    <input type="hidden" name="oldsong" value="{{$music->file_path}}">
+                    @if ($music->file_path)
+                        <p class="mb-3 col-lg-7"><?= $music->title." - ".$music->artist. " - " .$music->file_path ?></p>
+                    @else
+                        <p class="mb-3 col-lg-7">No music</p>
+                    @endif
+                    <input class="form-control" type="file" id="chfile" name="chfile">
+                    <br>
+                </div>
+
+                <div class="col-lg-7">
                     <label class="form-label">Release date</label>
                     <input class="form-control" type="date" name="release_date" id="release_date" placeholder="Insert genre" value="{{$music->release_date}}">
                     <br>
