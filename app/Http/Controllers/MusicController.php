@@ -74,4 +74,14 @@ class MusicController extends Controller
         $music->update($data);
         return redirect(route('admin.edit', ['music' => $music]))->with('success', 'edit confirmed');
     }
+
+
+    public function destroy_song(Music $music){
+        if($music->file_path){
+            Storage::delete($music->file_path);
+        }
+
+        Music::destroy($music->id);
+        return redirect(route('admin.index', ['music' => $music]));
+    }
 }
