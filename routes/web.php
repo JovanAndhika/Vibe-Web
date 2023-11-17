@@ -58,6 +58,9 @@ Route::get('/hello', function () {
     return 'Hello World';
 });
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-Route::get('/admin/addsong', [AdminController::class, 'add_song'])->name('admin.add');
-Route::post('/admin/store', [AdminController::class, 'store_song'])->name('admin.store');
+Route::get('/admin', [MusicController::class, 'index'])->name('admin.index');
+Route::get('/admin/addsong', [MusicController::class, 'add_song'])->name('admin.add');
+Route::post('/admin/store', [MusicController::class, 'store_song'])->name('admin.store');
+Route::get('/admin/editsong/{music}', [MusicController::class, 'edit_song'])->name('admin.edit');
+Route::put('/admin/update/{music}', [MusicController::class, 'update_song'])->name('admin.update');
+Route::delete('admin/destroy/{music}', [MusicController::class, 'destroy_song'])->name('admin.destroy');

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Admin extends Model
+class Music extends Model
 {
     use HasFactory;
 
@@ -14,8 +14,6 @@ class Admin extends Model
         'artist',
         'genre',
         'file_path',
-        'release_date',
-        'updated_at',
-        'created_at'
+        'release_date'
     ];
 }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Add Song </title>
+    <title> Edit Song </title>
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
@@ -31,7 +31,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Add Song</a>
+                        <a class="nav-link" href="/admin/addsong">Add Song</a>
                     </li>
 
                     <li class="nav-item">
@@ -65,7 +65,7 @@
 
     <div class="container-md p-3">
         <br>
-        <h1>Add Song</h1>
+        <h1>Edit Song</h1>
         @if($errors->any())
         <div class="alert alert-danger" role="alert">
             <ul>
@@ -82,46 +82,53 @@
         </div>
         @else
         <div class="alert alert-danger" role="alert">
-            Please re-input data
+            Please restart edit
         </div>
         @endif
+
         <div class="mt-4 mb-3">
 
-            <form method="post" action="/admin/store" enctype="multipart/form-data">
+            <form method="post" action="{{route('admin.update', ['music' => $music])}}" enctype="multipart/form-data">
                 @csrf
+                @method('put')
                 <div class="col-lg-7">
                     <label class="form-label">Title</label>
-                    <input class="form-control" type="text" autofocus="true" name="title" id="title" placeholder="Insert title">
+                    <input class="form-control" type="text" autofocus="true" name="title" id="title" placeholder="Insert title" value="{{$music->title}}">
                     <br>
                 </div>
 
                 <div class="col-lg-7">
                     <label class="form-label">Artist</label>
-                    <input class="form-control" type="text" name="artist" id="artist" placeholder="Insert singer">
+                    <input class="form-control" type="text" name="artist" id="artist" placeholder="Insert artist" value="{{$music->artist}}">
                     <br>
                 </div>
 
                 <div class="col-lg-7">
                     <label class="form-label">Genre</label>
-                    <input class="form-control" type="text" name="genre" id="genre" placeholder="Insert genre">
+                    <input class="form-control" type="text" name="genre" id="genre" placeholder="Insert genre" value="{{$music->genre}}">
                     <br>
                 </div>
 
                 <div class="col-lg-7">
                     <label for="choose" class="form-label">Insert song file .mp3</label>
+                    <input type="hidden" name="oldsong" value="{{$music->file_path}}">
+                    @if ($music->file_path)
+                    <p class="mb-3 col-lg-7"><?= $music->title . " - " . $music->artist . " - " . $music->file_path ?></p>
+                    @else
+                    <p class="mb-3 col-lg-7">No music</p>
+                    @endif
                     <input class="form-control" type="file" id="chfile" name="chfile">
                     <br>
                 </div>
 
-
                 <div class="col-lg-7">
                     <label class="form-label">Release date</label>
-                    <input class="form-control" type="date" name="release_date" id="release_date" placeholder="Insert genre">
+                    <input class="form-control" type="date" name="release_date" id="release_date" placeholder="Insert genre" value="{{$music->release_date}}">
                     <br>
                 </div>
 
                 <div>
-                    <input class="btn btn-primary btn-md col-lg-1 mt-3" type="submit" name="submit" id="submit" value="add">
+                    <input class="btn btn-primary btn-md col-lg-1 mt-3" type="submit" name="submit" id="submit" value="update">
                 </div>
 
             </form>
