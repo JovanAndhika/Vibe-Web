@@ -22,9 +22,28 @@
     font-weight: 600;
 }
 
+.fontMonsseratBold {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
 
 
 .fontMonsseratExtraBold {
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
 }
+
+th {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+thead th{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+
+

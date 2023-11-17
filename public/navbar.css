@@ -1,0 +1,7 @@
+.nav-item i, .nav-item a{
+    opacity: 0.5;
+}
+
+.active{
+    opacity: 1 !important;
+}
