@@ -3,7 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\MusicController;
+use App\Http\Controllers\Admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,12 +38,12 @@ Route::group(['middleware' => 'auth'], function(){
 
     // role admin
     Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
-        Route::get('/', [MusicController::class, 'index'])->name('index');
-        Route::get('/addsong', [MusicController::class, 'add_song'])->name('add');
-        Route::post('/store', [MusicController::class, 'store_song'])->name('store');
-        Route::get('/editsong/{music}', [MusicController::class, 'edit_song'])->name('edit');
-        Route::put('/update/{music}', [MusicController::class, 'update_song'])->name('update');
-        Route::delete('/destroy/{music}', [MusicController::class, 'destroy_song'])->name('destroy');
+        Route::get('/', [AdminController::class, 'index'])->name('index');
+        Route::get('/addsong', [AdminController::class, 'add_song'])->name('add');
+        Route::post('/store', [AdminController::class, 'store_song'])->name('store');
+        Route::get('/editsong/{music}', [AdminController::class, 'edit_song'])->name('edit');
+        Route::put('/update/{music}', [AdminController::class, 'update_song'])->name('update');
+        Route::delete('/destroy/{music}', [AdminController::class, 'destroy_song'])->name('destroy');
     });
 
     // logout

@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Music;
 use Illuminate\Support\Facades\Storage;
 
-class MusicController extends Controller
+class AdminController extends Controller
 {
     //Controller Admin
     public function index()
