@@ -8,8 +8,11 @@
     <title> Add Song </title>
 
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous">
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
@@ -19,7 +22,9 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Menu</a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -66,24 +71,24 @@
     <div class="container-md p-3">
         <br>
         <h1>Add Song</h1>
-        @if($errors->any())
-        <div class="alert alert-danger" role="alert">
-            <ul>
-                @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
-                @endforeach
-            </ul>
-        </div>
+        @if ($errors->any())
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
         @endif
 
         @if (session()->has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ session('success') }}
-        </div>
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
         @else
-        <div class="alert alert-danger" role="alert">
-            Please re-input data
-        </div>
+            <div class="alert alert-danger" role="alert">
+                Please re-input data
+            </div>
         @endif
         <div class="mt-4 mb-3">
 
@@ -91,13 +96,15 @@
                 @csrf
                 <div class="col-lg-7">
                     <label class="form-label">Title</label>
-                    <input class="form-control" type="text" autofocus="true" name="title" id="title" placeholder="Insert title">
+                    <input class="form-control" type="text" autofocus="true" name="title" id="title"
+                        placeholder="Insert title">
                     <br>
                 </div>
 
                 <div class="col-lg-7">
                     <label class="form-label">Artist</label>
-                    <input class="form-control" type="text" name="artist" id="artist" placeholder="Insert singer">
+                    <input class="form-control" type="text" name="artist" id="artist"
+                        placeholder="Insert singer">
                     <br>
                 </div>
 
@@ -116,12 +123,14 @@
 
                 <div class="col-lg-7">
                     <label class="form-label">Release date</label>
-                    <input class="form-control" type="date" name="release_date" id="release_date" placeholder="Insert genre">
+                    <input class="form-control" type="date" name="release_date" id="release_date"
+                        placeholder="Insert genre">
                     <br>
                 </div>
 
                 <div>
-                    <input class="btn btn-primary btn-md col-lg-1 mt-3" type="submit" name="submit" id="submit" value="add">
+                    <input class="btn btn-primary btn-md col-lg-1 mt-3" type="submit" name="submit" id="submit"
+                        value="add">
                 </div>
 
             </form>

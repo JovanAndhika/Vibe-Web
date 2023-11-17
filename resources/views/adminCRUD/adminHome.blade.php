@@ -65,7 +65,7 @@
     </div>
   </nav>
 
-  </br>
+  <br>
 
   <style>
     .bg-body-primary {
