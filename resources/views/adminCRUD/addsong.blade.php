@@ -67,14 +67,24 @@
         <br>
         <h1>Add Song</h1>
         @if($errors->any())
-        <ul>
-            @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-            @endforeach
-        </ul>
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
         @endif
 
-
+        @if (session()->has('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+        @else
+        <div class="alert alert-danger" role="alert">
+            Please re-input data
+        </div>
+        @endif
         <div class="mt-4 mb-3">
 
             <form method="post" action="/admin/store" enctype="multipart/form-data">
@@ -113,7 +123,7 @@
                 <div>
                     <input class="btn btn-primary btn-md col-lg-1 mt-3" type="submit" name="submit" id="submit" value="add">
                 </div>
-                
+
             </form>
 
         </div>

@@ -65,15 +65,26 @@
 
     <div class="container-md p-3">
         <br>
-        <h1>Add Song</h1>
+        <h1>Edit Song</h1>
         @if($errors->any())
-        <ul>
-            @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-            @endforeach
-        </ul>
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
         @endif
 
+        @if (session()->has('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+        @else
+        <div class="alert alert-danger" role="alert">
+            Please restart edit
+        </div>
+        @endif
 
         <div class="mt-4 mb-3">
 
@@ -102,9 +113,9 @@
                     <label for="choose" class="form-label">Insert song file .mp3</label>
                     <input type="hidden" name="oldsong" value="{{$music->file_path}}">
                     @if ($music->file_path)
-                        <p class="mb-3 col-lg-7"><?= $music->title." - ".$music->artist. " - " .$music->file_path ?></p>
+                    <p class="mb-3 col-lg-7"><?= $music->title . " - " . $music->artist . " - " . $music->file_path ?></p>
                     @else
-                        <p class="mb-3 col-lg-7">No music</p>
+                    <p class="mb-3 col-lg-7">No music</p>
                     @endif
                     <input class="form-control" type="file" id="chfile" name="chfile">
                     <br>
