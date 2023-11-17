@@ -62,6 +62,5 @@ Route::get('/login', function () {
     ]);
 });
 
-
 Route::get('/testing', [MusicController::class, 'index']);
 
