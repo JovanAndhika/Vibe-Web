@@ -50,9 +50,15 @@ Route::get('/opening', function () {
     ]);
 });
 
-Route::get('/home', function () {
-    return view('home', [
-        "active" => 'home'
+Route::get('/regist', function () {
+    return view('regist', [
+        "title" => "regist"
+    ]);
+});
+
+Route::get('/login', function () {
+    return view('login', [
+        "title" => "login"
     ]);
 });
 
