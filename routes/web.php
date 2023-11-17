@@ -50,6 +50,11 @@ Route::get('/opening', function () {
     ]);
 });
 
+Route::get('/home', function () {
+    return view('home', [
+        "active" => 'home'
+    ]);
+});
 
 Route::get('/testing', [MusicController::class, 'index']);
 

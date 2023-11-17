@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('container')
-<div class="col scrollable-div p-4">
+<div class="col scrollable-div p-4" id="jumphere">
     <div class="container-fluid vh-100 d-flex flex-column">
         <div class="container-fluid flex-grow-1 p-5">
 
@@ -33,8 +33,8 @@
             <div class="container-fluid scrollable-div">
 
                 <div class="container-fluid text-left mb-5" id= "2">
-                    <h4 class="fontMonsseratSemiBold">Monday, 14 Nov 2023</h4>
-                    <table class="table table-striped table-hover table-dark">
+                    <h4 class="fontMonsseratSemiBold mb-3">Monday, 14 Nov 2023</h4>
+                    <table class="table table-striped table-hover table-dark fontMonsseratRegular">
                         <thead>
                           <tr>
                             <th scope="col">Song</th>
@@ -42,7 +42,7 @@
                             <th scope="col">Time</th>
                             <th scope="col"></th>
 
-                           
+
                           </tr>
                         </thead>
                         <tbody>
@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="container-fluid text-left mb-5" id= "1">
-                    <h4 class="fontMonsseratSemiBold">Sunday, 13 Nov 2023</h4>
+                    <h4 class="fontMonsseratSemiBold mb-3">Sunday, 13 Nov 2023</h4>
                     <table class="table table-striped table-hover table-dark">
                         <thead>
                           <tr>

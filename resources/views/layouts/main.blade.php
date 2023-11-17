@@ -56,17 +56,25 @@
             transform: scale(1.04); 
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); 
         }
+
+        .fontMonsseratBold {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+
     </style>
 
 </head>
-<body class="bg-dark text-white">
+<body class="text-white bg-dark">
+    {{-- rgb(239,237,231) --}}
 
 @include('partials.navup')
 @include('partials.navleft')
 
             
-
             @yield('container')
+            
 
             <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -74,7 +82,7 @@
                 $(document).ready(function () {
                     $(".resizable").resizable({
                         handles: 'e',
-                        minWidth: 200, // Minimum width of the resizable div
+                        minWidth: 0, // Minimum width of the resizable div
                         maxWidth: 800, // Maximum width of the resizable div
                     });
                 });
@@ -82,8 +90,6 @@
         
         
         
+    </body>
         
-        
-        </body>
-        
-        </html>
+</html>
