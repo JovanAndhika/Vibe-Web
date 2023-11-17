@@ -3,8 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\MusicController;
+use App\Http\Controllers\Admin\MusicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,16 +28,16 @@ Route::group(['middleware' => 'guest'], function(){
     Route::post('/login', [LoginController::class, 'authenticate'])->name('login.store');
 });
 
-// User
+// After Login
 Route::group(['middleware' => 'auth'], function(){
-    // user
+    // role user
     Route::group(['middleware' => 'user', 'prefix' => 'user', 'as' => 'user.'], function () {
-        // TODO: buat user controller
+        // TODO: ini sementara. PR buat user controller
         Route::get('/', function () { return view('user.temp_index'); })->name('index');
     });
 
-    // admin
-    Route::group(['middleware' => 'admin', 'as' => 'admin.'], function () {
+    // role admin
+    Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/', [MusicController::class, 'index'])->name('index');
         Route::get('/addsong', [MusicController::class, 'add_song'])->name('add');
         Route::post('/store', [MusicController::class, 'store_song'])->name('store');
