@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: black; 
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.welcome-container, .form-container {
+    text-align: center;
+    animation: fadeIn 1.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.logo {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Other styles remain the same */
+
+/* Add styles for inputs, buttons, etc., to match the black background */
+input, button {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+}
+
+a {
+    color: #0d6efd;
+}
+
+.round {
+    border-radius: 18px;
+    background: #600;
+    padding: 20px; 
+    width: 200px;
+    height: 15px;    
+}

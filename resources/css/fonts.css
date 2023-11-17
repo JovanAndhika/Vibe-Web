@@ -29,16 +29,13 @@
     font-weight: 800;
 }
 
-th {
+.fontMonsseratLight {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
-    font-style: normal;
 }
 
-thead th{
+.fontMonsseratLightItalic {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+    font-weight: 300;
+    font-style: italic;
 }
-
-
-

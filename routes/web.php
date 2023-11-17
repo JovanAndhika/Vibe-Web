@@ -16,8 +16,41 @@ use App\Http\Controllers\MusicController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('search', [
+        "active" => 'search'
+    ]);
 });
+
+Route::get('/nowPlaying', function () {
+    return view('nowPlaying', [
+        "active" => 'nowPlaying'
+    ]);
+});
+
+Route::get('/discoverPlaylist', function () {
+    return view('discoverPlaylist', [
+        "active" => 'discoverPlaylist'
+    ]);
+});
+
+Route::get('/history', function () {
+    return view('history', [
+        "active" => 'history'
+    ]);
+});
+
+Route::get('/library', function () {
+    return view('library', [
+        "active" => 'library'
+    ]);
+});
+
+Route::get('/opening', function () {
+    return view('opening', [
+        "title" => "opening"
+    ]);
+});
+
 
 Route::get('/testing', [MusicController::class, 'index']);
 
