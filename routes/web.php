@@ -50,6 +50,18 @@ Route::get('/opening', function () {
     ]);
 });
 
+Route::get('/regist', function () {
+    return view('regist', [
+        "title" => "regist"
+    ]);
+});
+
+Route::get('/login', function () {
+    return view('login', [
+        "title" => "login"
+    ]);
+});
+
 
 Route::get('/testing', [MusicController::class, 'index']);
 
