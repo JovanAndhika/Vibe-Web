@@ -100,7 +100,7 @@
                     if(size) {
                         $('.resizable').css('width', size);
                         // checkSize(ui.size.width);
-                        // checkSize(size);
+                        checkSize(size);
                     }
 
                     // Delay the initialization of resizable
