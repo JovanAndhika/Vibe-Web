@@ -52,6 +52,14 @@
             <a class="nav-link" href="#">View Admin</a>
           </li>
 
+          {{-- TODO: Jovan sempurnakan tampilannya --}}
+          <li class="nav-item">
+            <form method="post" action="{{ route('logout') }}">
+              @csrf
+              <button type="submit" class="nav-link">Logout</button>
+            </form>
+          </li>
+
         </ul>
       </div>
     </div>
