@@ -24,7 +24,7 @@ class UserController extends Controller
         return view('user.search', [
             "title" => "search",
             "active" => "search",
-            "musics" => Music::latest()->filter(request(['artist', 'title'], request('search')))->get()
+            "musics" => Music::latest()->filter(request(['artist', 'title']))->get()
         ]);
     }
 
