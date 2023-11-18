@@ -21,6 +21,16 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                // jika sudah login tapi admin
+                if (auth()->user()->is_admin == true) {
+                    return redirect()->route('admin.index');
+                }
+
+                // jika sudah login tapi user
+                if (auth()->user()->is_admin == false) {
+                    return redirect()->route('user.index');
+                }
+                
                 return redirect(RouteServiceProvider::HOME);
             }
         }
