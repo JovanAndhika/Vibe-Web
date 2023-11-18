@@ -84,7 +84,7 @@ class UserController extends Controller
     {
         $song = DB::table('music')->where('genre', 'Dance')->get();
 
-        return view('searchResult.rockResult', ['dance' => $song])
+        return view('searchResult.danceResult', ['dance' => $song])
             ->with('genreDance', 'genreDance searched');
     }
 
@@ -92,7 +92,7 @@ class UserController extends Controller
     {
         $song = DB::table('music')->where('genre', 'Ponk')->get();
 
-        return view('searchResult.classicalResult', ['ponk' => $song])
+        return view('searchResult.ponkResult', ['ponk' => $song])
             ->with('genrePonk', 'genrePonk searched');
     }
 
