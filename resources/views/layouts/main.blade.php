@@ -57,36 +57,69 @@
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); 
         }
 
+        .fontMonsseratBold {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .resizable span {
+            display: none;
+        }
+
 
 
     </style>
 
 </head>
-<body class="bg-dark text-white">
+<body class="text-white bg-dark">
+    {{-- rgb(239,237,231) --}}
 
 @include('partials.navup')
 @include('partials.navleft')
 
             
-                @yield('container')
+            @yield('container')
             
 
             <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
             <script>
+                function checkSize(width) {
+                    if(width <= 260) {
+                        $('.resizable').find('span').hide();
+                    } else {
+                        $('.resizable').find('*').show();
+                    }
+                }
+
+
                 $(document).ready(function () {
-                    $(".resizable").resizable({
-                        handles: 'e',
-                        minWidth: 200, // Minimum width of the resizable div
-                        maxWidth: 800, // Maximum width of the resizable div
-                    });
+                    var size = localStorage.getItem('divSize');
+                    if(size) {
+                        $('.resizable').css('width', size);
+                        checkSize(size);
+                    }
+
+                    setTimeout(function() {
+                        $(".resizable").resizable({
+                            handles: 'e',
+                            minWidth: 100, 
+                            maxWidth: 800, 
+                            resize: function(event, ui) {
+                                localStorage.setItem('divSize', ui.size.width);
+                                checkSize(ui.size.width);
+                            }
+                        });
+                    }, 0);
+
+                    $(".resizable").trigger('resize');
                 });
+
+
             </script>
         
         
         
+    </body>
         
-        
-        </body>
-        
-        </html>
+</html>
