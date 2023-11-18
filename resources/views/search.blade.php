@@ -76,12 +76,12 @@
                 <div class="row h-100" id="mainRow">
 
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-                        
-                            
-                            <a href="{{route('user.index')}}"> <img src="img/search/jazzCover.png" alt="" class="img-fluid rounded genre" style="object-fit: fit;"></a>
-                        
+                    <form method="post" action="{{route('user.jazz')}}">
+                        @csrf
+                        @method('post')
+                        <button type="submit"><img src="img/search/jazzCover.png" alt="" class="img-fluid rounded genre submit" style="object-fit: fit;"></button>
+                    </form>
                     </div>
-
 
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
                         <a><img src="img/search/popCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;"></a>
@@ -124,13 +124,13 @@
                     </tr>
                 </thead>
                 <tbody class="text-left">
-                    
+
                     <tr>
                         <td>sss</td>
                         <td>sss <!-- @JackGame31 @JovanAndhika ini artist --></td>
                         <td><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></td> <!-- @JackGame31 @JovanAndhika ini button play nya, nanti redirect ke nowplaying.html, dengan lagu yang dipilih itu. -->
                     </tr>
-                    
+
                 </tbody>
             </table>
             @endif

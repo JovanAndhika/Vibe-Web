@@ -21,11 +21,11 @@ class UserController extends Controller
         return view('search', ['active' => 'search']);
     }
 
-    public function genreJazz(){
+    public function jazz(){
         $jazz = DB::table('music')->where('genre', 'Jazz')->get();
-        return redirect(route('admin.search'))
+        return back()
         ->with('jazz', $jazz)
-        ->with('genreJazz', 'jazz confirmed');
+        ->with('genreJazz', 'genreJazz searched');
     }
 
     public function genrePop(){
@@ -36,6 +36,8 @@ class UserController extends Controller
     public function playingNow(){
         // <audio src="path/to/song.mp3" controls autoplay></audio>
         // UNTUK MEMBUAT CSS TOMBOL PLAY WORKS
+
+
     }
 
 }

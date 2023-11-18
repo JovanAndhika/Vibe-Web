@@ -59,8 +59,7 @@ Route::get('/home/{playNow}', [UserController::class, 'playingNow'])->name('user
 
 //SEARCH
 Route::get('/', [UserController::class, 'search'])->name('user.search');
-Route::post('search/jazz', [UserController::class, 'genreJazz'])->name('user.genreJazz');
-Route::post('search/pop', [UserController::class, 'genrePop'])->name('user.genrePop');
+Route::post('/search/jazz', [UserController::class, 'jazz'])->name('user.jazz');
 
 
 //CRUD ADMIN
