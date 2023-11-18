@@ -13,6 +13,7 @@
                     <form method="get" action="{{ route('user.search') }}" id="searchForm">
                         <input type="text" class="form-control fontMonsseratRegular" placeholder="What to listen to?"
                             aria-label="Username" aria-describedby="addon-wrapping" id="searchInput">
+                        <input type="hidden" name="submited" value="true">
                     </form>
 
                 </div>
@@ -50,8 +51,8 @@
                 </div>
 
                 {{-- pengecekan search --}}
-                @if (request()->has('artist') || request()->has('title'))
-                    @if (!isset($music))
+                @if (request()->has('submited'))
+                    @if ($musics->isEmpty())
                         {{-- jika hasil search music belum ada --}}
                         <div class="container-fluid text-center">
                             <h1 class="fontMonsseratSemiBold" style="font-size: 20px;">No results found</h1>
