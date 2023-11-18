@@ -10,17 +10,21 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
-
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
 </head>
 <body>
     <div class="welcome-container">
         
-            <h1 class="navbar-brand fontMonsseratExtraBold" style="font-size: 50px; color: rgb(77, 205, 205);" href="#mainSection">Vibeeeeeee.</h1>
-        
-        <h1 class="p-3">Ready to Start Your New Adventure?</h1>
+        <a class="navbar-brand fontMonsseratExtraBold" style="font-size: 50px; color: rgb(238, 181, 0);"
+        href="#mainSection">Vibe</a>        
+        <h1 class="p-3"  style=" color: white";>Ready to Start Your New Adventure?</h1>
         <div class="buttons">
-            <a href="{{ route('register') }}" class="btn btn-outline-dark font-weight-semibold mb-3">Create Account</a>
-            <a href="{{ route('login') }}" class="btn btn-outline-dark font-weight-semibold mb-3">Login</a>
+            <a href="{{ route('register') }}" class="btn btn-outline-warning font-weight-semibold mb-3">Create Account</a>
+            <a href="{{ route('login') }}" class="btn btn-outline-warning font-weight-semibold mb-3">Login</a>
         </div>
     </div>
     </div>

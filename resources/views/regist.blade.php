@@ -32,8 +32,8 @@
 <body>
     <div class="form-container">
         <div class="logo">
-            <h1 class="navbar-brand fontMonsseratExtraBold" style="font-size: 30px; color: rgb(77, 205, 205);"
-                href="#mainSection">Vibeeeeeee.</h1>
+            <a class="navbar-brand fontMonsseratExtraBold" style="font-size: 50px; color: rgb(238, 181, 0);"
+            href="#mainSection">Vibe</a>  
         </div>
         <h2 style="font-size: 40px;">Create Your Account!</h2>
         <form action="{{ route('register.store') }}" method="post" enctype="multipart/form-data">
@@ -41,7 +41,7 @@
             {{-- email --}}
             <div class="mb-3">
                 <div class="input-group">
-                    <button class="btn btn-outline-info change" type="button" id="button-addon1">Email</button>
+                    <button class="btn btn-outline-warning change" type="button" id="button-addon1">Email</button>
                     <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email"
                         name="email" value="{{ old('email') }}" required>
                 </div>
@@ -53,7 +53,7 @@
             {{-- username --}}
             <div class="mb-3">
                 <div class="input-group">
-                    <button class="btn btn-outline-info change" type="button" id="button-addon1">Username</button>
+                    <button class="btn btn-outline-warning change" type="button" id="button-addon1">Username</button>
                     <input type="text" class="form-control @error('username') is-invalid @enderror"
                         placeholder="Username" name="username" value="{{ old('username') }}" required>
                 </div>
@@ -65,7 +65,7 @@
             {{-- password --}}
             <div class="mb-3">
                 <div class="input-group">
-                    <button class="btn btn-outline-info change" type="button" id="button-addon1">Password</button>
+                    <button class="btn btn-outline-warning change" type="button" id="button-addon1">Password</button>
                     <input type="password" class="form-control @error('password') is-invalid @enderror"
                         placeholder="Password" name="password" required>
                 </div>
@@ -77,7 +77,7 @@
             {{-- tanggal lahir --}}
             <div class="mb-3">
                 <div class="input-group">
-                    <button class="btn btn-outline-info change" type="button" id="button-addon1">Birthday</button>
+                    <button class="btn btn-outline-warning change" type="button" id="button-addon1">Birthday</button>
                     <input type="date" class="form-control @error('date_of_birth') is-invalid @enderror"
                         name="date_of_birth" value="{{ old('date_of_birth') }}" required>
                 </div>
@@ -89,7 +89,7 @@
             {{-- icon --}}
             <div class="mb-3">
                 <div class="input-group">
-                    <button class="btn btn-outline-info change" type="button" id="button-addon1">Avatar</button>
+                    <button class="btn btn-outline-warning change" type="button" id="button-addon1">Avatar</button>
                     <input type="file" class="form-control @error('icon') is-invalid @enderror" name="icon"
                         accept="image/*">
                 </div>
@@ -99,8 +99,8 @@
             </div>
 
             {{-- submit button --}}
-            <button class=" btn btn-outline-info fontMonsseratSemiBold mb-3"; type="submit">Create Account</button>
-            <a href="{{ route('home') }}" class="btn btn-outline-info font-weight-semibold mb-3">Back</a>
+            <button class=" btn btn-outline-warning fontMonsseratSemiBold mb-3"; type="submit">Create Account</button>
+            <a href="{{ route('home') }}" class="btn btn-outline-warning font-weight-semibold mb-3">Back</a>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {

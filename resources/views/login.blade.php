@@ -32,8 +32,8 @@
 <body>
     <div class="form-container">
         <div class="logo">
-            <h1 class="navbar-brand fontMonsseratExtraBold" style="font-size: 30px; color: rgb(77, 205, 205);"
-                href="#mainSection">Vibeeeeeee.</h1>
+            <a class="navbar-brand fontMonsseratExtraBold" style="font-size: 50px; color: rgb(238, 181, 0);"
+        href="#mainSection">Vibe</a>        
         </div>
 
         {{-- flash cards --}}
@@ -54,7 +54,7 @@
             @csrf
             {{-- email --}}
             <div class="input-group mb-3">
-                <button class="btn btn-outline-info change" type="button" id="button-addon1">Email</button>
+                <button class="btn btn-outline-warning change" type="button" id="button-addon1">Email</button>
                 <input type="text" class="form-control @error('email') is-invalid @enderror" placeholder="Email"
                     name="email" required>
                 @error('email')
@@ -64,7 +64,7 @@
 
             {{-- password --}}
             <div class="input-group mb-3">
-                <button class="btn btn-outline-info change" type="button" id="button-addon1">Password</button>
+                <button class="btn btn-outline-warning change" type="button" id="button-addon1">Password</button>
                 <input type="password" class="form-control @error('password') is-invalid @enderror"
                     placeholder="Password" name="password" required>
                 @error('password')
@@ -73,8 +73,8 @@
             </div>
 
             {{-- submit button --}}
-            <button class=" btn btn-outline-info fontMonsseratSemiBold mb-3"; type="submit">Log In</button>
-            <a href="{{ route('home') }}" class="btn btn-outline-info font-weight-semibold mb-3">Back</a>
+            <button class=" btn btn-outline-warning fontMonsseratSemiBold mb-3"; type="submit">Log In</button>
+            <a href="{{ route('home') }}" class="btn btn-outline-warning font-weight-semibold mb-3">Back</a>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
