@@ -80,10 +80,6 @@
         <div class="alert alert-success" role="alert">
             {{ session('success') }}
         </div>
-        @else
-        <div class="alert alert-danger" role="alert">
-            Please re-input data
-        </div>
         @endif
         <div class="mt-4 mb-3">
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MusicController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +15,6 @@ use App\Http\Controllers\MusicController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('search', [
-        "active" => 'search'
-    ]);
-});
 
 Route::get('/nowPlaying', function () {
     return view('nowPlaying', [
@@ -51,18 +46,24 @@ Route::get('/opening', function () {
     ]);
 });
 
-Route::get('/home', function () {
-    return view('home', [
-        "active" => 'home'
-    ]);
-});
 
 Route::get('/testing', [MusicController::class, 'index']);
-
 Route::get('/hello', function () {
     return 'Hello World';
 });
 
+
+//USERS HOME & PLAYNOW
+Route::get('/home', [UserController::class, 'index'])->name('user.index');
+Route::get('/home/{playNow}', [UserController::class, 'playingNow'])->name('user.playNow');
+
+//SEARCH
+Route::get('/', [UserController::class, 'search'])->name('user.search');
+Route::post('search/jazz', [UserController::class, 'genreJazz'])->name('user.genreJazz');
+Route::post('search/pop', [UserController::class, 'genrePop'])->name('user.genrePop');
+
+
+//CRUD ADMIN
 Route::get('/admin', [MusicController::class, 'index'])->name('admin.index');
 Route::get('/admin/addsong', [MusicController::class, 'add_song'])->name('admin.add');
 Route::post('/admin/store', [MusicController::class, 'store_song'])->name('admin.store');
