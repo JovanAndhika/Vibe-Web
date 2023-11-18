@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Music;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -60,5 +61,70 @@ class UserController extends Controller
             "title" => "library",
             "active" => "library"
         ]);
+    }
+
+    // genre search
+    public function jazz()
+    {
+        $jazz = DB::table('music')->where('genre', 'Jazz')->get();
+
+        return view('user.searchResult.jazzResult', ['jazz' => $jazz])
+            ->with('genreJazz', 'genreJazz searched');
+    }
+
+    public function pop()
+    {
+        $pop = DB::table('music')->where('genre', 'Pop')->get();
+
+        return view('user.searchResult.popResult', ['pop' => $pop])
+            ->with('genrePop', 'genrePop searched');
+    }
+
+    public function dangdut()
+    {
+        $song = DB::table('music')->where('genre', 'Dangdut')->get();
+
+        return view('user.searchResult.dangdutResult', ['dangdut' => $song])
+            ->with('genreDangdut', 'genreDangdut searched');
+    }
+
+    public function kpop()
+    {
+        $song = DB::table('music')->where('genre', 'Kpop')->get();
+
+        return view('user.searchResult.kpopResult', ['pop' => $song])
+            ->with('genreKpop', 'genreKpop searched');
+    }
+
+    public function rock()
+    {
+        $song = DB::table('music')->where('genre', 'Rock')->get();
+
+        return view('user.searchResult.rockResult', ['rock' => $song])
+            ->with('genreRock', 'genreRock searched');
+    }
+
+    public function classical()
+    {
+        $song = DB::table('music')->where('genre', 'Classical')->get();
+
+        return view('user.searchResult.classicalResult', ['classical' => $song])
+            ->with('genreClassical', 'genreClassical searched');
+    }
+
+    public function dance()
+    {
+        $song = DB::table('music')->where('genre', 'Dance')->get();
+
+        return view('user.searchResult.danceResult', ['dance' => $song])
+            ->with('genreDance', 'genreDance searched');
+    }
+
+    public function ponk()
+    {
+        $song = DB::table('music')->where('genre', 'Ponk')->get();
+
+        return view('user.searchResult.ponkResult', ['ponk' => $song])
+            ->with('genrePonk', 'genrePonk searched');
     }
 }

@@ -106,7 +106,7 @@
             <td>{{$music->artist}}</td>
             <td>{{$music->genre}}</td>
             <td><audio controls>
-                <source src="storage/{{$music->file_path}}" type="audio/mpeg">
+                <source src="{{ asset('storage/' . $music->file_path) }}" type="audio/mpeg">
               </audio></td>
             <td>{{$music->release_date}}</td>
             <td>

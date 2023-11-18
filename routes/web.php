@@ -19,9 +19,9 @@ use App\Http\Controllers\Admin\AdminController;
 
 
 // Before Login
-Route::group(['middleware' => 'guest'], function(){
+Route::group(['middleware' => 'guest'], function () {
     // home
-    Route::get('/', function(){
+    Route::get('/', function () {
         return view('opening', [
             "title" => "opening"
         ]);
@@ -37,7 +37,7 @@ Route::group(['middleware' => 'guest'], function(){
 });
 
 // After Login
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => 'auth'], function () {
     // role user
     Route::group(['middleware' => 'user', 'prefix' => 'user', 'as' => 'user.'], function () {
         Route::get('/', [UserController::class, 'index'])->name('index');
@@ -46,6 +46,24 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/discoverPlaylist', [UserController::class, 'discoverPlaylist'])->name('discoverPlaylist');
         Route::get('/history', [UserController::class, 'history'])->name('history');
         Route::get('/library', [UserController::class, 'library'])->name('library');
+
+        // Search
+        //JAZZ
+        Route::post('/search/jazz', [UserController::class, 'jazz'])->name('jazz');
+        //POP
+        Route::post('/search/pop', [UserController::class, 'pop'])->name('pop');
+        //DANGDUT
+        Route::post('/search/dangdut', [UserController::class, 'dangdut'])->name('dangdut');
+        //KPOP
+        Route::post('/search/kpop', [UserController::class, 'kpop'])->name('kpop');
+        //ROCK
+        Route::post('/search/rock', [UserController::class, 'rock'])->name('rock');
+        //CLASSICAL
+        Route::post('/search/classical', [UserController::class, 'classical'])->name('classical');
+        //DANCE
+        Route::post('/search/dance', [UserController::class, 'dance'])->name('dance');
+        //PONK
+        Route::post('/search/ponk', [UserController::class, 'ponk'])->name('ponk');
     });
 
     // role admin
