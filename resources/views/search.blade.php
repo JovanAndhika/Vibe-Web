@@ -76,68 +76,73 @@
                 <div class="row h-100" id="mainRow">
 
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-                    <form method="post" action="{{route('user.jazz')}}">
-                        @csrf
-                        @method('post')
-                        <button type="submit"><img src="img/search/jazzCover.png" alt="" class="img-fluid rounded genre submit" style="object-fit: fit;"></button>
-                    </form>
+                        <form method="post" action="{{route('user.jazz')}}">
+                            @csrf
+                            @method('post')
+                            <button type="submit"><img src="img/search/jazzCover.png" alt="" class="img-fluid rounded genre submit" style="object-fit: fit;"></button>
+                        </form>
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-                        <a><img src="img/search/popCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;"></a>
+                        <form method="post" action="{{route('user.pop')}}">
+                            @csrf
+                            @method('post')
+                            <button type="submit"><img src="img/search/popCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;"></button>
+                        </form>
                     </div>
 
 
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-                        <a><img src="img/search/dangdutCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;"></a>
+                        <form method="post" action="{{route('user.dangdut')}}">
+                            @csrf
+                            @method('post')
+                            <button type="submit"><img src="img/search/dangdutCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;"></button>
+                        </form>
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-                        <img src="img/search/kpopCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                        <form method="post" action="{{route('user.kpop')}}">
+                            @csrf
+                            @method('post')
+                            <button type="submit"><img src="img/search/kpopCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;"></button>
+                        </form>
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-                        <img src="img/search/rockCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                        <form method="post" action="{{route('user.rock')}}">
+                            @csrf
+                            @method('post')
+                            <button type="submit"><img src="img/search/rockCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;"></button>
+                        </form>
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-                        <img src="img/search/classicalCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                        <form method="post" action="{{route('user.classical')}}">
+                            @csrf
+                            @method('post')
+                            <button type="submit"><img src="img/search/classicalCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;"></button>
+                        </form>
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-                        <img src="img/search/danceCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                        <form method="post" action="{{route('user.dance')}}">
+                            @csrf
+                            @method('post')
+                            <button type="submit"><img src="img/search/danceCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;"></button>
+                        </form>
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-                        <img src="img/search/phonkCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                        <form method="post" action="{{route('user.ponk')}}">
+                            @csrf
+                            @method('post')
+                            <button type="submit"><img src="img/search/phonkCover.png" alt="" class="img-fluid rounded genre" style="object-fit: cover;"></button>
+                        </form>
                     </div>
                 </div>
             </div>
 
-            @if (session()->has('genreJazz'))
-            <table class="table table-striped table-hover table-dark">
-                <thead>
-                    <tr>
-                        <th class="fontMonsseratSemiBold" scope="col">Song</th>
-                        <th class="fontMonsseratSemiBold" scope="col">Artist</th>
-                        <th class="fontMonsseratSemiBold" scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody class="text-left">
 
-                    <tr>
-                        <td>sss</td>
-                        <td>sss <!-- @JackGame31 @JovanAndhika ini artist --></td>
-                        <td><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></td> <!-- @JackGame31 @JovanAndhika ini button play nya, nanti redirect ke nowplaying.html, dengan lagu yang dipilih itu. -->
-                    </tr>
-
-                </tbody>
-            </table>
-            @endif
         </div>
-    </div>
-
-
-</div>
-</section>
-@endsection
+        </section>
+        @endsection

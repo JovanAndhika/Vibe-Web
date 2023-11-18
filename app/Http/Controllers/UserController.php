@@ -11,33 +11,90 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
 
         $musics = Music::all();
-        return view('home', ['musics'=>$musics, 'active'=>'home']);
+        return view('home', ['musics' => $musics, 'active' => 'home']);
     }
 
-    public function search(){
+    public function playingNow(Music $music)
+    {
+        return view('nowPlaying', ['music' => $music])
+        ->with('playing', 'song is now playing')
+        ->with('active', 'nowPlaying');
+    }
+
+
+    //SEARCH
+    public function search()
+    {
         return view('search', ['active' => 'search']);
     }
 
-    public function jazz(){
+    public function jazz()
+    {
         $jazz = DB::table('music')->where('genre', 'Jazz')->get();
-        return back()
-        ->with('jazz', $jazz)
-        ->with('genreJazz', 'genreJazz searched');
+
+        return view('searchResult.jazzResult', ['jazz' => $jazz])
+            ->with('genreJazz', 'genreJazz searched');
     }
 
-    public function genrePop(){
+    public function pop()
+    {
         $pop = DB::table('music')->where('genre', 'Pop')->get();
-        return redirect(route('user.search', ['pop' => $pop]))->with('genrePop', 'genrePop searched');
+
+        return view('searchResult.popResult', ['pop' => $pop])
+            ->with('genrePop', 'genrePop searched');
     }
 
-    public function playingNow(){
-        // <audio src="path/to/song.mp3" controls autoplay></audio>
-        // UNTUK MEMBUAT CSS TOMBOL PLAY WORKS
+    public function dangdut()
+    {
+        $song = DB::table('music')->where('genre', 'Dangdut')->get();
 
-
+        return view('searchResult.dangdutResult', ['dangdut' => $song])
+            ->with('genreDangdut', 'genreDangdut searched');
     }
 
+    public function kpop()
+    {
+        $song = DB::table('music')->where('genre', 'Kpop')->get();
+
+        return view('searchResult.kpopResult', ['pop' => $song])
+            ->with('genreKpop', 'genreKpop searched');
+    }
+
+    public function rock()
+    {
+        $song = DB::table('music')->where('genre', 'Rock')->get();
+
+        return view('searchResult.rockResult', ['rock' => $song])
+            ->with('genreRock', 'genreRock searched');
+    }
+
+    public function classical()
+    {
+        $song = DB::table('music')->where('genre', 'Classical')->get();
+
+        return view('searchResult.classicalResult', ['classical' => $song])
+            ->with('genreClassical', 'genreClassical searched');
+    }
+
+    public function dance()
+    {
+        $song = DB::table('music')->where('genre', 'Dance')->get();
+
+        return view('searchResult.rockResult', ['dance' => $song])
+            ->with('genreDance', 'genreDance searched');
+    }
+
+    public function ponk()
+    {
+        $song = DB::table('music')->where('genre', 'Ponk')->get();
+
+        return view('searchResult.classicalResult', ['ponk' => $song])
+            ->with('genrePonk', 'genrePonk searched');
+    }
+
+    
 }

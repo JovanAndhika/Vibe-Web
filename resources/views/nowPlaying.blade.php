@@ -4,14 +4,13 @@
 <div class="col scrollable-div p-4" id="jumphere">
     <div class="container-fluid vh-100 d-flex flex-column">
 
-        
+
         <div class="row flex-grow-1">
             <div class="col d-flex align-items-center justify-content-center m-3">
 
                 <!-- @JovanAndhika @JackGame31 masukkin image song nya disini-->
-                <img src="https://i.scdn.co/image/ab67616d0000b2733d98a0ae7c78a3a9babaf8af"
-                    alt="Artist Photo" class="img-fluid rounded-3" style="max-width: 300px; max-height: 300px;">
-            
+                <img src="https://i.scdn.co/image/ab67616d0000b2733d98a0ae7c78a3a9babaf8af" alt="Artist Photo" class="img-fluid rounded-3" style="max-width: 300px; max-height: 300px;">
+
             </div>
         </div>
 
@@ -29,10 +28,16 @@
 
         <div class="row">
             <div class="col d-flex justify-content-center my-3" style="font-size: 30px;">
-                <i class="bi bi-play-fill mx-3"></i>
+                @if (section()->has('playing'))
+                <audio controls autoplay>
+                    <source src="{{ $music->file_path }}" type="audio/ogg">
+                    <source src="{{ $music->file_path }}" type="audio/mpeg">
+                </audio>
+                @endif
+                <!-- <i class="bi bi-play-fill mx-3"></i>
                 <i class="bi bi-pause-fill mx-3"></i>
                 <i class="bi bi-bookmark-fill mx-3"></i>
-                <i class="bi bi-heart-fill mx-3"></i>
+                <i class="bi bi-heart-fill mx-3"></i> -->
             </div>
         </div>
 

@@ -53,13 +53,31 @@ Route::get('/hello', function () {
 });
 
 
-//USERS HOME & PLAYNOW
+
+//USERS HOME
 Route::get('/home', [UserController::class, 'index'])->name('user.index');
+//PLAY NOW
 Route::get('/home/{playNow}', [UserController::class, 'playingNow'])->name('user.playNow');
+
 
 //SEARCH
 Route::get('/', [UserController::class, 'search'])->name('user.search');
+//JAZZ
 Route::post('/search/jazz', [UserController::class, 'jazz'])->name('user.jazz');
+//POP
+Route::post('/search/pop', [UserController::class, 'pop'])->name('user.pop');
+//DANGDUT
+Route::post('/search/dangdut', [UserController::class, 'dangdut'])->name('user.dangdut');
+//KPOP
+Route::post('/search/kpop', [UserController::class, 'kpop'])->name('user.kpop');
+//ROCK
+Route::post('/search/rock', [UserController::class, 'rock'])->name('user.rock');
+//CLASSICAL
+Route::post('/search/classical', [UserController::class, 'classical'])->name('user.classical');
+//DANCE
+Route::post('/search/dance', [UserController::class, 'dance'])->name('user.dance');
+//PONK
+Route::post('/search/ponk', [UserController::class, 'ponk'])->name('user.ponk');
 
 
 //CRUD ADMIN
