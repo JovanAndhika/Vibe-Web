@@ -80,6 +80,9 @@ Route::group(['middleware' => 'auth'], function () {
         //DEACTIVATE
         Route::post('/deactivateuser/{user}', [AdminController::class, 'deactivate_user'])->name('deactivateuser');
         Route::post('/deactivateadmin/{user}', [AdminController::class, 'deactivate_admin'])->name('deactivateadmin');
+        //REACTIVATE
+        Route::post('/reactivateuser/{user}', [AdminController::class, 'reactivate_user'])->name('reactivateuser');
+        Route::post('/reactivateadmin/{user}', [AdminController::class, 'reactivate_admin'])->name('reactivateadmin');
     });
 
     // logout

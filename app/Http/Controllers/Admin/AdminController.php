@@ -122,4 +122,23 @@ class AdminController extends Controller
 
         return redirect(route('admin.viewadmin', ['successdeactivate' => $query]));
     }
+
+    public function reactivate_user(User $user){
+
+        $query = DB::table('users')
+        ->where('is_admin', false)
+        ->where('id', $user->id)
+        ->update(['activation' => true]);
+
+        return redirect(route('admin.viewuser', ['successdeactivate' => $query]));
+    }
+
+    public function reactivate_admin(User $user){
+        $query = DB::table('users')
+        ->where('is_admin', true)
+        ->where('id', $user->id)
+        ->update(['activation' => true]);
+
+        return redirect(route('admin.viewadmin', ['successdeactivate' => $query]));
+    }
 }

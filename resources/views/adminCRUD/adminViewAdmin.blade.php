@@ -107,6 +107,11 @@
                         <td>{{$user->activation}}</td>
                         <td>
                             <div class="mt-1 d-grid gap-2 d-md-flex justify-content-md-start">
+                                <form action="{{route('admin.reactivateadmin', ['user' => $user->id])}}" method="post">
+                                    @method('post')
+                                    @csrf
+                                    <button class="confirm-reactivate btn btn-primary btn-sm" name="reactivate_data" id="reactivate_data">Reactivate</button>
+                                </form>
                                 <form action="{{route('admin.deactivateadmin', ['user' => $user->id])}}" method="post">
                                     @method('post')
                                     @csrf
@@ -141,12 +146,36 @@
                         form.submit();
                         Swal.fire(
                             'Deactivated!',
-                            'user is inactive.',
+                            'admin is inactive.',
                             'success'
                         )
                     }
                 })
             })
+
+            $('.confirm-reactivate').click(function(event) {
+                let form = $(this).closest("form");
+                event.preventDefault();
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You will deactivate user!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, reactivate!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                        Swal.fire(
+                            'Reactivated!',
+                            'admin is active.',
+                            'success'
+                        )
+                    }
+                })
+            })
+
             $('#user_list').DataTable();
         });
 
