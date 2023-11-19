@@ -13,12 +13,7 @@ class="col-3 p-0 m-0 fontMonsseratExtraBold d-flex align-items-center justify-co
 
     <li class="nav-item d-inline-flex align-items-center my-3">
         <i class="bi bi-search text-white @if($active == 'search') active @endif"></i>
-        <a class="nav-link text-white @if($active == 'search') active @endif" href="{{ route('user.search') }}">Search</a>
-    </li>
-
-    <li class="nav-item d-inline-flex align-items-center my-3">
-        <i class="bi bi-compass text-white @if($active == 'discoverPlaylist') active @endif"></i>
-        <a class="nav-link text-white @if($active == 'discoverPlaylist') active @endif" href="{{ route('user.discoverPlaylist') }}">Discover Playlist</a>
+        <a class="nav-link text-white @if($active == 'search') active @endif" href="{{ route('user.search') }}">Discover</a>
     </li>
 
     <li class="nav-item d-inline-flex align-items-center my-3">
