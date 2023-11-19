@@ -55,21 +55,15 @@
             {{-- email --}}
             <div class="input-group mb-3">
                 <button class="btn btn-outline-warning change" type="button" id="button-addon1">Email</button>
-                <input type="text" class="form-control @error('email') is-invalid @enderror" placeholder="Email"
+                <input type="text" class="form-control" placeholder="Email"
                     name="email" required>
-                @error('email')
-                    <div class="invalid-feedback d-block text-start">{{ $message }}</div>
-                @enderror
             </div>
 
             {{-- password --}}
             <div class="input-group mb-3">
                 <button class="btn btn-outline-warning change" type="button" id="button-addon1">Password</button>
-                <input type="password" class="form-control @error('password') is-invalid @enderror"
+                <input type="password" class="form-control"
                     placeholder="Password" name="password" required>
-                @error('password')
-                    <div class="invalid-feedback d-block text-start">{{ $message }}</div>
-                @enderror
             </div>
 
             {{-- submit button --}}

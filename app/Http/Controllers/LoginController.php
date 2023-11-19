@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,6 +23,16 @@ class LoginController extends Controller
             'password' => 'required|min:8|max:255'
         ]);
 
+        // cek apakah account disabled
+        $user = User::where('email', $validatedData['email'])->first();
+        if (!$user) {
+            return back()->with('error', 'Login Failed!');
+        }
+
+        if ($user->activation == 0) {
+            return back()->with('error', 'Account disabled! Ask admin to activate your account');
+        }
+
         // cek apakah email dan password benar
         if (Auth::attempt($validatedData)) {
             $request->session()->regenerate();
@@ -35,8 +46,6 @@ class LoginController extends Controller
                 return redirect()->intended('/user');
             }
         }
-
-        return back()->with('error', 'Email or password is wrong');
     }
 
     public function logout(Request $request)
