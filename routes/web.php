@@ -41,9 +41,8 @@ Route::group(['middleware' => 'auth'], function () {
     // role user
     Route::group(['middleware' => 'user', 'prefix' => 'user', 'as' => 'user.'], function () {
         Route::get('/', [UserController::class, 'index'])->name('index');
-        Route::get('/search', [UserController::class, 'search'])->name('search');
+        Route::get('/discover', [UserController::class, 'search'])->name('search');
         Route::get('/nowPlaying', [UserController::class, 'nowPlaying'])->name('nowPlaying');
-        Route::get('/discoverPlaylist', [UserController::class, 'discoverPlaylist'])->name('discoverPlaylist');
         Route::get('/history', [UserController::class, 'history'])->name('history');
         Route::get('/library', [UserController::class, 'library'])->name('library');
 
