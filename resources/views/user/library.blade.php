@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.user_main')
 @section('container')
 <div class="col scrollable-div p-4 " id="jumphere">
     <div class="container-fluid vh-100 d-flex flex-column">
@@ -49,7 +49,7 @@
                 <div class="container-fluid text-center p-3">
                     <button type="button" class="btn btn-outline-light fontMonsseratSemiBold" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Playlist</button>
 
-                    @include('partials.modalAddPlaylist')
+                    @include('user.partials.modalAddPlaylist')
   
 
                 </div>
