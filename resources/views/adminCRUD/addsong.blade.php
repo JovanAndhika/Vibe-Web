@@ -40,11 +40,11 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">View User</a>
+                        <a class="nav-link" href="/admin/viewuser">View User</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">View Admin</a>
+                        <a class="nav-link" href="/admin/viewadmin">View Admin</a>
                     </li>
 
                 </ul>

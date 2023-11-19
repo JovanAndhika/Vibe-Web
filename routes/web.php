@@ -74,6 +74,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/editsong/{music}', [AdminController::class, 'edit_song'])->name('edit');
         Route::put('/update/{music}', [AdminController::class, 'update_song'])->name('update');
         Route::delete('/destroy/{music}', [AdminController::class, 'destroy_song'])->name('destroy');
+        //VIEW USER
+        Route::get('/viewuser', [AdminController::class, 'view_user'])->name('viewuser');
+        Route::get('/viewadmin', [AdminController::class, 'view_admin'])->name('viewadmin');
+        //DEACTIVATE
+        Route::post('/deactivateuser/{user}', [AdminController::class, 'deactivate_user'])->name('deactivateuser');
+        Route::post('/deactivateadmin/{user}', [AdminController::class, 'deactivate_admin'])->name('deactivateadmin');
     });
 
     // logout

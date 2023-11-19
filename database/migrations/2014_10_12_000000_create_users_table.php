@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('date_of_birth');
             $table->string('icon')->nullable(true);
             $table->boolean('is_admin')->default(false);
+            $table->boolean('activation')->default(true)->nullable(true);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\Music;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
@@ -83,5 +85,41 @@ class AdminController extends Controller
 
         Music::destroy($music->id);
         return redirect(route('admin.index', ['music' => $music]));
+    }
+
+    public function view_user(){
+        $user = DB::table('users')
+        ->where('is_admin', false)
+        ->get();
+
+        return view('adminCRUD.adminViewUser', ['users' => $user]);
+    }
+
+
+    public function view_admin(){
+        $user = DB::table('users')
+        ->where('is_admin', true)
+        ->get();
+
+        return view('adminCRUD.adminViewAdmin', ['users' => $user]);
+    }
+
+    public function deactivate_user(User $user){
+
+        $query = DB::table('users')
+        ->where('is_admin', false)
+        ->where('id', $user->id)
+        ->update(['activation' => false]);
+
+        return redirect(route('admin.viewuser', ['successdeactivate' => $query]));
+    }
+
+    public function deactivate_admin(User $user){
+        $query = DB::table('users')
+        ->where('is_admin', true)
+        ->where('id', $user->id)
+        ->update(['activation' => false]);
+
+        return redirect(route('admin.viewadmin', ['successdeactivate' => $query]));
     }
 }
