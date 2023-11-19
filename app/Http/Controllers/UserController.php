@@ -19,13 +19,17 @@ class UserController extends Controller
 
     public function search()
     {
-        // filter() artinya menjalankan scopeFilter di model Music
-        // mengirim parameter filter searchnya mau apa (title atau artist)
-        // mengirim parameter keyword searchnya juga
+        $musics = collect([]);
+
+        // Pastikan ada request 'artist' atau 'title' dan keduanya tidak kosong
+        if (request()->filled('artist') || request()->filled('title')) {
+            $musics = Music::latest()->filter(request(['artist', 'title']))->get();
+        }
+
         return view('user.search', [
             "title" => "search",
             "active" => "search",
-            "musics" => Music::latest()->filter(request(['artist', 'title']))->get()
+            "musics" => $musics
         ]);
     }
 

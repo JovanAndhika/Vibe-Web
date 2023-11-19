@@ -46,6 +46,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/viewadmin">View Admin</a>
                     </li>
+                    
+                    <li class="nav-item">
+                        <form method="post" action="{{ route('logout') }}">
+                          @csrf
+                          <button type="submit" class="nav-link">Logout</button>
+                        </form>
+                      </li>
 
                 </ul>
             </div>
