@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use App\Models\Music;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -13,7 +14,7 @@ class UserController extends Controller
         return view('user.home', [
             "title" => "home",
             "active" => "home",
-            "musics" => Music::latest()->get()
+            "musics" => Music::get()
         ]);
     }
 
@@ -23,7 +24,7 @@ class UserController extends Controller
 
         // Pastikan ada request 'artist' atau 'title' dan keduanya tidak kosong
         if (request()->filled('artist') || request()->filled('title')) {
-            $musics = Music::latest()->filter(request(['artist', 'title']))->get();
+            $musics = Music::filter(request(['artist', 'title']))->get();
         }
 
         return view('user.search', [
@@ -56,14 +57,6 @@ class UserController extends Controller
         return view('user.history', [
             "title" => "history",
             "active" => "history"
-        ]);
-    }
-
-    public function library()
-    {
-        return view('user.library', [
-            "title" => "library",
-            "active" => "library"
         ]);
     }
 

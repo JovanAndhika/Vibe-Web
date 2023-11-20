@@ -57,13 +57,7 @@
               @csrf
               <button type="submit" class="nav-link">Logout</button>
             </form>
-          </li>          <li class="nav-item">
-            <form method="post" action="{{ route('logout') }}">
-              @csrf
-              <button type="submit" class="nav-link">Logout</button>
-            </form>
           </li>
-
         </ul>
       </div>
     </div>

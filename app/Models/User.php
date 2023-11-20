@@ -42,4 +42,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Relation
+     */
+    public function playlists()
+    {
+        return $this->hasMany(Playlist::class);
+    }
 }
