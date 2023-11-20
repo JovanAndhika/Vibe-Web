@@ -1,16 +1,5 @@
 @extends('layouts.user_main')
 @section('container')
-    <style>
-        .deleteButton {
-            background: none;
-            color: inherit;
-            border: none;
-            padding: 0;
-            font: inherit;
-            cursor: pointer;
-            outline: inherit;
-        }
-    </style>
     <div class="col scrollable-div p-4 " id="jumphere">
         <div class="container-fluid vh-100 d-flex flex-column">
             <div class="container-fluid flex-grow-1 p-5">
@@ -49,13 +38,10 @@
                                                 class="text-decoration-none text-white"
                                                 onclick="loadItem({{ $playlist->id }})">Edit</a></th>
                                         <th>
-                                            <form method="post" action="{{ url('/user/playlists') . '/' . $playlist->id }}">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="deleteButton">
-                                                    <i class="bi bi-trash-fill text-white"></i>
-                                                </button>
-                                            </form>
+                                            <a href="#" class="text-decoration-none text-white" onclick="deletePlaylist({{ $playlist->id }})" data-bs-toggle="modal"
+                                                data-bs-target="#deletePlaylist">
+                                                <i class="bi bi-trash-fill text-white"></i>
+                                            </a>
                                         </th>
                                         <th><a href="/"><i class="bi bi-play-fill text-white"></i></a></th>
                                     </tr>

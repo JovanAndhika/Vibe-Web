@@ -171,6 +171,35 @@
     </div>
 </div>
 
+{{-- MODAL FOR DELETE --}}
+<div class="modal fade" id="deletePlaylist" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header d-flex text-center justify-content-center"
+                style="background-color: rgb(238, 181, 0)">
+                <h1 class="fontMonsseratExtraBold text-center" id="exampleModalLabel"
+                    style="font-size: 35px; color: black">Delete Modal</h1>
+            </div>
+
+            <div class="modal-body fontMonsseratRegular bg-dark">
+                Are you sure you want to delete this playlist?
+            </div>
+
+            {{-- Buttons --}}
+            <div class="modal-footer" style="background-color: rgb(238, 181, 0)">
+                <button type="button" class="btn btn-outline-dark fontMonsseratSemiBold"
+                    data-bs-dismiss="modal">Close</button>
+                <form method="post" id="deleteForm">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-outline-dark fontMonsseratSemiBold"
+                    id="deleteButton">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 {{-- SCRIPT --}}
 {{-- FOR CREATE MODAL --}}
 <script>
@@ -465,5 +494,13 @@
           `
             );
         }
+    }
+</script>
+
+{{-- FOR DELETE --}}
+<script>
+    function deletePlaylist(id) {
+        // set action form
+        $("#deleteForm").attr("action", "{{ url('/user/playlists') }}" + "/" + id);
     }
 </script>
