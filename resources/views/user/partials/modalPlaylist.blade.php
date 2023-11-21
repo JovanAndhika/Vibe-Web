@@ -235,7 +235,7 @@
                               <tr>
                                 <th>${item.title}</th>
                                 <th>${item.artist}</th>
-                                <th><a href='#' onclick="addItem(${item.id}, '${item.title}', '${item.artist}')"><i class='bi bi-plus-lg text-white'></i></a></th>
+                                <th><a href='#' onclick="addItemCreate(${item.id}, '${item.title}', '${item.artist}')"><i class='bi bi-plus-lg text-white'></i></a></th>
                               </tr>
                               `
                             );
@@ -297,7 +297,7 @@
         });
     });
 
-    function addItem(id, title, artist) {
+    function addItemCreate(id, title, artist) {
         // hapus placeholder
         $("#placeholderSearchedCreate").remove();
 
@@ -310,21 +310,21 @@
           <tr id=item${id}>
             <th>${title}</th>
             <th>${artist}</th>
-            <th><a href='#' onclick="deleteItemEdit(${id})"><i class='bi bi-trash-fill text-white'></i></a></th>
+            <th><a href='#' onclick="deleteItemCreate(${id})"><i class='bi bi-trash-fill text-white'></i></a></th>
           </tr>
           `
             );
         }
     }
 
-    function deleteItem(id) {
+    function deleteItemCreate(id) {
         // hapus row
         $("#item" + id).remove();
 
         // cek apakah sudah tidak ada lagu yang di add
-        if ($("#selectedMusic").children().length == 0) {
+        if ($("#selectedMusicCreate").children().length == 0) {
             // jika tidak ada, maka append placeholder
-            $("#selectedMusic").append(
+            $("#selectedMusicCreate").append(
                 `
           <tr id="placeholderSearchedCreate">
             <th colspan="3" class="text-secondary">No musics selected...</th>
