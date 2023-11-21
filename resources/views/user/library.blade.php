@@ -43,7 +43,7 @@
                                                 <i class="bi bi-trash-fill text-white"></i>
                                             </a>
                                         </th>
-                                        <th><a href="/"><i class="bi bi-play-fill text-white"></i></a></th>
+                                        <th><a href="{{ route('user.nowPlaying') . '?playlist_id=' . $playlist->id }}"><i class="bi bi-play-fill text-white"></i></a></th>
                                     </tr>
                                 @endforeach
                             @endif
@@ -51,7 +51,7 @@
                     </table>
                     <div class="container-fluid text-center p-3">
                         <button type="button" class="btn btn-outline-light fontMonsseratSemiBold" data-bs-toggle="modal"
-                            data-bs-target="#addPlaylistModal">Add Playlist</button>
+                            data-bs-target="#createPlaylistModal">Add Playlist</button>
                         @include('user.partials.modalPlaylist')
                     </div>
                 </div>
