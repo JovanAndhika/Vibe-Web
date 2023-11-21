@@ -106,7 +106,7 @@
                             <form method="post" action="{{ route('user.pop') }}">
                                 @csrf
                                 @method('post')
-                                <button type="submit"><img src="{{ asset('img/search/popCover.png') }}" alt=""
+                                <button type="submit" class="button-without-border"><img src="{{ asset('img/search/popCover.png') }}" alt=""
                                         class="img-fluid rounded genre" style="object-fit: cover;"></button>
                             </form>
                         </div>
@@ -116,7 +116,7 @@
                             <form method="post" action="{{ route('user.dangdut') }}">
                                 @csrf
                                 @method('post')
-                                <button type="submit"><img src="{{ asset('img/search/dangdutCover.png') }}" alt=""
+                                <button type="submit" class="button-without-border"><img src="{{ asset('img/search/dangdutCover.png') }}" alt=""
                                         class="img-fluid rounded genre" style="object-fit: cover;"></button>
                             </form>
                         </div>
@@ -125,7 +125,7 @@
                             <form method="post" action="{{ route('user.kpop') }}">
                                 @csrf
                                 @method('post')
-                                <button type="submit"><img src="{{ asset('img/search/kpopCover.png') }}" alt=""
+                                <button type="submit" class="button-without-border"><img src="{{ asset('img/search/kpopCover.png') }}" alt=""
                                         class="img-fluid rounded genre" style="object-fit: cover;"></button>
                             </form>
                         </div>
@@ -134,7 +134,7 @@
                             <form method="post" action="{{ route('user.rock') }}">
                                 @csrf
                                 @method('post')
-                                <button type="submit"><img src="{{ asset('img/search/rockCover.png') }}" alt=""
+                                <button type="submit" class="button-without-border"><img src="{{ asset('img/search/rockCover.png') }}" alt=""
                                         class="img-fluid rounded genre" style="object-fit: cover;"></button>
                             </form>
                         </div>
@@ -143,7 +143,7 @@
                             <form method="post" action="{{ route('user.classical') }}">
                                 @csrf
                                 @method('post')
-                                <button type="submit"><img src="{{ asset('img/search/classicalCover.png') }}" alt=""
+                                <button type="submit" class="button-without-border"><img src="{{ asset('img/search/classicalCover.png') }}" alt=""
                                         class="img-fluid rounded genre" style="object-fit: cover;"></button>
                             </form>
                         </div>
@@ -152,7 +152,7 @@
                             <form method="post" action="{{ route('user.dance') }}">
                                 @csrf
                                 @method('post')
-                                <button type="submit"><img src="{{ asset('img/search/danceCover.png') }}" alt=""
+                                <button type="submit" class="button-without-border"><img src="{{ asset('img/search/danceCover.png') }}" alt=""
                                         class="img-fluid rounded genre" style="object-fit: cover;"></button>
                             </form>
                         </div>
@@ -161,7 +161,7 @@
                             <form method="post" action="{{ route('user.ponk') }}">
                                 @csrf
                                 @method('post')
-                                <button type="submit"><img src="{{ asset('img/search/phonkCover.png') }}" alt=""
+                                <button type="submit" class="button-without-border"><img src="{{ asset('img/search/phonkCover.png') }}" alt=""
                                         class="img-fluid rounded genre" style="object-fit: cover;"></button>
                             </form>
                         </div>
