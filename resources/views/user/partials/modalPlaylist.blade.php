@@ -1,5 +1,5 @@
 {{-- MODAL CREATE PLAYLIST --}}
-<div class="modal fade" id="addPlaylistModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="createPlaylistModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header d-flex text-center justify-content-center"
@@ -9,30 +9,30 @@
             </div>
 
             <div class="modal-body fontMonsseratRegular bg-dark">
-                <form method="post" action="{{ url('/user/playlists') }}" id="playlistForm">
+                <form method="post" action="{{ url('/user/playlists') }}" id="createPlaylistForm">
                     @csrf
                     {{-- Playlist Name --}}
                     <h1 class="fontMonsseratSemiBold" style="font-size: 20px;">Playlist Name</h1>
                     <div class="input-group my-3">
                         <input type="text" class="form-control fontMonsseratSemiBold bg-dark text-white"
                             aria-describedby="basic-addon1" style="background-color: darkslategrey" name="playlist_name"
-                            id="playlistName" required>
+                            id="playlistNameCreate" required>
                     </div>
-                    <div class="invalid-feedback mb-5" id="errorName">
+                    <div class="invalid-feedback mb-5" id="errorNameCreate">
                         Nama tidak boleh kosong!
                     </div>
 
                     {{-- Hidden Input untuk Selected Music --}}
-                    <input type="hidden" name="selected_songs" id="selectedSongsInput">
+                    <input type="hidden" name="selected_songs" id="selectedSongsInputCreate">
 
 
                     {{-- Search Song --}}
                     <h1 class="fontMonsseratSemiBold mt-5" style="font-size: 20px;">Search songs to add</h1>
                     <div class="input-group my-3">
                         <input type="text" class="form-control fontMonsseratRegular bg-dark text-white"
-                            aria-describedby="basic-addon1" style="background-color: darkslategrey" id="keyword">
+                            aria-describedby="basic-addon1" style="background-color: darkslategrey" id="keywordCreate">
                         <button type="button" class="btn btn-outline-light fontMonsseratSemiBold"
-                            id="search">Search</button>
+                            id="searchCreate">Search</button>
                     </div>
                     <table class="table table-striped table-hover table-dark mb-5">
                         <thead>
@@ -42,7 +42,7 @@
                                 <th class="fontMonsseratSemiBold" scope="col"></th>
                             </tr>
                         </thead>
-                        <tbody class="text-left" id="searchMusic">
+                        <tbody class="text-left" id="searchMusicCreate">
                             {{-- placeholder --}}
                             <tr>
                                 <th colspan="3" class="text-secondary">Type and search the music you desire...</th>
@@ -60,14 +60,14 @@
                                 <th class="fontMonsseratSemiBold" scope="col"></th>
                             </tr>
                         </thead>
-                        <tbody class="text-left" id="selectedMusic">
+                        <tbody class="text-left" id="selectedMusicCreate">
                             {{-- placeholder --}}
-                            <tr id="placeholderSearched">
+                            <tr id="placeholderSearchedCreate">
                                 <th colspan="3" class="text-secondary">No musics selected...</th>
                             </tr>
                         </tbody>
                     </table>
-                    <div class="invalid-feedback" id="errorSong">
+                    <div class="invalid-feedback" id="errorSongCreate">
                         Setidaknya pilih satu lagu!
                     </div>
                 </form>
@@ -205,9 +205,9 @@
 <script>
     $(document).ready(function() {
         // ketika tombol search di klik
-        $("#search").click(function() {
+        $("#searchCreate").click(function() {
             // mendapatkan text dalam search
-            var search = $("#keyword").val();
+            var search = $("#keywordCreate").val();
 
             // fetch menggunakan ajax
             $.ajax({
@@ -218,11 +218,11 @@
                 },
                 success: function name(response) {
                     // reset isi tabel
-                    $("#searchMusic").html('');
+                    $("#searchMusicCreate").html('');
 
                     if (response.length == 0) {
                         // jika tidak ditemukan hasil, outputkan peringatan
-                        $("#searchMusic").append(
+                        $("#searchMusicCreate").append(
                             "<tr>" +
                             "<th colspan='3' class='text-secondary'>No music found</th>" +
                             "</tr>"
@@ -230,7 +230,7 @@
                     } else {
                         // jika ada response, maka append ke table semuanya
                         $.each(response, function(index, item) {
-                            $("#searchMusic").append(
+                            $("#searchMusicCreate").append(
                                 `
                               <tr>
                                 <th>${item.title}</th>
@@ -246,81 +246,66 @@
         });
 
         // ketika modal ditutup
-        $('.modal').on('hidden.bs.modal', function() {
+        $('#createPlaylistModal').on('hidden.bs.modal', function() {
             // Mengosongkan nilai input
             $('input[type="text"]').val('');
 
             // Mereset tabel pencarian
-            $("#searchMusic").html('');
-            $("#searchMusic").append(
-                "<tr>" +
-                "<th colspan='3' class='text-secondary'>Type and search the music you desire...</th>" +
-                "</tr>"
-            );
-            
-            $("#searchMusicEdit").html('');
-            $("#searchMusicEdit").append(
+            $("#searchMusicCreate").html('');
+            $("#searchMusicCreate").append(
                 "<tr>" +
                 "<th colspan='3' class='text-secondary'>Type and search the music you desire...</th>" +
                 "</tr>"
             );
 
             // Mereset tabel lagu yang sudah dipilih
-            $("#selectedMusic").html('');
-            $("#selectedMusic").append(
-                "<tr id='placeholderSearched'>" +
-                "<th colspan='3' class='text-secondary'>No musics selected...</th>" +
-                "</tr>"
-            );
-            $("#selectedMusicEdit").html('');
-            $("#selectedMusicEdit").append(
-                "<tr id='placeholderSearched'>" +
+            $("#selectedMusicCreate").html('');
+            $("#selectedMusicCreate").append(
+                "<tr id='placeholderSearchedCreate'>" +
                 "<th colspan='3' class='text-secondary'>No musics selected...</th>" +
                 "</tr>"
             );
 
             // mereset error
-            $('#errorName').css('display', 'none');
-            $('#errorSong').css('display', 'none');
-            $('#errorNameEdit').css('display', 'none');
-            $('#errorSongEdit').css('display', 'none');
+            $('#errorNameCreate').css('display', 'none');
+            $('#errorSongCreate').css('display', 'none');
         });
 
         // ketika tombol save diklik
         $("#createPlaylist").click(function() {
             // pengecekan input apakah kosong atau tidak
-            if ($('#playlistName').val() == '' || $('#placeholderSearched').length > 0) {
+            if ($('#playlistNameCreate').val() == '' || $('#placeholderSearchedCreate').length > 0) {
                 // jika kosong, maka tampilkan peringatan
-                console.log($('#selectedMusic').children().length);
-                $('#errorName').css('display', $('#playlistName').val() == '' ? 'block' : 'none');
-                $('#errorSong').css('display', $('#placeholderSearched').length > 0 ? 'block' : 'none');
+                $('#errorNameCreate').css('display', $('#playlistNameCreate').val() == '' ? 'block' : 'none');
+                $('#errorSongCreate').css('display', $('#placeholderSearchedCreate').length > 0 ? 'block' : 'none');
                 return;
             }
 
             // Mendapatkan data lagu yang sudah dipilih
             var selectedSongs = [];
 
-            $("#selectedMusic tr").each(function(index, row) {
+            $("#selectedMusicCreate tr").each(function(index, row) {
                 var songId = $(row).attr("id").replace("item", "");
                 selectedSongs.push(songId);
             });
 
             // Menyimpan ID lagu ke dalam input tersembunyi
-            $("#selectedSongsInput").val(JSON.stringify(selectedSongs));
+            $("#selectedSongsInputCreate").val(JSON.stringify(selectedSongs));
 
             // Submit formulir
-            $("#playlistForm").submit();
+            $("#createPlaylistForm").submit();
         });
     });
 
     function addItem(id, title, artist) {
         // hapus placeholder
-        $("#placeholderSearched").remove();
+        $("#placeholderSearchedCreate").remove();
 
         // cek apakah lagu sudah di add
         if (!$("#item" + id).length) {
+            console.log('masuk');
             // jika belum ada, maka append ke table
-            $("#selectedMusic").append(
+            $("#selectedMusicCreate").append(
                 `
           <tr id=item${id}>
             <th>${title}</th>
@@ -341,7 +326,7 @@
             // jika tidak ada, maka append placeholder
             $("#selectedMusic").append(
                 `
-          <tr id="placeholderSearched">
+          <tr id="placeholderSearchedCreate">
             <th colspan="3" class="text-secondary">No musics selected...</th>
           </tr>
           `
