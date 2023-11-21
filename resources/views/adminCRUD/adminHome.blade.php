@@ -146,11 +146,6 @@
         }).then((result) => {
           if (result.isConfirmed) {
             form.submit();
-            Swal.fire(
-              'Deleted!',
-              'Your data has been deleted.',
-              'success'
-            )
           }
         })
       })

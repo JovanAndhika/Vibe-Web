@@ -42,7 +42,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/viewuser">View User</a>
+                        <a class="nav-link" href="/admin/viewuser">View User</a>
                     </li>
 
                     <li class="nav-item">
@@ -66,6 +66,20 @@
         </div>
     </nav>
 
+    <style>
+        .bg-body-primary {
+            background-color: blue;
+        }
+
+        .navbar a.active {
+            color: yellow !important;
+        }
+
+        .navbar a {
+            color: #fff;
+        }
+    </style>
+
     <section class="p-5">
         <div class="px-5 container-fluid table-responsive-md">
             <table id="song_list" class="table table-striped dataTable no-footer" style="width:100%">
@@ -76,7 +90,9 @@
                         <th>Artist</th>
                         <th>Disc_category</th>
                         <th>Disc_number</th>
-                        <th>Status</th>
+                        <th>Select_categor</th>
+                        <th>Select_Number</th>
+                        <th>Confirm</th>
                     </tr>
                 </thead>
 
@@ -88,29 +104,44 @@
                         <td>{{$music->artist}}</td>
                         <td>{{$music->disc_category}}</td>
                         <td>{{$music->disc_number}}</td>
-                        <td>
-                            <div class="mt-1 d-grid gap-2 d-md-flex justify-content-md-start">
-                                <form action="{{route('admin.confirmdiscover', ['music' => $music])}}" method="post">
-                                    @method('post')
-                                    @csrf
-                                    <button class="confirm-discover-category btn btn-primary btn-sm" name="number_data" id="number_data">Confirm</button>
-                                </form>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="mt-1 d-grid gap-2 d-md-flex justify-content-md-start">
-                                <form action="{{route('admin.confirmdiscover', ['music' => $music])}}" method="post">
-                                    @method('post')
-                                    @csrf
-                                    <button class="confirm-discover btn btn-primary btn-sm" name="number_data" id="number_data">Confirm</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                    @endforeach
 
-                </tbody>
-            </table>
+                        <form action="{{route('admin.editdiscover', ['music' => $music])}}" method="post">
+                            <td>
+                                <div class="mt-1 d-md-flex justify-content-md-center">
+                                    @method('post')
+                                    @csrf
+                                    <select class="form-select form-select-sm" aria-label="Default select example" name="disc_category">
+                                        <option selected value="{{$music->disc_category}}">{{$music->disc_category}}</option>
+                                        <option value="">None</option>
+                                        <option value="Home">Home</option>
+                                        <option value="Weekend">Weekend</option>
+                                        <option value="Chill at home">Chill at home</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="mt-1 d-md-flex justify-content-md-center">
+                                    <select class="form-select form-select-sm" aria-label="Default select example" name="disc_number">
+                                        <option selected value="{{$music->disc_number}}">{{$music->disc_number}}</option>
+                                        <option value="">None</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <button class="confirm-discover btn btn-primary btn-sm" name="number_data" id="number_data">Confirm</button>
+                            </td>
+                        </form>
+
+        </div>
+        </td>
+        </tr>
+        @endforeach
+
+        </tbody>
+        </table>
         </div>
     </section>
 
@@ -122,17 +153,17 @@
                 event.preventDefault();
                 Swal.fire({
                     title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
+                    text: "You can update again later!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Yes, Update it!'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         form.submit();
                         Swal.fire(
-                            'Deleted!',
+                            'Updated!',
                             'Your data has been updated.',
                             'success'
                         )

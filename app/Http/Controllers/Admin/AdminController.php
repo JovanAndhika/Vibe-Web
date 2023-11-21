@@ -148,6 +148,11 @@ class AdminController extends Controller
         return view('adminCRUD.admindiscover', ['musics' => $musics]);
     }
 
+    public function editdiscover(Request $request, Music $music){
+        $data = $request->all();
+        $music->update($data);
+        return back();
+    }
 
     
 }
