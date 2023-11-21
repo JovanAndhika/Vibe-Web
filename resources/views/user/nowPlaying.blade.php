@@ -3,7 +3,7 @@
     <div class="col scrollable-div p-4" id="jumphere">
         <div class="container-fluid vh-100 d-flex flex-column">
 
-            @if ($music)
+            @if (isset($music) && !$music->isEmpty())
                 {{-- jika ada --}}
                 <div class="row flex-grow-1">
                     <div class="col d-flex align-items-center justify-content-center m-3">
@@ -32,7 +32,7 @@
                         <i class="bi bi-heart-fill mx-3"></i>
                     </div>
                 </div>
-            @elseif($playlist)
+            @elseif(isset($playlist->musics) && !$playlist->musics->isEmpty())
                 {{-- jika ada playlist --}}
             @else
                 {{-- TODO: rapikan tampilan --}}

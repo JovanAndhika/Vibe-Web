@@ -40,11 +40,13 @@ class UserController extends Controller
         // cek apakah request playlist atau music
         if (request()->filled('playlist_id')) {
             // jika request adalah playlist
-            $playlist = Playlist::find(request('playlist_id')->musics());
+            $playlist = Playlist::find(request('playlist_id'));
+            $musics = $playlist->musics;
             return view('user.nowPlaying', [
                 "title" => "nowPlaying",
                 "active" => "nowPlaying",
-                "playlist" => $playlist
+                "playlist" => $playlist,
+                "musics" => $musics
             ]);
         }
         else
