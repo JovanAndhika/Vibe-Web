@@ -65,6 +65,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/search/ponk', [UserController::class, 'ponk'])->name('ponk');
     });
 
+    //Discover
+    Route::group(['middleware' => 'user', 'prefix' => 'user/discover', 'as' => 'discover.'], function () {
+        Route::get('/discoverone', [UserController::class, 'index'])->name('one');
+        Route::get('/discovertwo', [UserController::class, 'search'])->name('two');
+        Route::get('/discoverthree', [UserController::class, 'nowPlaying'])->name('three');
+    });
+
     // role admin
     Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');

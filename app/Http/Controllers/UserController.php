@@ -96,7 +96,7 @@ class UserController extends Controller
     {
         $song = DB::table('music')->where('genre', 'Kpop')->get();
 
-        return view('user.searchResult.kpopResult', ['pop' => $song])
+        return view('user.searchResult.kpopResult', ['kpop' => $song])
             ->with('genreKpop', 'genreKpop searched');
     }
 

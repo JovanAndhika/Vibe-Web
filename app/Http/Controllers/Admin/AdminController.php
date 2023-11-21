@@ -7,6 +7,7 @@ use App\Models\Music;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
@@ -141,4 +142,11 @@ class AdminController extends Controller
 
         return redirect(route('admin.viewadmin', ['successdeactivate' => $query]));
     }
+
+    public function discover(Music $music){
+        $musics = Music::all();
+
+        return redirect(route('admin.viewadmin', ['successdeactivate' => $musics]));
+    }
+    
 }

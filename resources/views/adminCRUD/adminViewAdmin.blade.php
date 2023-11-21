@@ -52,6 +52,10 @@
                         <a class="nav-link active" href="/admin/viewadmin">View Admin</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/discover">Discover</a>
+                    </li>
+
                     {{-- TODO: Jovan sempurnakan tampilannya --}}
                     <li class="nav-item">
                         <form method="post" action="{{ route('logout') }}">

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('genre');
             $table->string('file_path')->nullable(true);
             $table->date('release_date');
+            $table->string('disc_category')->nullable(true);
+            $table->integer('disc_number')->nullable(true);
             $table->timestamps();
         });
     }

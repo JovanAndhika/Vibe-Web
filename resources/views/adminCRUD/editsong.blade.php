@@ -42,6 +42,10 @@
                         <a class="nav-link" href="/admin/viewadmin">View Admin</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/discover">Discover</a>
+                    </li>
+
                 </ul>
             </div>
         </div>
