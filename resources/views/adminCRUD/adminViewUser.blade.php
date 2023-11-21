@@ -45,7 +45,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/viewuser">View User</a>
+                        <a class="nav-link active" href="#">View User</a>
                     </li>
 
                     <li class="nav-item">

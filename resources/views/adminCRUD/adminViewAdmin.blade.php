@@ -49,7 +49,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/viewadmin">View Admin</a>
+                        <a class="nav-link active" href="#">View Admin</a>
                     </li>
 
                     <li class="nav-item">

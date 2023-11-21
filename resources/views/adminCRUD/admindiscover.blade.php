@@ -22,7 +22,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg bg-primary">
+    <nav class="navbar navbar-expand-lg bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Menu</a>
 
@@ -50,7 +50,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/discover">Discover</a>
+                        <a class="nav-link active" href="#">Discover</a>
                     </li>
 
                     {{-- TODO: Jovan sempurnakan tampilannya --}}
@@ -67,76 +67,83 @@
     </nav>
 
     <section class="p-5">
-    <div class="px-5 container-fluid table-responsive-md">
-      <table id="song_list" class="table table-striped dataTable no-footer" style="width:100%">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Title</th>
-            <th>Artist</th>
-            <th>Disc_category</th>
-            <th>Disc_number</th>
-            <th>Status</th>
-          </tr>
-        </thead>
+        <div class="px-5 container-fluid table-responsive-md">
+            <table id="song_list" class="table table-striped dataTable no-footer" style="width:100%">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Title</th>
+                        <th>Artist</th>
+                        <th>Disc_category</th>
+                        <th>Disc_number</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
 
-        <tbody>
-          @foreach($musics as $music)
-          <tr>
-            <td></td>
-            <td>{{$music->title}}</td>
-            <td>{{$music->artist}}</td>
-            <td>{{$music->disc_category}}</td>
-            <td>{{$music->disc_number}}</td>
-            <td>{{$music->release_date}}</td>
-            <td>
-              <div class="mt-1 d-grid gap-2 d-md-flex justify-content-md-start">
-                <select
-                <form action="{{route('admin.destroy', ['music' => $music])}}" method="post">
-                  @method('delete')
-                  @csrf
-                  <button class="confirm-delete btn btn-danger btn-sm" name="hapus_data" id="hapus_data">Delete</button>
-                </form>
-              </div>
-            </td>
-          </tr>
-          @endforeach
+                <tbody>
+                    @foreach($musics as $music)
+                    <tr>
+                        <td></td>
+                        <td>{{$music->title}}</td>
+                        <td>{{$music->artist}}</td>
+                        <td>{{$music->disc_category}}</td>
+                        <td>{{$music->disc_number}}</td>
+                        <td>
+                            <div class="mt-1 d-grid gap-2 d-md-flex justify-content-md-start">
+                                <form action="{{route('admin.confirmdiscover', ['music' => $music])}}" method="post">
+                                    @method('post')
+                                    @csrf
+                                    <button class="confirm-discover-category btn btn-primary btn-sm" name="number_data" id="number_data">Confirm</button>
+                                </form>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="mt-1 d-grid gap-2 d-md-flex justify-content-md-start">
+                                <form action="{{route('admin.confirmdiscover', ['music' => $music])}}" method="post">
+                                    @method('post')
+                                    @csrf
+                                    <button class="confirm-discover btn btn-primary btn-sm" name="number_data" id="number_data">Confirm</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
 
-        </tbody>
-      </table>
-    </div>
-  </section>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
 
-  <script>
-    $(document).ready(function() {
-      $('.confirm-delete').click(function(event) {
-        let form = $(this).closest("form");
-        event.preventDefault();
-        Swal.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            form.submit();
-            Swal.fire(
-              'Deleted!',
-              'Your data has been deleted.',
-              'success'
-            )
-          }
-        })
-      })
-      $('#song_list').DataTable();
-    });
+    <script>
+        $(document).ready(function() {
+            $('.confirm-discover').click(function(event) {
+                let form = $(this).closest("form");
+                event.preventDefault();
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                        Swal.fire(
+                            'Deleted!',
+                            'Your data has been updated.',
+                            'success'
+                        )
+                    }
+                })
+            })
+            $('#song_list').DataTable();
+        });
 
-    $('#song_list').dataTable({
-      "ordering": true
-    });
-  </script>
+        $('#song_list').dataTable({
+            "ordering": true
+        });
+    </script>
 </body>

@@ -143,10 +143,11 @@ class AdminController extends Controller
         return redirect(route('admin.viewadmin', ['successdeactivate' => $query]));
     }
 
-    public function discover(Music $music){
+    public function discover(){
         $musics = Music::all();
-
-        return redirect(route('admin.viewadmin', ['successdeactivate' => $musics]));
+        return view('adminCRUD.admindiscover', ['musics' => $musics]);
     }
+
+
     
 }
