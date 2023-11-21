@@ -65,6 +65,16 @@
         .resizable span {
             display: none;
         }
+
+        .button-without-border {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.button-without-border:focus {
+    outline: none;
+}
     </style>
 
 </head>
