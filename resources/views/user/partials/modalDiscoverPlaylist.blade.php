@@ -8,32 +8,43 @@
             </div>
             <div class="modal-body fontMonsseratRegular bg-dark">
                 <h1 class="fontMonsseratSemiBold" style="font-size: 20px;">Playlist Name</h1>
-                <table class="table table-striped table-hover table-dark mb-5">
-                    <thead>
-                        <tr>
-                            <th class="fontMonsseratSemiBold" scope="col">Song</th>
-                            <th class="fontMonsseratSemiBold" scope="col">Artist</th>
-                            <th class="fontMonsseratSemiBold" scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-left">
-                        <tr>
-                            <th>Ghost<!-- @JackGame31 @JovanAndhika ini title --></th>
-                            <th>Justin Bieber <!-- @JackGame31 @JovanAndhika ini artist --></th>
-                            <th><a href=""><i class="bi bi-plus-lg text-white"></i></a></th>
-                        </tr>
-                        <tr>
+                <div class="container-fluid text-left mb-5" id= "2">
+            
+                    <table class="table table-striped table-hover table-dark fontMonsseratRegular">
+                        <thead>
+                          <tr>
+                            <th scope="col">Song</th>
+                            <th scope="col">Artist</th>
+                            <th scope="col"></th>
+        
+        
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th>Yuk Sri</th>
+                            <th>Bayu Skak</th>
+                            <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
+        
+                          
+                          </tr>
+                          <tr>
                             <th>Sasageyo</th>
                             <th>Hiroyuki Sawano</th>
-                            <th><a href=""><i class="bi bi-plus-lg text-white"></i></a></th>
-                        </tr>
-                        <tr>
+                            <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
+        
+             
+                          </tr>
+                          <tr>
                             <th>Happy Ya Ya</th>
                             <th>Guru Sekolah Minggu</th>
-                            <th><a href=""><i class="bi bi-plus-lg text-white"></i></a></th>
-                        </tr>
-                    </tbody>
-                </table>
+                            <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
+        
+                            
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
             </div>
             <div class="modal-footer" style="background-color: rgb(238, 181, 0)">
                 <button type="button" class="btn btn-outline-dark fontMonsseratSemiBold"
