@@ -86,14 +86,12 @@
             <td></td>
             <td>{{$music->title}}</td>
             <td>{{$music->artist}}</td>
-            <td>{{$music->genre}}</td>
-            <td><audio controls>
-                <source src="{{ asset('storage/' . $music->file_path) }}" type="audio/mpeg">
-              </audio></td>
+            <td>{{$music->disc_category}}</td>
+            <td>{{$music->disc_number}}</td>
             <td>{{$music->release_date}}</td>
             <td>
               <div class="mt-1 d-grid gap-2 d-md-flex justify-content-md-start">
-                <a href="{{route('admin.edit', ['music' => $music])}}" class="btn btn-secondary btn-sm">Edit</a>
+                <select
                 <form action="{{route('admin.destroy', ['music' => $music])}}" method="post">
                   @method('delete')
                   @csrf

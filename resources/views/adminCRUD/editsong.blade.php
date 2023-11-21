@@ -109,7 +109,17 @@
 
                 <div class="col-lg-7">
                     <label class="form-label">Genre</label>
-                    <input class="form-control" type="text" name="genre" id="genre" placeholder="Insert genre" value="{{$music->genre}}">
+                    <select class="form-select" aria-label="Default select example" name="genre" id="genre" placeholder="Choose genre">
+                        <option selected value="{{$music->genre}}">{{$music->genre}}</option>
+                        <option value="Jazz">Jazz</option>
+                        <option value="Pop">Pop</option>
+                        <option value="Dangdut">Dangdut</option>
+                        <option value="Kpop">Kpop</option>
+                        <option value="Rock">Rock</option>
+                        <option value="Classical">Classical</option>
+                        <option value="Dance">Dance</option>
+                        <option value="Phonk">Phonk</option>
+                    </select>
                     <br>
                 </div>
 
