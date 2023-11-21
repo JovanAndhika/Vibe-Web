@@ -91,82 +91,88 @@
 
                 <div class="container-fluid my-5">
                     <div class="row h-100" id="mainRow">
-
-                       <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-    <form method="post" action="{{ route('user.jazz') }}">
-        @csrf
-        @method('post')
-        <button type="submit" class="button-without-border">
-            <img src="{{ asset('img/search/jazzCover.png') }}" alt="" class="img-fluid rounded genre submit">
-        </button>
-    </form>
-</div>
-
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                            <form method="post" action="{{ route('user.jazz') }}">
+                                @csrf
+                                @method('post')
+                                <button type="submit" class="button-without-border">
+                                    <img src="{{ asset('img/search/jazzCover.png') }}" alt="" class="img-fluid rounded genre submit">
+                                </button>
+                            </form>
+                        </div>
+                
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                             <form method="post" action="{{ route('user.pop') }}">
                                 @csrf
                                 @method('post')
-                                <button type="submit" class="button-without-border"><img src="{{ asset('img/search/popCover.png') }}" alt=""
-                                        class="img-fluid rounded genre" style="object-fit: cover;"></button>
+                                <button type="submit" class="button-without-border">
+                                    <img src="{{ asset('img/search/popCover.png') }}" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                                </button>
                             </form>
                         </div>
-
-
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                             <form method="post" action="{{ route('user.dangdut') }}">
                                 @csrf
                                 @method('post')
-                                <button type="submit" class="button-without-border"><img src="{{ asset('img/search/dangdutCover.png') }}" alt=""
-                                        class="img-fluid rounded genre" style="object-fit: cover;"></button>
+                                <button type="submit" class="button-without-border">
+                                    <img src="{{ asset('img/search/dangdutCover.png') }}" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                                </button>
                             </form>
                         </div>
-
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                             <form method="post" action="{{ route('user.kpop') }}">
                                 @csrf
                                 @method('post')
-                                <button type="submit" class="button-without-border"><img src="{{ asset('img/search/kpopCover.png') }}" alt=""
-                                        class="img-fluid rounded genre" style="object-fit: cover;"></button>
+                                <button type="submit" class="button-without-border">
+                                    <img src="{{ asset('img/search/kpopCover.png') }}" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                                </button>
                             </form>
                         </div>
-
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                             <form method="post" action="{{ route('user.rock') }}">
                                 @csrf
                                 @method('post')
-                                <button type="submit" class="button-without-border"><img src="{{ asset('img/search/rockCover.png') }}" alt=""
-                                        class="img-fluid rounded genre" style="object-fit: cover;"></button>
+                                <button type="submit" class="button-without-border">
+                                    <img src="{{ asset('img/search/rockCover.png') }}" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                                </button>
                             </form>
                         </div>
-
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                             <form method="post" action="{{ route('user.classical') }}">
                                 @csrf
                                 @method('post')
-                                <button type="submit" class="button-without-border"><img src="{{ asset('img/search/classicalCover.png') }}" alt=""
-                                        class="img-fluid rounded genre" style="object-fit: cover;"></button>
+                                <button type="submit" class="button-without-border">
+                                    <img src="{{ asset('img/search/classicalCover.png') }}" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                                </button>
                             </form>
                         </div>
-
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                             <form method="post" action="{{ route('user.dance') }}">
                                 @csrf
                                 @method('post')
-                                <button type="submit" class="button-without-border"><img src="{{ asset('img/search/danceCover.png') }}" alt=""
-                                        class="img-fluid rounded genre" style="object-fit: cover;"></button>
+                                <button type="submit" class="button-without-border">
+                                    <img src="{{ asset('img/search/danceCover.png') }}" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                                </button>
                             </form>
                         </div>
-
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                             <form method="post" action="{{ route('user.ponk') }}">
                                 @csrf
                                 @method('post')
-                                <button type="submit" class="button-without-border"><img src="{{ asset('img/search/phonkCover.png') }}" alt=""
-                                        class="img-fluid rounded genre" style="object-fit: cover;"></button>
+                                <button type="submit" class="button-without-border">
+                                    <img src="{{ asset('img/search/phonkCover.png') }}" alt="" class="img-fluid rounded genre" style="object-fit: cover;">
+                                </button>
                             </form>
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-9">
                     <div class="container mt-4">
                         <h2 class="text-white">Discover Playlists</h2>
