@@ -34,6 +34,8 @@
                         <i class="bi bi-heart-fill mx-3"></i>
                     </div>
                 </div>
+            @elseif($playlist)
+                {{-- jika ada playlist --}}
             @else
                 {{-- TODO: rapikan tampilan --}}
                 {{-- jika tidak ada music --}}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\Music;
+use App\Models\Playlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -36,12 +37,26 @@ class UserController extends Controller
 
     public function nowPlaying()
     {
-        $music = Music::find(request('music_id'));
-        return view('user.nowPlaying', [
-            "title" => "nowPlaying",
-            "active" => "nowPlaying",
-            "music" => $music
-        ]);
+        // cek apakah request playlist atau music
+        if (request()->filled('playlist_id')) {
+            // jika request adalah playlist
+            $playlist = Playlist::find(request('playlist_id')->musics());
+            return view('user.nowPlaying', [
+                "title" => "nowPlaying",
+                "active" => "nowPlaying",
+                "playlist" => $playlist
+            ]);
+        }
+        else
+        {
+            // jika request adalah music
+            $music = Music::find(request('music_id'));
+            return view('user.nowPlaying', [
+                "title" => "nowPlaying",
+                "active" => "nowPlaying",
+                "music" => $music
+            ]);
+        }
     }
 
     public function discoverPlaylist()
