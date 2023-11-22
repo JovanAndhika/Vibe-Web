@@ -138,6 +138,9 @@
                                 // Jika tidak ada lagu selanjutnya, kembali ke lagu pertama
                                 currentID = 0;
                             }
+                            
+                            changes(musics[currentID].id);
+                            $('#myAudio')[0].play();
                         }
 
                     }
