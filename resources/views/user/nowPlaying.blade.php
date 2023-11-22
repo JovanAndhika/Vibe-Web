@@ -112,7 +112,7 @@
                         var selectedMP3 = selectedMusic.file_path;
                         var selectedTitle = selectedMusic.title;
                         var selectedArtist = selectedMusic.artist;
-                        $('#myAudio').attr('src', '{{ asset('storage') }}/selectedMP3');
+                        $('#myAudio').attr('src', '{{ asset('storage') }}/' + selectedMP3);
                         $('#myTitle').text(selectedTitle);
                         $('#myArtist').text(selectedArtist);
 
