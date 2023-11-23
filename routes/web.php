@@ -94,7 +94,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/reactivateadmin/{user}', [AdminController::class, 'reactivate_admin'])->name('reactivateadmin');
         //DISCOVER
         Route::get('/discover', [AdminController::class, 'discover'])->name('discover');
-        Route::post('/editdiscover/{music}', [AdminController::class, 'editdiscover'])->name('editdiscover');
+        Route::get('/editdiscover/{music}', [AdminController::class, 'edit_discover'])->name('editdiscover');
+        Route::put('/updatediscover/{music}', [AdminController::class, 'update_discover'])->name('updatediscover');
     });
 
     // logout

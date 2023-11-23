@@ -90,9 +90,7 @@
                         <th>Artist</th>
                         <th>Disc_category</th>
                         <th>Disc_number</th>
-                        <th>Select_categor</th>
-                        <th>Select_Number</th>
-                        <th>Confirm</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
 
@@ -104,72 +102,17 @@
                         <td>{{$music->artist}}</td>
                         <td>{{$music->disc_category}}</td>
                         <td>{{$music->disc_number}}</td>
-
-                        <form action="{{route('admin.editdiscover', ['music' => $music])}}" method="post">
-                            <td>
-                                <div class="mt-1 d-md-flex justify-content-md-center">
-                                    @method('post')
-                                    @csrf
-                                    <select class="form-select form-select-sm" aria-label="Default select example" name="disc_category">
-                                        <option selected value="{{$music->disc_category}}">{{$music->disc_category}}</option>
-                                        <option value="">None</option>
-                                        <option value="Home">Home</option>
-                                        <option value="Weekend">Weekend</option>
-                                        <option value="Chill at home">Chill at home</option>
-                                    </select>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="mt-1 d-md-flex justify-content-md-center">
-                                    <select class="form-select form-select-sm" aria-label="Default select example" name="disc_number">
-                                        <option selected value="{{$music->disc_number}}">{{$music->disc_number}}</option>
-                                        <option value="">None</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select>
-                                </div>
-                            </td>
-                            <td>
-                                <button class="confirm-discover btn btn-primary btn-sm" name="number_data" id="number_data">Confirm</button>
-                            </td>
-                        </form>
-
-        </div>
-        </td>
-        </tr>
-        @endforeach
-
-        </tbody>
-        </table>
+                        <td><a href="{{route('admin.editdiscover', ['music' => $music])}}" class="btn btn-secondary btn-sm">Edit</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </section>
 
 
     <script>
         $(document).ready(function() {
-            $('.confirm-discover').click(function(event) {
-                let form = $(this).closest("form");
-                event.preventDefault();
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You can update again later!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, Update it!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        form.submit();
-                        Swal.fire(
-                            'Updated!',
-                            'Your data has been updated.',
-                            'success'
-                        )
-                    }
-                })
-            })
             $('#song_list').DataTable();
         });
 
