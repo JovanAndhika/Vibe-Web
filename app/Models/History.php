@@ -18,6 +18,11 @@ class History extends Model
         'user_id'
     ];
 
+
+    public function music(){
+        return $this->belongsTo(Music::class, 'music_id');
+    }
+
     // public static function findHistory($id)
     // {
 

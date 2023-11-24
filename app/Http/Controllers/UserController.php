@@ -88,13 +88,12 @@ class UserController extends Controller
     public function history()
     {
         // fetch all history from current user
-        $history = History::where("user_id",auth()->user()->id)->get();
-
+        $history = History::with('music')->where("user_id", auth()->user()->id)->get();    
         $hasil = [] ;
 
         // loop all history
         foreach ($history as $isi) {
-            $playedDate = Carbon::parse($isi->played_at)->format('Y-m-d');
+            $playedDate = Carbon::parse($isi->played_at)->format('l, d M Y');
             $playedTime = Carbon::parse($isi->played_at)->format('H:i:s');
 
             // saved based on date and time

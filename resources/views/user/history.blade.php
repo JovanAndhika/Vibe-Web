@@ -1,4 +1,3 @@
-@dd($histories)
 @extends('layouts.user_main')
 @section('container')
     <div class="col scrollable-div p-4" id="jumphere">
@@ -41,91 +40,34 @@
                                     <tr>
                                         <th scope="col">Song</th>
                                         <th scope="col">Artist</th>
-                                        <th scope="col">Time</th>
+                                        <th scope="col">Last Played</th>
                                         <th scope="col"></th>
 
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th>Yuk Sri</th>
-                                        <th>Bayu Skak</th>
-                                        <th>18:01:05</th>
-                                        <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
+                                    @foreach ($history as $ok => $item)
+                                        <tr>
+                                            <th>{{ $item->music->title }}</th>
+                                            <th>{{ $item->music->artist }}</th>
+                                            <th>{{ $ok }}</th>
+
+                                            <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
+
+                                        </tr>
+                                    @endforeach
 
 
-                                    </tr>
-                                    <tr>
-                                        <th>Sasageyo</th>
-                                        <th>Hiroyuki Sawano</th>
-                                        <th>12:51:18</th>
-                                        <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
 
 
-                                    </tr>
-                                    <tr>
-                                        <th>Happy Ya Ya</th>
-                                        <th>Guru Sekolah Minggu</th>
-                                        <th>07:22:14</th>
-                                        <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-
-
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     @endforeach
 
-                    <div class="container-fluid text-left mb-5" id= "1">
-                        <h4 class="fontMonsseratSemiBold mb-3">Sunday, 13 Nov 2023</h4>
-                        <table class="table table-striped table-hover table-dark">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Song</th>
-                                    <th scope="col">Artist</th>
-                                    <th scope="col">Time</th>
-                                    <th scope="col"></th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>Yuk Sri</th>
-                                    <th>Bayu Skak</th>
-                                    <th>18:01:05</th>
-                                    <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-
-
-                                </tr>
-                                <tr>
-                                    <th>Sasageyo</th>
-                                    <th>Hiroyuki Sawano</th>
-                                    <th>12:51:18</th>
-                                    <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-
-
-                                </tr>
-                                <tr>
-                                    <th>Happy Ya Ya</th>
-                                    <th>Guru Sekolah Minggu</th>
-                                    <th>07:22:14</th>
-                                    <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-
-
-
 
                 </div>
-
-
-
 
 
             </div>
