@@ -155,7 +155,11 @@ class AdminController extends Controller
 
     public function discover()
     {
-        $musics = Music::all();
+        $musics = DB::table('music')
+            ->join('discoveries', 'music.category_id', '=', 'discoveries.id')
+            ->select('music.*', 'discoveries.disc_category')
+            ->get();
+            
         return view('adminCRUD.admindiscover', ['musics' => $musics]);
     }
 
@@ -176,9 +180,10 @@ class AdminController extends Controller
         return back();
     }
 
-    public static function getId($disc_category) { 
+    public static function getId($disc_category)
+    {
         return DB::table('discoveries')
-        ->where('disc_category', $disc_category)
-        ->value('id');
+            ->where('disc_category', $disc_category)
+            ->value('id');
     }
 }

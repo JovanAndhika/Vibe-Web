@@ -99,7 +99,7 @@
 
                     <div class="col-md-3 mt-3 mb-3">
                         <label class="form-label">Nama category</label>
-                        <select class="form-select form-select-md" name="disc_category" value="{{$music->disc_category}}" aria-label=".form-select-md example">
+                        <select class="form-select form-select-md" name="disc_category" aria-label=".form-select-md example">
                             @foreach ($discoveries as $d)
                             <option value="{{ $d->disc_category }}">{{ $d->disc_category }}</option>
                             @endforeach

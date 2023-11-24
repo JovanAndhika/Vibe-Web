@@ -88,7 +88,7 @@
                         <th></th>
                         <th>Title</th>
                         <th>Artist</th>
-                        <th>Category_id</th>
+                        <th>discovery_category</th>
                         <th>Edit</th>
                     </tr>
                 </thead>
@@ -99,9 +99,9 @@
                         <td></td>
                         <td>{{$music->title}}</td>
                         <td>{{$music->artist}}</td>
-                        <td>{{$music->category_id}}</td>
+                        <td>{{$music->disc_category}}</td>
                         <td>
-                            <a href="{{route('admin.editdiscover', ['music' => $music])}}" class="btn btn-secondary btn-sm">Edit</a>
+                            <a href="{{route('admin.editdiscover', ['music' => $music->id])}}" class="btn btn-secondary btn-sm">Edit</a>
                         </td>
                     </tr>
                     @endforeach
