@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\Admin;
+use App\Models\Discovery;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
@@ -160,17 +161,23 @@ class AdminController extends Controller
 
     public function edit_discover(Music $music)
     {
+        $discoveries = Discovery::all();
 
-        return view('adminCRUD.editdiscover', ['music' => $music]);
+        return view('adminCRUD.editdiscover', ['music' => $music, 'discoveries' => $discoveries]);
     }
 
 
     public function update_discover(Request $request, Music $music)
     {
+        $discovery = DB::table('discoveries')
+        ->select('id')
+        ->where('disc_category', $request->input('disc_category'))
+        ->limit(1)
+        ->get();
+
         $data = DB::table('music')
         ->where('id', $music->id)
-        ->update(['disc_category' => $request->input('disc_category'),
-                    'disc_number' => $request->input('disc_number')]);
+        ->update(['category_id' => $discovery]);
 
         return redirect(route('admin.discover', ['successupdate' => $data]));
         return back()->with('success', 'edit confirmed');

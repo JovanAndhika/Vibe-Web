@@ -93,22 +93,16 @@
                     @csrf
                     @method('put')
                     <div class="col-md-3 mt-3 mb-3">
-                        <select class="form-select form-select-sm" aria-label="Default select example" name="disc_category">
-                            <option selected value="{{$music->disc_category}}">{{$music->disc_category}}</option>
-                            <option value="">None</option>
-                            <option value="Home">Home</option>
-                            <option value="Weekend">Weekend</option>
-                            <option value="Chill at home">Chill at home</option>
-                        </select>
+                        <label class="form-label">Category-id</label>
+                        <input type="text" class="form-control form-control-md" aria-label="Default disable example" name="category_id" value="{{$music->category_id}}" disabled>
                     </div>
 
                     <div class="col-md-3 mt-3 mb-3">
-                        <select type="number" class="form-select form-select-sm" aria-label="Default select example" name="disc_number">
-                            <option selected value="{{$music->disc_number}}">{{$music->disc_number}}</option>
-                            <option value="">None</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                        <label class="form-label">Nama category</label>
+                        <select class="form-select form-select-md" name="disc_category" value="{{$music->disc_category}}" aria-label=".form-select-md example">
+                            @foreach ($discoveries as $d)
+                            <option value="{{ $d->disc_category }}">{{ $d->disc_category }}</option>
+                            @endforeach
                         </select>
                     </div>
 

@@ -26,10 +26,16 @@ class UserController extends Controller
             $musics = Music::latest()->filter(request(['artist', 'title']))->get();
         }
 
+
+        $discoversone = DB::table('music')
+                        ->where('disc_category', '');
+
+
         return view('user.search', [
             "title" => "search",
             "active" => "search",
-            "musics" => $musics
+            "musics" => $musics,
+            "discoversone" => $discoversone
         ]);
     }
 

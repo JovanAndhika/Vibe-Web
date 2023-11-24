@@ -179,7 +179,7 @@
                                         <p class="card-text">Description of Playlist 1.</p>
                                         <div class="container-fluid text-center p-3">
                                             <button type="button" class="btn btn-outline-dark fontMonsseratSemiBold"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                data-bs-toggle="modal" data-bs-target="#modalDiscoverOne"
                                                 data-bs-whatever="@mdo">Play</button>
                                         </div>
                                     </div>
@@ -195,7 +195,7 @@
                                         <p class="card-text">Description of Playlist 2.</p>
                                         <div class="container-fluid text-center p-3">
                                             <button type="button" class="btn btn-outline-dark fontMonsseratSemiBold"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                data-bs-toggle="modal" data-bs-target="#modalDiscoverTwo"
                                                 data-bs-whatever="@mdo">Play</button>
                                         </div>
                                     </div>
@@ -211,7 +211,7 @@
                                         <p class="card-text">Description of Playlist 3.</p>
                                         <div class="container-fluid text-center p-3">
                                             <button type="button" class="btn btn-outline-dark fontMonsseratSemiBold"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                data-bs-toggle="modal" data-bs-target="#modalDiscoverThree"
                                                 data-bs-whatever="@mdo">Play</button>
                                         </div>
                                     </div>
