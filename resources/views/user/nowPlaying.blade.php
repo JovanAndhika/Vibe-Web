@@ -27,13 +27,18 @@
                 <div class="row">
                     <div class="col d-flex justify-content-center my-3" style="font-size: 30px;">
                         {{-- TODO: rapikan/hilangkan tampilan play mp3 --}}
-                        <audio controls><source src="{{ asset('storage/' . $music->file_path) }}" type="audio/mpeg"></audio>
+                        <audio controls autoplay>
+                            <source src="{{ asset('storage/' . $music->file_path) }}" type="audio/mpeg">
+                            Your Browser Does Not Support Audio
+                        </audio>
                         <i class="bi bi-play-fill mx-3"></i>
                         <i class="bi bi-pause-fill mx-3"></i>
                         <i class="bi bi-bookmark-fill mx-3"></i>
                         <i class="bi bi-heart-fill mx-3"></i>
                     </div>
                 </div>
+
+                
             @else
                 {{-- TODO: rapikan tampilan --}}
                 {{-- jika tidak ada music --}}

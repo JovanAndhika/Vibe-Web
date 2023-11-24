@@ -48,7 +48,7 @@
                                         <tr>
                                             <th>{{ $music->title }}</th>
                                             <th>{{ $music->artist }}</th>
-                                            <th><a href="{{ route('user.nowPlaying') }}?music_id={{ $music->id }}"><i
+                                            <th><a href="{{ route('user.nowPlaying') }}?music_id={{ $music->id }}#jumphere"><i
                                                         class="bi bi-play-fill text-white"></i></a></th>
                                         </tr>
                                     @endforeach

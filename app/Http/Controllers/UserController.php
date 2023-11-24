@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Music;
+use App\Models\History;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -35,7 +37,39 @@ class UserController extends Controller
 
     public function nowPlaying()
     {
+
+        // cari music
         $music = Music::find(request('music_id'));
+
+        // ------------------NGETRACK HISTORY------------------------
+
+        if($music){
+            // $currentHari = Carbon::now()->format('D');
+            // $currentTanggal = Carbon::now()->format('d');
+            // $currentBulan = Carbon::now()->format('M');
+            // $currentTahun = Carbon::now()->format('Y');
+            // $currentWaktu = Carbon::now()->format('H:i:s');
+
+            $currentDay = Carbon::now()->format('D');
+            $currentDateTime = Carbon::now()->format('Y-m-d H:i:s');
+            
+            History::create([
+                'music_id' => $music->id,
+                'user_id' => auth()->user()->id,
+                'played_at' => $currentDateTime,
+                'played_day' => $currentDay
+
+                // 'played_hari' => $currentHari,
+                // 'played_tanggal' => $currentTanggal,
+                // 'played_bulan' => $currentBulan,
+                // 'played_tahun' => $currentTahun,
+                // 'played_waktu' => $currentWaktu
+            ]);
+        }   
+
+        // ------------------------------------------------------------
+
+
         return view('user.nowPlaying', [
             "title" => "nowPlaying",
             "active" => "nowPlaying",
@@ -55,7 +89,8 @@ class UserController extends Controller
     {
         return view('user.history', [
             "title" => "history",
-            "active" => "history"
+            "active" => "history",
+            // "history" => History::findHistory(auth()->user()->id)
         ]);
     }
 
