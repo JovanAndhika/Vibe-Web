@@ -30,12 +30,13 @@
                         </tr>
                     </thead>
                     <tbody class="text-left">
+                    @foreach ($collect_all_music[$d->id] as $music)
                         <tr>
-                            <td>hhh<!-- @JackGame31 @JovanAndhika ini title --></td>
-                            <td>hhhh <!-- @JackGame31 @JovanAndhika ini artist --></td>
+                            <td>{{ $music->title }}<!-- @JackGame31 @JovanAndhika ini title --></td>
+                            <td>{{ $music->artist }} <!-- @JackGame31 @JovanAndhika ini artist --></td>
                             <td><a href=""><i class="bi bi-play-fill text-white"></i></a></td>
                         </tr>
-
+                    @endforeach
                     </tbody>
                 </table>
             </div>

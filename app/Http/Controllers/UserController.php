@@ -32,14 +32,26 @@ class UserController extends Controller
         $discovers = DB::table('discoveries')
             ->get();
 
+        $songs = collect([]);
+        foreach ($music_discoveries as $m) {
+            $songs->put($m->id, ['title' => $m->title, 'artist' => $m->artist, 'genre' => $m->genre, 'file_path' => $m->file_path, 'release_date' => $m->release_date, 'category_id' => $m->category_id]);
+        }
         
+
+        $collect_all_music = collect([]);
+        foreach($discovers as $d){
+            $temp = $songs->where('category_id', $d->id);
+            $collect_all_music->put($d->id, $temp);
+        }
+    
 
         return view('user.search', [
             "title" => "search",
             "active" => "search",
             "musics" => $musics,
             "discovers" => $discovers,
-            "music_discoveries" => $music_discoveries
+            "music_discoveries" => $music_discoveries,
+            "collect_all_music" => $collect_all_music
         ]);
     }
 
