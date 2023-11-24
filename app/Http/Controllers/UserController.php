@@ -87,11 +87,20 @@ class UserController extends Controller
 
     public function history()
     {
+        $history = History::where("user_id",auth()->user()->id)->get();
+        $hasil = [] ;
+        foreach ($history as $isi) {
+            $playedDate = Carbon::parse($isi->played_at)->format('Y-m-d');
+            $playedTime = Carbon::parse($isi->played_at)->format('H:i:s');
+            $hasil[$playedDate] [$playedTime]= $isi;
+        
+        }
         return view('user.history', [
             "title" => "history",
             "active" => "history",
-            // "history" => History::findHistory(auth()->user()->id)
+            "histories" => $hasil
         ]);
+        
     }
 
     public function library()

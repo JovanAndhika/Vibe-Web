@@ -41,6 +41,6 @@ class History extends Model
 
     //     return $groupedHistoryData;
     // }
-}
+} 
 
     

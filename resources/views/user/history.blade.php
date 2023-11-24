@@ -1,3 +1,4 @@
+@dd($histories)
 @extends('layouts.user_main')
 @section('container')
 <div class="col scrollable-div p-4" id="jumphere">
@@ -33,7 +34,11 @@
             <div class="container-fluid scrollable-div">
 
                 <div class="container-fluid text-left mb-5" id= "2">
-                    <h4 class="fontMonsseratSemiBold mb-3">Monday, 14 Nov 2023</h4>
+                  
+                  @foreach ($histories as $history)
+                      
+                 
+                    <h4 class="fontMonsseratSemiBold mb-3">{{ $history[0]->played_at }}</h4>
                     <table class="table table-striped table-hover table-dark fontMonsseratRegular">
                         <thead>
                           <tr>
@@ -72,6 +77,7 @@
                           </tr>
                         </tbody>
                       </table>
+                      @endforeach
                 </div>
 
                 <div class="container-fluid text-left mb-5" id= "1">
