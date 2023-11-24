@@ -169,17 +169,16 @@ class AdminController extends Controller
 
     public function update_discover(Request $request, Music $music)
     {
-        $discovery = DB::table('discoveries')
-        ->select('id')
-        ->where('disc_category', $request->input('disc_category'))
-        ->limit(1)
-        ->get();
+        $data = AdminController::getId($request->input('disc_category'));
+        DB::table('music')
+            ->where('id', $music->id)
+            ->update(['category_id' => $data]);
+        return back();
+    }
 
-        $data = DB::table('music')
-        ->where('id', $music->id)
-        ->update(['category_id' => $discovery]);
-
-        return redirect(route('admin.discover', ['successupdate' => $data]));
-        return back()->with('success', 'edit confirmed');
+    public static function getId($disc_category) { 
+        return DB::table('discoveries')
+        ->where('disc_category', $disc_category)
+        ->value('id');
     }
 }

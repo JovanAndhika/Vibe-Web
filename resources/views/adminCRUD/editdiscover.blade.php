@@ -94,7 +94,7 @@
                     @method('put')
                     <div class="col-md-3 mt-3 mb-3">
                         <label class="form-label">Category-id</label>
-                        <input type="text" class="form-control form-control-md" aria-label="Default disable example" name="category_id" value="{{$music->category_id}}" disabled>
+                        <input type="text" class="form-control form-control-md" aria-label="Default disable example" value="{{$music->category_id}}" disabled>
                     </div>
 
                     <div class="col-md-3 mt-3 mb-3">

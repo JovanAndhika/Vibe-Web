@@ -10,5 +10,10 @@ class Discovery extends Model
     use HasFactory;
 
     protected $table = 'discoveries';
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at'
+    ];
     protected $fillable = ['disc_category'];
 }
