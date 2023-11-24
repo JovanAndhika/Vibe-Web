@@ -66,9 +66,6 @@ Route::group(['middleware' => 'auth'], function () {
 
         //Discover
         Route::group(['middleware' => 'user', 'prefix' => '/discover', 'as' => 'discover.'], function () {
-            Route::get('/discoverone', [UserController::class, 'index'])->name('one');
-            Route::get('/discovertwo', [UserController::class, 'search'])->name('two');
-            Route::get('/discoverthree', [UserController::class, 'nowPlaying'])->name('three');
         });
     });
 
