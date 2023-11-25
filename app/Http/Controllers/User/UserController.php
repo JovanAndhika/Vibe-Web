@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\User;
 
+use Carbon\Carbon;
 use App\Models\Music;
+use App\Models\History;
 use App\Models\Playlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,17 +23,37 @@ class UserController extends Controller
 
     public function search()
     {
+        // BUAT NORMAL SEARCH
         $musics = collect([]);
 
         // Pastikan ada request 'artist' atau 'title' dan keduanya tidak kosong
         if (request()->filled('artist') || request()->filled('title')) {
-            $musics = Music::filter(request(['artist', 'title']))->get();
+            $musics = Music::latest()->filter(request(['artist', 'title']))->get();
         }
 
+        //BUAT DISCOVERY
+        $music_discoveries = Music::all();
+        $discovers = DB::table('discoveries')
+            ->get();
+
+        $songs = collect([]);
+        foreach ($music_discoveries as $m) {
+            $songs->put($m->id, ['id'=> $m->id, 'title' => $m->title, 'artist' => $m->artist, 'genre' => $m->genre, 'file_path' => $m->file_path, 'release_date' => $m->release_date, 'category_id' => $m->category_id]);
+        }
+        
+        $collect_all_music = collect([]);
+        foreach($discovers as $d){
+            $temp = $songs->where('category_id', $d->id);
+            $collect_all_music->put($d->id, $temp);
+        }
+    
         return view('user.search', [
             "title" => "search",
             "active" => "search",
-            "musics" => $musics
+            "musics" => $musics,
+            "discovers" => $discovers,
+            "music_discoveries" => $music_discoveries,
+            "collect_all_music" => $collect_all_music
         ]);
     }
 
@@ -42,17 +64,29 @@ class UserController extends Controller
             // jika request adalah playlist
             $playlist = Playlist::find(request('playlist_id'));
             $musics = $playlist->musics;
+
+            // simpan ke history untuk lagu pertama
+            if ($musics->first())
+            {
+                $this->storeHistory($musics->first()->id);
+            }
+
             return view('user.nowPlaying', [
                 "title" => "nowPlaying",
                 "active" => "nowPlaying",
                 "playlist" => $playlist,
                 "musics" => $musics
             ]);
-        }
-        else
-        {
+        } else {
             // jika request adalah music
             $music = Music::find(request('music_id'));
+
+            // simpan ke history
+            if ($music)
+            {
+                $this->storeHistory($music->id);
+            }
+
             return view('user.nowPlaying', [
                 "title" => "nowPlaying",
                 "active" => "nowPlaying",
@@ -71,10 +105,46 @@ class UserController extends Controller
 
     public function history()
     {
+        // fetch semua history yang dimiliki user
+        $history = History::with('music')->where("user_id", auth()->user()->id)->latest()->get();
+        $hasil = [];
+
+        // cek semua history
+        foreach ($history as $isi) {
+            // mengakses tanggal dan waktu
+            $playedDate = Carbon::parse($isi->played_at)->format('l, d M Y');
+            $playedTime = Carbon::parse($isi->played_at)->format('H:i:s');
+
+            // menyimpan di array berdasarkan tanggal dan waktu
+            $hasil[$playedDate][$playedTime] = $isi;
+        }
+
         return view('user.history', [
             "title" => "history",
-            "active" => "history"
+            "active" => "history",
+            "histories" => $hasil
         ]);
+    }
+
+    // disarankan mengakses pakai ajax/UserController saja
+    public function storeHistory($music_id)
+    {
+        // cari music
+        $music = Music::find($music_id);
+
+        // jika music ditemukan
+        if ($music) {
+            // disimpan ke history
+            $currentDay = Carbon::now()->format('D');
+            $currentDateTime = Carbon::now()->format('Y-m-d H:i:s');
+
+            History::create([
+                'music_id' => $music->id,
+                'user_id' => auth()->user()->id,
+                'played_at' => $currentDateTime,
+                'played_day' => $currentDay
+            ]);
+        }
     }
 
     // genre search
@@ -106,7 +176,7 @@ class UserController extends Controller
     {
         $song = DB::table('music')->where('genre', 'Kpop')->get();
 
-        return view('user.searchResult.kpopResult', ['pop' => $song])
+        return view('user.searchResult.kpopResult', ['kpop' => $song])
             ->with('genreKpop', 'genreKpop searched');
     }
 

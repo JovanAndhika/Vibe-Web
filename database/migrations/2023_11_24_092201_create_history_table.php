@@ -12,16 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('history', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->bigInteger('music_id');
             $table->bigInteger('user_id');
             $table->dateTime('played_at')->nullable();
             $table->string('played_day')->nullable();
-            // $table->string('played_hari')->nullable();
-            // $table->string('played_tanggal')->nullable();
-            // $table->string('played_bulan')->nullable();
-            // $table->string('played_tahun')->nullable();
-            // $table->time('played_waktu')->nullable();
             $table->timestamps();
         });
     }

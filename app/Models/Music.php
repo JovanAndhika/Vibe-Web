@@ -18,6 +18,7 @@ class Music extends Model
         'disc_number'
     ];
     public $timestamps = false;
+    
 
     // untuk filter search
     // memanggil dengan Music::filter()

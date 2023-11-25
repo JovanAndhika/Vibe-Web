@@ -1,8 +1,11 @@
 @extends('layouts.user_main')
 @section('container')
+    {{-- untuk ajax --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    {{-- main --}}
     <div class="col scrollable-div p-4" id="jumphere">
         <div class="container-fluid vh-100 d-flex flex-column">
-
             @if (isset($music))
                 {{-- jika ada --}}
                 <div class="row flex-grow-1">
@@ -27,15 +30,9 @@
                 <div class="row">
                     <div class="col d-flex justify-content-center my-3" style="font-size: 30px;">
                         {{-- TODO: rapikan/hilangkan tampilan play mp3 --}}
-                        <audio controls autoplay>
-                            <source src="{{ asset('storage/' . $music->file_path) }}" type="audio/mpeg">
-                            Your Browser Does Not Support Audio
-                        </audio>
-                        <i class="bi bi-play-fill mx-3"></i>
-                        <i class="bi bi-pause-fill mx-3"></i>
                         <i class="bi bi-bookmark-fill mx-3"></i>
                         <audio controls>
-                            <source src="{{ asset('storage/' . $music->file_path) }}" type="audio/mpeg">
+                            <source src="{{ asset('storage/' . $music->file_path) }}" type="audio/mpeg" id="myAudio">
                         </audio>
                         <i class="bi bi-heart-fill mx-3"></i>
                     </div>
@@ -81,15 +78,12 @@
 
                 {{-- Table Playlist --}}
                 <div class="container-fluid text-left mb-5" id= "2">
-
                     <table class="table table-striped table-hover table-dark fontMonsseratRegular">
                         <thead>
                             <tr>
                                 <th scope="col">Song</th>
                                 <th scope="col">Artist</th>
                                 <th scope="col"></th>
-
-
                             </tr>
                         </thead>
                         <tbody>
@@ -110,6 +104,19 @@
                     var currentID = 0;
 
                     function changes(id) {
+                        // simpan history ke ajax
+                        $.ajax({
+                            type: "POST",
+                            url: "{{ url('user/history') }}/" + id,
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            // jika gagal
+                            error: function(data) {
+                                console.log(data);
+                            }
+                        });
+
                         // Dapatkan data untuk id tertentu dari variabel musics
                         var selectedMusic = musics.find(function(music) {
                             return music.id === id;
@@ -144,7 +151,7 @@
                                 // Jika tidak ada lagu selanjutnya, kembali ke lagu pertama
                                 currentID = 0;
                             }
-                            
+
                             changes(musics[currentID].id);
                             $('#myAudio')[0].play();
                         }

@@ -22,7 +22,6 @@ return new class extends Migration
             $table->date('release_date');
             $table->unsignedBigInteger('category_id')->nullable(true);
             $table->foreign('category_id')->references('id')->on('discoveries')->onDelete('set null');
-            $table->timestamps();
         });
     }
 
