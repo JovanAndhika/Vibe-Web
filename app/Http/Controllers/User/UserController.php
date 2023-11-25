@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use App\Models\Music;
-use App\Models\History;
+use App\Models\Playlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -15,7 +15,7 @@ class UserController extends Controller
         return view('user.home', [
             "title" => "home",
             "active" => "home",
-            "musics" => Music::latest()->get()
+            "musics" => Music::get()
         ]);
     }
 
@@ -23,68 +23,42 @@ class UserController extends Controller
     {
         $musics = collect([]);
 
-
         // Pastikan ada request 'artist' atau 'title' dan keduanya tidak kosong
         if (request()->filled('artist') || request()->filled('title')) {
-            $musics = Music::latest()->filter(request(['artist', 'title']))->get();
+            $musics = Music::filter(request(['artist', 'title']))->get();
         }
-
-        //BUAT DISCOVERY
-        $music_discoveries = Music::all();
-        $discovers = DB::table('discoveries')
-            ->get();
-
-        
 
         return view('user.search', [
             "title" => "search",
             "active" => "search",
-            "musics" => $musics,
-            "discovers" => $discovers,
-            "music_discoveries" => $music_discoveries
+            "musics" => $musics
         ]);
     }
 
     public function nowPlaying()
     {
-
-        // cari music
-        $music = Music::find(request('music_id'));
-
-        // ------------------NGETRACK HISTORY------------------------
-
-        if($music){
-            // $currentHari = Carbon::now()->format('D');
-            // $currentTanggal = Carbon::now()->format('d');
-            // $currentBulan = Carbon::now()->format('M');
-            // $currentTahun = Carbon::now()->format('Y');
-            // $currentWaktu = Carbon::now()->format('H:i:s');
-
-            $currentDay = Carbon::now()->format('D');
-            $currentDateTime = Carbon::now()->format('Y-m-d H:i:s');
-            
-            History::create([
-                'music_id' => $music->id,
-                'user_id' => auth()->user()->id,
-                'played_at' => $currentDateTime,
-                'played_day' => $currentDay
-
-                // 'played_hari' => $currentHari,
-                // 'played_tanggal' => $currentTanggal,
-                // 'played_bulan' => $currentBulan,
-                // 'played_tahun' => $currentTahun,
-                // 'played_waktu' => $currentWaktu
+        // cek apakah request playlist atau music
+        if (request()->filled('playlist_id')) {
+            // jika request adalah playlist
+            $playlist = Playlist::find(request('playlist_id'));
+            $musics = $playlist->musics;
+            return view('user.nowPlaying', [
+                "title" => "nowPlaying",
+                "active" => "nowPlaying",
+                "playlist" => $playlist,
+                "musics" => $musics
             ]);
-        }   
-
-        // ------------------------------------------------------------
-
-
-        return view('user.nowPlaying', [
-            "title" => "nowPlaying",
-            "active" => "nowPlaying",
-            "music" => $music
-        ]);
+        }
+        else
+        {
+            // jika request adalah music
+            $music = Music::find(request('music_id'));
+            return view('user.nowPlaying', [
+                "title" => "nowPlaying",
+                "active" => "nowPlaying",
+                "music" => $music
+            ]);
+        }
     }
 
     public function discoverPlaylist()
@@ -97,32 +71,9 @@ class UserController extends Controller
 
     public function history()
     {
-        // fetch all history from current user
-        $history = History::with('music')->where("user_id", auth()->user()->id)->get();    
-        $hasil = [] ;
-
-        // loop all history
-        foreach ($history as $isi) {
-            $playedDate = Carbon::parse($isi->played_at)->format('l, d M Y');
-            $playedTime = Carbon::parse($isi->played_at)->format('H:i:s');
-
-            // saved based on date and time
-            $hasil[$playedDate] [$playedTime]= $isi;
-        
-        }
         return view('user.history', [
             "title" => "history",
-            "active" => "history",
-            "histories" => $hasil
-        ]);
-        
-    }
-
-    public function library()
-    {
-        return view('user.library', [
-            "title" => "library",
-            "active" => "library"
+            "active" => "history"
         ]);
     }
 
@@ -155,7 +106,7 @@ class UserController extends Controller
     {
         $song = DB::table('music')->where('genre', 'Kpop')->get();
 
-        return view('user.searchResult.kpopResult', ['kpop' => $song])
+        return view('user.searchResult.kpopResult', ['pop' => $song])
             ->with('genreKpop', 'genreKpop searched');
     }
 
