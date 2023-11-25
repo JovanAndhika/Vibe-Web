@@ -1,6 +1,6 @@
 <!-- Playlist 1 -->
 @foreach ($discovers as $d)
-@if ($d->id != 'none')
+@if ($d->id != 1)
 <div class="col-md-4 mb-4">
     <div class="card bg-warning text-dark">
         <img src="{{ asset('img/search/classicalCover.png') }}" class="card-img-top" alt="Playlist 1">
@@ -35,7 +35,7 @@
                         <tr>
                             <td>{{ $music['title'] }}<!-- @JackGame31 @JovanAndhika ini title --></td>
                             <td>{{ $music['artist'] }}<!-- @JackGame31 @JovanAndhika ini artist --></td>
-                            <td><a href=""><i class="bi bi-play-fill text-white"></i></a></td>
+                            <td><a href="{{ route('user.nowPlaying') }}?music_id={{ $music['id'] }}"><i class="bi bi-play-fill text-white"></i></a></td>
                         </tr>
                     @endforeach
                     </tbody>

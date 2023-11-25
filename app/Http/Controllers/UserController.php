@@ -34,7 +34,7 @@ class UserController extends Controller
 
         $songs = collect([]);
         foreach ($music_discoveries as $m) {
-            $songs->put($m->id, ['title' => $m->title, 'artist' => $m->artist, 'genre' => $m->genre, 'file_path' => $m->file_path, 'release_date' => $m->release_date, 'category_id' => $m->category_id]);
+            $songs->put($m->id, ['id'=> $m->id, 'title' => $m->title, 'artist' => $m->artist, 'genre' => $m->genre, 'file_path' => $m->file_path, 'release_date' => $m->release_date, 'category_id' => $m->category_id]);
         }
         
 
