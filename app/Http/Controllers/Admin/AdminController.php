@@ -275,6 +275,8 @@ class AdminController extends Controller
 
     public function destroy_newgenre(Newgenre $newgenre)
     {
+        $data = Music::where('genre', $newgenre->new_genre)->update(['genre' => 'no genre']);
+
         Newgenre::destroy($newgenre->id);
         return back();
     }
