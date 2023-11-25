@@ -158,9 +158,9 @@
             </div>
 
             <div class="col-9">
-                <div class="container mt-4">
+                <div class="container-fluid mt-4">
                     <h2 class="text-white">Discover Playlists</h2>
-                    <div class="row">
+                    <div class="row d-inline-block">
                         <!-- Playlist 1 -->
 
                         <!-- Playlist 2
@@ -197,9 +197,6 @@
                         </div>
                     </div>
                 </div> -->
-
-                        <div class="col scrollable-div p-4" id="jumphere">
-                        </div>
 
                         @include('user.partials.modalDiscoverPlaylist')
                     </div>
