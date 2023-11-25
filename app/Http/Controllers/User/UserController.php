@@ -112,8 +112,8 @@ class UserController extends Controller
         // cek semua history
         foreach ($history as $isi) {
             // mengakses tanggal dan waktu
-            $playedDate = Carbon::parse($isi->played_at)->format('l, d M Y');
-            $playedTime = Carbon::parse($isi->played_at)->format('H:i:s');
+            $playedDate = Carbon::parse($isi->created_at)->format('l, d M Y');
+            $playedTime = Carbon::parse($isi->created_at)->format('H:i:s');
 
             // menyimpan di array berdasarkan tanggal dan waktu
             $hasil[$playedDate][$playedTime] = $isi;
@@ -135,14 +135,9 @@ class UserController extends Controller
         // jika music ditemukan
         if ($music) {
             // disimpan ke history
-            $currentDay = Carbon::now()->format('D');
-            $currentDateTime = Carbon::now()->format('Y-m-d H:i:s');
-
             History::create([
                 'music_id' => $music->id,
-                'user_id' => auth()->user()->id,
-                'played_at' => $currentDateTime,
-                'played_day' => $currentDay
+                'user_id' => auth()->user()->id
             ]);
         }
     }

@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('music_id');
             $table->bigInteger('user_id');
-            $table->dateTime('played_at')->nullable();
-            $table->string('played_day')->nullable();
             $table->timestamps();
         });
     }
