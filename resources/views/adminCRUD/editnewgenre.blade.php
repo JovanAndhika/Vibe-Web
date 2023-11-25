@@ -92,18 +92,18 @@
 
         <div class="mt-4 mb-3">
 
-            <form method="post" action="{{route('admin.update_adddiscovery', ['discovery' => $discovery])}}">
+            <form method="post" action="{{route('admin.update_newgenre', ['newgenre' => $newgenre])}}">
                 <div class="P-5">
                     @csrf
                     @method('put')
                     <div class="col-md-3 mt-3 mb-3">
-                        <label class="form-label">Category-id</label>
-                        <input type="text" class="form-control form-control-md" aria-label="Default disable example" value="{{$discovery->id}}" disabled>
+                        <label class="form-label">new_genre id</label>
+                        <input type="text" class="form-control form-control-md" aria-label="Default disable example" value="{{$newgenre->id}}" disabled>
                     </div>
 
                     <div class="col-md-3 mt-3 mb-3">
                         <label class="form-label">Nama baru category</label>
-                        <input type="text" class="form-control form-control-md" name="disc_category" aria-label="Default disable example" value="{{$discovery->disc_category}}" placeholder="Insert new name">
+                        <input type="text" class="form-control form-control-md" name="new_genre" aria-label="Default disable example" value="{{$newgenre->new_genre}}" placeholder="Insert new name">
                     </div>
 
                     <div>

@@ -84,18 +84,39 @@
         }
     </style>
 
-    @if (session()->has('successAdd'))
-    <div class="alert alert-success" role="alert">
-        category berhasil ditambah
-    </div>
-    @elseif (session()->has('successGenre'))
-    <div class="alert alert-success" role="alert">
-        genre berhasil ditambah
+    @if($errors->any())
+    <div class="alert alert-danger container mt-3" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
     </div>
     @endif
 
-    <section class="p-5">
-        <div class="px-5 container-fluid mb-4">
+    @if (session()->has('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
+
+    @if (session()->has('successAdd'))
+    <div class="container mt-3">
+        <div class="alert alert-success" role="alert">
+            category berhasil ditambah
+        </div>
+    </div>
+    @elseif (session()->has('successGenre'))
+    <div class="container mt-3">
+        <div class="alert alert-success" role="alert">
+            genre berhasil ditambah
+        </div>
+    </div>
+    @endif
+
+
+    <section class="container mt-5">
+        <div class="container-fluid mb-4">
             <form method="post" action="{{ route('admin.store_adddiscovery') }}">
                 @csrf
                 @method('post')
@@ -103,26 +124,28 @@
                     <label class="form-label">Add discovery</label>
                     <input type="text" class="form-control" name="disc_category" placeholder="add new discovery">
                 </div>
-                <input type="submit" class="btn btn-primary" value="Add">
+                <input type="submit" class="btn btn-primary" name="addDiscovery" value="Add discovery">
             </form>
         </div>
 
-        <div class="px-5 container-fluid">
+
+        <div class="container-fluid">
             <form method="post" action="{{ route('admin.store_newgenre') }}">
                 @csrf
                 @method('post')
                 <div class="mb-3 col-lg-6">
                     <label class="form-label">Add genre</label>
-                    <input type="text" class="form-control" name="disc_category" placeholder="add new genre">
+                    <input type="text" class="form-control" name="new_genre" placeholder="add new genre">
                 </div>
-                <input type="submit" class="btn btn-primary" value="Add">
+                <input type="submit" class="btn btn-primary" name="addGenre" value="Add genre">
             </form>
         </div>
     </section>
 
 
 
-    <section class="mt-5">
+    <section class="mt-5 mb-5 p-5">
+        <h2>Discovery</h2>
         <div class="px-5 container-fluid table-responsive-md">
             <table id="category_list" class="table table-striped dataTable no-footer" style="width:100%">
                 <thead>
@@ -158,7 +181,8 @@
         </div>
     </section>
 
-    <section class="mt-5">
+    <section class="mt-5 p-5">
+        <h2>Newgenre</h2>
         <div class="px-5 container-fluid table-responsive-md">
             <table id="newgenre_list" class="table table-striped dataTable no-footer" style="width:100%">
                 <thead>

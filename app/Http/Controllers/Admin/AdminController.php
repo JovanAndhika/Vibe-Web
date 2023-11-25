@@ -160,7 +160,7 @@ class AdminController extends Controller
             ->join('discoveries', 'music.category_id', '=', 'discoveries.id')
             ->select('music.*', 'discoveries.disc_category')
             ->get();
-            
+
         return view('adminCRUD.admindiscover', ['musics' => $musics]);
     }
 
@@ -188,70 +188,82 @@ class AdminController extends Controller
             ->value('id');
     }
 
-    public function adddiscovery(){
+    public function adddiscovery()
+    {
         $data = Discovery::all();
         $newgenres = Newgenre::all();
         return view('adminCRUD.adddiscovery', ['discoveries' => $data, 'newgenres' => $newgenres]);
     }
 
 
-    public function store_adddiscovery(Request $request){
+    public function store_adddiscovery(Request $request)
+    {
+        if ($request->has('addDiscovery')) {
+            $data = $request->validate([
+                'disc_category' => 'required|unique:discoveries,disc_category'
+            ]);
+            Discovery::create($data);
+            return redirect(route('admin.adddiscovery'))->with('successAdd', 'category berhasil ditambah');
+        }
 
-        $data = $request->validate([
-            'disc_category' => 'required'
-        ]);
-
-        Discovery::create($data);
-        return redirect(route('admin.adddiscovery'))->with('successAdd', 'category berhasil ditambah');
     }
 
-    public function edit_adddiscovery(Discovery $discovery){
+    public function edit_adddiscovery(Discovery $discovery)
+    {
 
         return view('adminCRUD.editdiscovercategory', ['discovery' => $discovery]);
     }
 
-    public function update_adddiscovery(Request $request, Discovery $discovery){
+    public function update_adddiscovery(Request $request, Discovery $discovery)
+    {
         $data = $request->validate([
-            'disc_category' => 'required'
+            'disc_category' => 'required|unique:discoveries,disc_category'
         ]);
 
         $discovery->update($data);
         return back()->with('success', 'data berhasil diupdate');
     }
 
-    public function destroy_adddiscovery(Discovery $discovery){
+    public function destroy_adddiscovery(Discovery $discovery)
+    {
         Discovery::destroy($discovery->id);
         return back();
     }
 
 
     //CRUD NEW GENRE
-    public function store_newgenre(Request $request){
+    public function store_newgenre(Request $request)
+    {
+        if ($request->has('addGenre')) {
+            $data = $request->validate([
+                'new_genre' => 'required|unique:newgenres,new_genre'
+            ]);
 
-        $data = $request->validate([
-            'new_genre' => 'required'
-        ]);
-
-        Discovery::create($data);
-        return redirect(route('admin.newgenre'))->with('successGenre', 'genre berhasil ditambah');
+            Newgenre::create($data);
+            return redirect(route('admin.adddiscovery'))->with('successGenre', 'genre berhasil ditambah');
+        }
     }
 
-    public function edit_newgenre(Newgenre $newgenre){
 
-        return view('adminCRUD.editdiscovercategory', ['newgenre' => $newgenre]);
+    public function edit_newgenre(Newgenre $newgenre)
+    {
+
+        return view('adminCRUD.editnewgenre', ['newgenre' => $newgenre]);
     }
 
-    public function update_newgenre(Request $request, Newgenre $newgenre){
+    public function update_newgenre(Request $request, Newgenre $newgenre)
+    {
         $data = $request->validate([
-            'new_genre' => 'required'
+            'new_genre' => 'required|unique:newgenres,new_genre'
         ]);
 
         $newgenre->update($data);
         return back()->with('success', 'data berhasil diupdate');
     }
 
-    public function destroy_newgenre(Newgenre $newgenre){
-        Discovery::destroy($newgenre->id);
+    public function destroy_newgenre(Newgenre $newgenre)
+    {
+        Newgenre::destroy($newgenre->id);
         return back();
     }
 }
