@@ -23,15 +23,25 @@ class UserController extends Controller
     {
         $musics = collect([]);
 
+
         // Pastikan ada request 'artist' atau 'title' dan keduanya tidak kosong
         if (request()->filled('artist') || request()->filled('title')) {
             $musics = Music::latest()->filter(request(['artist', 'title']))->get();
         }
 
+        //BUAT DISCOVERY
+        $music_discoveries = Music::all();
+        $discovers = DB::table('discoveries')
+            ->get();
+
+        
+
         return view('user.search', [
             "title" => "search",
             "active" => "search",
-            "musics" => $musics
+            "musics" => $musics,
+            "discovers" => $discovers,
+            "music_discoveries" => $music_discoveries
         ]);
     }
 
@@ -145,7 +155,7 @@ class UserController extends Controller
     {
         $song = DB::table('music')->where('genre', 'Kpop')->get();
 
-        return view('user.searchResult.kpopResult', ['pop' => $song])
+        return view('user.searchResult.kpopResult', ['kpop' => $song])
             ->with('genreKpop', 'genreKpop searched');
     }
 

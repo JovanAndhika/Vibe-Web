@@ -45,11 +45,15 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/viewuser">View User</a>
+                        <a class="nav-link active" href="#">View User</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/viewadmin">View Admin</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/discover">Discover</a>
                     </li>
 
                     {{-- TODO: Jovan sempurnakan tampilannya --}}

@@ -14,7 +14,9 @@ class Music extends Model
         'artist',
         'genre',
         'file_path',
-        'release_date'
+        'release_date',
+        'disc_category',
+        'disc_number'
     ];
 
     // untuk filter search

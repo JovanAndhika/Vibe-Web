@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
+use App\Models\Discovery;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -29,6 +30,11 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'is_admin' => false,
             'date_of_birth' => '2000-01-01'
+        ]);
+
+        //Default untuk discovery
+        Discovery::create([
+            'disc_category' => 'none',
         ]);
     }
 }

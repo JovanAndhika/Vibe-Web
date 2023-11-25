@@ -63,10 +63,17 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/search/dance', [UserController::class, 'dance'])->name('dance');
         //PONK
         Route::post('/search/ponk', [UserController::class, 'ponk'])->name('ponk');
+
+        //Discover
+        Route::group(['middleware' => 'user', 'prefix' => '/discover', 'as' => 'discover.'], function () {
+        });
     });
+
+
 
     // role admin
     Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
+        //CRUD
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::get('/addsong', [AdminController::class, 'add_song'])->name('add');
         Route::post('/store', [AdminController::class, 'store_song'])->name('store');
@@ -82,6 +89,10 @@ Route::group(['middleware' => 'auth'], function () {
         //REACTIVATE
         Route::post('/reactivateuser/{user}', [AdminController::class, 'reactivate_user'])->name('reactivateuser');
         Route::post('/reactivateadmin/{user}', [AdminController::class, 'reactivate_admin'])->name('reactivateadmin');
+        //DISCOVER
+        Route::get('/discover', [AdminController::class, 'discover'])->name('discover');
+        Route::get('/editdiscover/{music}', [AdminController::class, 'edit_discover'])->name('editdiscover');
+        Route::put('/updatediscover/{music}', [AdminController::class, 'update_discover'])->name('updatediscover');
     });
 
     // logout
