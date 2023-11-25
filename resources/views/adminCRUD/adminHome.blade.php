@@ -66,7 +66,6 @@
               <button type="submit" class="nav-link">Logout</button>
             </form>
           </li>
-
         </ul>
       </div>
     </div>

@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\User\PlaylistController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\User\MusicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,29 +46,36 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/discover', [UserController::class, 'search'])->name('search');
         Route::get('/nowPlaying', [UserController::class, 'nowPlaying'])->name('nowPlaying');
         Route::get('/history', [UserController::class, 'history'])->name('history');
-        Route::get('/library', [UserController::class, 'library'])->name('library');
 
         // Search
-        //JAZZ
+        // JAZZ
         Route::post('/search/jazz', [UserController::class, 'jazz'])->name('jazz');
-        //POP
+        // POP
         Route::post('/search/pop', [UserController::class, 'pop'])->name('pop');
-        //DANGDUT
+        // DANGDUT
         Route::post('/search/dangdut', [UserController::class, 'dangdut'])->name('dangdut');
-        //KPOP
+        // KPOP
         Route::post('/search/kpop', [UserController::class, 'kpop'])->name('kpop');
-        //ROCK
+        // ROCK
         Route::post('/search/rock', [UserController::class, 'rock'])->name('rock');
-        //CLASSICAL
+        // CLASSICAL
         Route::post('/search/classical', [UserController::class, 'classical'])->name('classical');
-        //DANCE
+        // DANCE
         Route::post('/search/dance', [UserController::class, 'dance'])->name('dance');
-        //PONK
+        // PONK
         Route::post('/search/ponk', [UserController::class, 'ponk'])->name('ponk');
 
-        //Discover
+        // Discover
         Route::group(['middleware' => 'user', 'prefix' => '/discover', 'as' => 'discover.'], function () {
         });
+
+        // History
+        // simpan history, jika perlu akses, harus menggunakan ajax
+        Route::post('/history/{music_id}', [UserController::class, 'storeHistory'])->name('history.store');
+
+        // Playlist
+        Route::get('/musics', [PlaylistController::class, 'getAllMusics'])->name('musics');
+        Route::resource('playlists', PlaylistController::class);
     });
 
 
