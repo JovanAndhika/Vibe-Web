@@ -102,7 +102,12 @@
                     </div>
 
                     <div class="col-md-3 mt-3 mb-3">
-                        <label class="form-label">Nama category</label>
+                        <label class="form-label">Old_category</label>
+                        <input type="text" class="form-control form-control-md" aria-label="Default disable example" value="{{$old_category}}" disabled>
+                    </div>
+
+                    <div class="col-md-3 mt-3 mb-3">
+                        <label class="form-label">Ganti category</label>
                         <select class="form-select form-select-md" name="disc_category" aria-label=".form-select-md example">
                             @foreach ($discoveries as $d)
                             <option value="{{ $d->disc_category }}">{{ $d->disc_category }}</option>

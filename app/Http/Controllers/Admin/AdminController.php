@@ -24,7 +24,8 @@ class AdminController extends Controller
 
     public function add_song()
     {
-        return view('adminCRUD.addsong');
+        $data = Newgenre::all();
+        return view('adminCRUD.addsong', ['newgenres' => $data]);
     }
 
     public function store_song(Request $request)
@@ -53,8 +54,8 @@ class AdminController extends Controller
 
     public function edit_song(Music $music)
     {
-
-        return view('adminCRUD.editsong', ['music' => $music]);
+        $data = Newgenre::all();
+        return view('adminCRUD.editsong', ['music' => $music, 'newgenres' => $data]);
     }
 
     public function update_song(Music $music, Request $request)
@@ -154,6 +155,8 @@ class AdminController extends Controller
         return redirect(route('admin.viewadmin', ['successdeactivate' => $query]));
     }
 
+
+    //EDIT DISCOVERY LAGU
     public function discover()
     {
         $musics = DB::table('music')
@@ -167,13 +170,18 @@ class AdminController extends Controller
     public function edit_discover(Music $music)
     {
         $discoveries = Discovery::all();
-
-        return view('adminCRUD.editdiscover', ['music' => $music, 'discoveries' => $discoveries]);
+        $old_category = Discovery::where('id', $music->category_id)->value('disc_category');
+        
+        return view('adminCRUD.editdiscover', ['music' => $music, 'discoveries' => $discoveries, 'old_category' => $old_category]);
     }
 
 
     public function update_discover(Request $request, Music $music)
     {
+        $validasi = $request->validate([
+            'disc_category' => 'required'
+        ]);
+
         $data = AdminController::getId($request->input('disc_category'));
         DB::table('music')
             ->where('id', $music->id)
@@ -188,9 +196,12 @@ class AdminController extends Controller
             ->value('id');
     }
 
+
+
+    //BAGIAN UNTUK CRUD DISCOVERY
     public function adddiscovery()
     {
-        $data = Discovery::all();
+        $data = Discovery::where('id', '!=', 1)->get();
         $newgenres = Newgenre::all();
         return view('adminCRUD.adddiscovery', ['discoveries' => $data, 'newgenres' => $newgenres]);
     }
@@ -225,7 +236,8 @@ class AdminController extends Controller
     }
 
     public function destroy_adddiscovery(Discovery $discovery)
-    {
+    {   
+        $data = Music::where('category_id', $discovery->id)->update(['category_id' => 1]);
         Discovery::destroy($discovery->id);
         return back();
     }

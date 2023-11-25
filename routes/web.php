@@ -65,10 +65,6 @@ Route::group(['middleware' => 'auth'], function () {
         // PONK
         Route::post('/search/ponk', [UserController::class, 'ponk'])->name('ponk');
 
-        // Discover
-        Route::group(['middleware' => 'user', 'prefix' => '/discover', 'as' => 'discover.'], function () {
-        });
-
         // History
         // simpan history, jika perlu akses, harus menggunakan ajax
         Route::post('/history/{music_id}', [UserController::class, 'storeHistory'])->name('history.store');

@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('genre');
             $table->string('file_path')->nullable(true);
             $table->date('release_date');
-            $table->unsignedBigInteger('category_id')->nullable(true);
-            $table->foreign('category_id')->references('id')->on('discoveries')->onDelete('set null');
+            $table->unsignedBigInteger('category_id')->default(1);
+            $table->foreign('category_id')->references('id')->on('discoveries')->onDelete('cascade');
         });
     }
 

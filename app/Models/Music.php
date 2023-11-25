@@ -14,8 +14,7 @@ class Music extends Model
         'genre',
         'file_path',
         'release_date',
-        'disc_category',
-        'disc_number'
+        'category_id'
     ];
     public $timestamps = false;
     

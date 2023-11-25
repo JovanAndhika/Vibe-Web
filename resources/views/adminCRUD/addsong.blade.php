@@ -125,6 +125,9 @@
                         <option value="Classical">Classical</option>
                         <option value="Dance">Dance</option>
                         <option value="Phonk">Phonk</option>
+                        @foreach ($newgenres as $newgenre)
+                            <option value="{{ $newgenre->new_genre }}">{{ $newgenre->new_genre }}</option>
+                        @endforeach
                     </select>
                     <br>
                 </div>

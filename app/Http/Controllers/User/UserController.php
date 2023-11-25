@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\User;
 use Carbon\Carbon;
 use App\Models\Music;
-use App\Models\Discovery;
 use App\Models\History;
+use App\Models\Newgenre;
 use App\Models\Playlist;
+use App\Models\Discovery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -45,6 +46,11 @@ class UserController extends Controller
             $temp = $songs->where('category_id', $d->id);
             $collect_all_music->put($d->id, $temp);
         }
+
+
+        //BUAT NEWGENRE
+        $newgenres = Newgenre::all();
+        
     
         return view('user.search', [
             "title" => "search",
@@ -205,4 +211,6 @@ class UserController extends Controller
         return view('user.searchResult.ponkResult', ['ponk' => $song])
             ->with('genrePonk', 'genrePonk searched');
     }
+
+
 }
