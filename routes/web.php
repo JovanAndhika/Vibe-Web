@@ -101,6 +101,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit_adddiscovery/{discovery}', [AdminController::class, 'edit_adddiscovery'])->name('edit_adddiscovery');
         Route::put('/update_adddiscovery/{discovery}', [AdminController::class, 'update_adddiscovery'])->name('update_adddiscovery');
         Route::delete('/destroy_adddiscovery/{discovery}', [AdminController::class, 'destroy_adddiscovery'])->name('destroy_adddiscovery');
+
+
+        //ADD GENRE
+        Route::post('/store_newgenre', [AdminController::class, 'store_newgenre'])->name('store_newgenre');
+        Route::get('/edit_newgenre/{newgenre}', [AdminController::class, 'edit_newgenre'])->name('edit_newgenre');
+        Route::put('/update_newgenre/{newgenre}', [AdminController::class, 'update_newgenre'])->name('update_newgenre');
+        Route::delete('/destroy_newgenre/{newgenre}', [AdminController::class, 'destroy_newgenre'])->name('destroy_newgenre');
     });
 
     // logout

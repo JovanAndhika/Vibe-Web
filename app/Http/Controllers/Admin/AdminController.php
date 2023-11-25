@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Models\Music;
+use App\Models\Newgenre;
+use App\Models\Discovery;
 use Illuminate\Http\Request;
+use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Http\Middleware\Admin;
-use App\Models\Discovery;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
@@ -189,7 +190,8 @@ class AdminController extends Controller
 
     public function adddiscovery(){
         $data = Discovery::all();
-        return view('adminCRUD.adddiscovery', ['discoveries' => $data]);
+        $newgenres = Newgenre::all();
+        return view('adminCRUD.adddiscovery', ['discoveries' => $data, 'newgenres' => $newgenres]);
     }
 
 
@@ -219,6 +221,37 @@ class AdminController extends Controller
 
     public function destroy_adddiscovery(Discovery $discovery){
         Discovery::destroy($discovery->id);
+        return back();
+    }
+
+
+    //CRUD NEW GENRE
+    public function store_newgenre(Request $request){
+
+        $data = $request->validate([
+            'new_genre' => 'required'
+        ]);
+
+        Discovery::create($data);
+        return redirect(route('admin.newgenre'))->with('successGenre', 'genre berhasil ditambah');
+    }
+
+    public function edit_newgenre(Newgenre $newgenre){
+
+        return view('adminCRUD.editdiscovercategory', ['newgenre' => $newgenre]);
+    }
+
+    public function update_newgenre(Request $request, Newgenre $newgenre){
+        $data = $request->validate([
+            'new_genre' => 'required'
+        ]);
+
+        $newgenre->update($data);
+        return back()->with('success', 'data berhasil diupdate');
+    }
+
+    public function destroy_newgenre(Newgenre $newgenre){
+        Discovery::destroy($newgenre->id);
         return back();
     }
 }

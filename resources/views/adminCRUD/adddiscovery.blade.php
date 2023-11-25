@@ -88,16 +88,32 @@
     <div class="alert alert-success" role="alert">
         category berhasil ditambah
     </div>
+    @elseif (session()->has('successGenre'))
+    <div class="alert alert-success" role="alert">
+        genre berhasil ditambah
+    </div>
     @endif
 
     <section class="p-5">
-        <div class="px-5 container-fluid">
+        <div class="px-5 container-fluid mb-4">
             <form method="post" action="{{ route('admin.store_adddiscovery') }}">
                 @csrf
                 @method('post')
                 <div class="mb-3 col-lg-6">
                     <label class="form-label">Add discovery</label>
                     <input type="text" class="form-control" name="disc_category" placeholder="add new discovery">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Add">
+            </form>
+        </div>
+
+        <div class="px-5 container-fluid">
+            <form method="post" action="{{ route('admin.store_newgenre') }}">
+                @csrf
+                @method('post')
+                <div class="mb-3 col-lg-6">
+                    <label class="form-label">Add genre</label>
+                    <input type="text" class="form-control" name="disc_category" placeholder="add new genre">
                 </div>
                 <input type="submit" class="btn btn-primary" value="Add">
             </form>
@@ -142,6 +158,42 @@
         </div>
     </section>
 
+    <section class="mt-5">
+        <div class="px-5 container-fluid table-responsive-md">
+            <table id="newgenre_list" class="table table-striped dataTable no-footer" style="width:100%">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>id</th>
+                        <th>new_genre</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach($newgenres as $genre)
+                    <tr>
+                        <td></td>
+                        <td>{{$genre->id}}</td>
+                        <td>{{$genre->new_genre}}</td>
+                        <td>
+                            <div class="mt-1 d-grid gap-2 d-md-flex justify-content-md-start">
+                                <a href="{{ route('admin.edit_newgenre', ['newgenre' => $genre]) }}" class="btn btn-secondary btn-sm">Edit</a>
+                                <form method="post" action="{{ route('admin.destroy_newgenre', ['newgenre' => $genre]) }}">
+                                    @method('delete')
+                                    @csrf
+                                    <button class="confirm-delete-discovery btn btn-danger btn-sm" name="delete_category" id="delete_category">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+
 
     <script>
         $(document).ready(function() {
@@ -150,7 +202,7 @@
                 event.preventDefault();
                 Swal.fire({
                     title: 'Are you sure?',
-                    text: "You will delete category!",
+                    text: "You will delete data!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
@@ -161,13 +213,14 @@
                         form.submit();
                         Swal.fire(
                             'Deleted!',
-                            'category is deleted.',
+                            'data is deleted.',
                             'success'
                         )
                     }
                 })
             })
 
+            $('#newgenre_list').DataTable();
             $('#category_list').DataTable();
         });
 

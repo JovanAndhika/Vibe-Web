@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Music;
+use App\Models\Discovery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -29,8 +30,7 @@ class UserController extends Controller
 
         //BUAT DISCOVERY
         $music_discoveries = Music::all();
-        $discovers = DB::table('discoveries')
-            ->get();
+        $discovers = Discovery::all();
 
         $songs = collect([]);
         foreach ($music_discoveries as $m) {
