@@ -154,6 +154,18 @@
                             <button type="submit"><img src="{{ asset('img/search/phonkCover.png') }}" alt="" class="img-fluid rounded genre" style="object-fit: cover;"></button>
                         </form>
                     </div>
+
+                    @foreach ($newgenres as $newgenre)
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                        <form method="post" action="{{ route( 'user.newgenre', ['newgenre' => $newgenre] ) }}">
+                            @csrf
+                            @method('post')
+                            <button type="submit">
+                                <p class="img-fluid rounded genre" style="object-fit: cover;">{{ $newgenre->new_genre }}</p>
+                            </button>
+                        </form>
+                    </div>
+                    @endforeach
                 </div>
             </div>
 

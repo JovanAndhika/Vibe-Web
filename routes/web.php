@@ -64,6 +64,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/search/dance', [UserController::class, 'dance'])->name('dance');
         // PONK
         Route::post('/search/ponk', [UserController::class, 'ponk'])->name('ponk');
+        // NEW GENRE
+        Route::post('/search/{newgenre}', [UserController::class, 'newgenre'])->name('newgenre');
 
         // History
         // simpan history, jika perlu akses, harus menggunakan ajax

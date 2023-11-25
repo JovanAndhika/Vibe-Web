@@ -47,20 +47,20 @@ class UserController extends Controller
             $collect_all_music->put($d->id, $temp);
         }
 
+        $allNewGenres = Newgenre::all();
 
-        //BUAT NEWGENRE
-        $newgenres = Newgenre::all();
-        
-    
+
         return view('user.search', [
             "title" => "search",
             "active" => "search",
             "musics" => $musics,
             "discovers" => $discovers,
             "music_discoveries" => $music_discoveries,
-            "collect_all_music" => $collect_all_music
+            "collect_all_music" => $collect_all_music,
+            "newgenres" => $allNewGenres
         ]);
     }
+
 
     public function nowPlaying()
     {
@@ -210,6 +210,19 @@ class UserController extends Controller
 
         return view('user.searchResult.ponkResult', ['ponk' => $song])
             ->with('genrePonk', 'genrePonk searched');
+    }
+
+
+    public function newgenre(Newgenre $newgenre){
+
+        $value_newgenre = $newgenre->new_genre;
+       
+        $data = DB::table('music')
+        ->join('newgenres', 'music.genre', '=', 'newgenres.new_genre')
+        ->where('music.genre', $value_newgenre)
+        ->get();
+
+        return view('user.searchResult.newgenreResult', ['newgenre' => $newgenre, 'songs' => $data]);
     }
 
 
