@@ -46,6 +46,10 @@
                         <a class="nav-link" href="/admin/discover">Discover</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/admin/adddiscovery">Add Discover</a>
+                    </li>
+
                 </ul>
             </div>
         </div>

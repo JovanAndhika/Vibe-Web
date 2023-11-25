@@ -89,10 +89,18 @@ Route::group(['middleware' => 'auth'], function () {
         //REACTIVATE
         Route::post('/reactivateuser/{user}', [AdminController::class, 'reactivate_user'])->name('reactivateuser');
         Route::post('/reactivateadmin/{user}', [AdminController::class, 'reactivate_admin'])->name('reactivateadmin');
-        //DISCOVER
+        //DISCOVER LAGU
         Route::get('/discover', [AdminController::class, 'discover'])->name('discover');
         Route::get('/editdiscover/{music}', [AdminController::class, 'edit_discover'])->name('editdiscover');
         Route::put('/updatediscover/{music}', [AdminController::class, 'update_discover'])->name('updatediscover');
+
+
+        //ADD DISCOVERY
+        Route::get('/adddiscovery', [AdminController::class, 'adddiscovery'])->name('adddiscovery');
+        Route::post('/store_adddiscovery', [AdminController::class, 'store_adddiscovery'])->name('store_adddiscovery');
+        Route::get('/edit_adddiscovery/{discovery}', [AdminController::class, 'edit_adddiscovery'])->name('edit_adddiscovery');
+        Route::put('/update_adddiscovery/{discovery}', [AdminController::class, 'update_adddiscovery'])->name('update_adddiscovery');
+        Route::delete('/destroy_adddiscovery/{discovery}', [AdminController::class, 'destroy_adddiscovery'])->name('destroy_adddiscovery');
     });
 
     // logout

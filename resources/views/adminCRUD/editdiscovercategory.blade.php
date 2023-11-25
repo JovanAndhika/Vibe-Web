@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Edit Song </title>
+    <title> Edit AddDiscover </title>
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
@@ -47,7 +47,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/adddiscovery">Add Discover</a>
+                        <a class="nav-link active" href="/admin/adddiscovery">Add Discover</a>
                     </li>
 
                 </ul>
@@ -73,7 +73,7 @@
 
     <div class="container-md p-3">
         <br>
-        <h1>Edit Song</h1>
+        <h1>Edit Discover</h1>
         @if($errors->any())
         <div class="alert alert-danger" role="alert">
             <ul>
@@ -92,65 +92,26 @@
 
         <div class="mt-4 mb-3">
 
-            <form method="post" action="{{route('admin.update', ['music' => $music])}}" enctype="multipart/form-data">
-                @csrf
-                @method('put')
-                <div class="col-lg-7">
-                    <label class="form-label">Title</label>
-                    <input class="form-control" type="text" autofocus="true" name="title" id="title" placeholder="Insert title" value="{{$music->title}}">
-                    <br>
-                </div>
+            <form method="post" action="{{route('admin.update_adddiscovery', ['discovery' => $discovery])}}">
+                <div class="P-5">
+                    @csrf
+                    @method('put')
+                    <div class="col-md-3 mt-3 mb-3">
+                        <label class="form-label">Category-id</label>
+                        <input type="text" class="form-control form-control-md" aria-label="Default disable example" value="{{$discovery->id}}" disabled>
+                    </div>
 
-                <div class="col-lg-7">
-                    <label class="form-label">Artist</label>
-                    <input class="form-control" type="text" name="artist" id="artist" placeholder="Insert artist" value="{{$music->artist}}">
-                    <br>
-                </div>
+                    <div class="col-md-3 mt-3 mb-3">
+                        <label class="form-label">Nama baru category</label>
+                        <input type="text" class="form-control form-control-md" name="disc_category" aria-label="Default disable example" value="{{$discovery->disc_category}}" placeholder="Insert new name">
+                    </div>
 
-                <div class="col-lg-7">
-                    <label class="form-label">Genre</label>
-                    <select class="form-select" aria-label="Default select example" name="genre" id="genre" placeholder="Choose genre">
-                        <option selected value="{{$music->genre}}">{{$music->genre}}</option>
-                        <option value="Jazz">Jazz</option>
-                        <option value="Pop">Pop</option>
-                        <option value="Dangdut">Dangdut</option>
-                        <option value="Kpop">Kpop</option>
-                        <option value="Rock">Rock</option>
-                        <option value="Classical">Classical</option>
-                        <option value="Dance">Dance</option>
-                        <option value="Phonk">Phonk</option>
-                    </select>
-                    <br>
-                </div>
-
-                <div class="col-lg-7">
-                    <label for="choose" class="form-label">Insert song file .mp3</label>
-                    <input type="hidden" name="oldsong" value="{{$music->file_path}}">
-                    @if ($music->file_path)
-                    <p class="mb-3 col-lg-7"><?= $music->title . " - " . $music->artist . " - " . $music->file_path ?></p>
-                    @else
-                    <p class="mb-3 col-lg-7">No music</p>
-                    @endif
-                    <input class="form-control" type="file" id="chfile" name="chfile">
-                    <br>
-                </div>
-
-                <div class="col-lg-7">
-                    <label class="form-label">Release date</label>
-                    <input class="form-control" type="date" name="release_date" id="release_date" placeholder="Insert genre" value="{{$music->release_date}}">
-                    <br>
-                </div>
-
-                <div>
-                    <input class="btn btn-primary btn-md col-lg-1 mt-3" type="submit" name="submit" id="submit" value="update">
-                </div>
-
+                    <div>
+                        <input class="submit-addDiscover btn btn-primary btn-md col-lg-1 mt-3" type="submit" name="submit" id="submit" value="Update">
+                    </div>
             </form>
-
         </div>
     </div>
-
-
 </body>
 
 </html>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> View Admin </title>
+    <title> Add Discovery </title>
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
@@ -19,12 +19,9 @@
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 </head>
 
 <body>
-
-
     <nav class="navbar navbar-expand-lg bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Menu</a>
@@ -49,7 +46,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">View Admin</a>
+                        <a class="nav-link" href="/admin/viewadmin">View Admin</a>
                     </li>
 
                     <li class="nav-item">
@@ -73,8 +70,6 @@
         </div>
     </nav>
 
-    <br>
-
     <style>
         .bg-body-primary {
             background-color: blue;
@@ -89,41 +84,53 @@
         }
     </style>
 
+    @if (session()->has('successAdd'))
+    <div class="alert alert-success" role="alert">
+        category berhasil ditambah
+    </div>
+    @endif
+
+    <section class="p-5">
+        <div class="px-5 container-fluid">
+            <form method="post" action="{{ route('admin.store_adddiscovery') }}">
+                @csrf
+                @method('post')
+                <div class="mb-3 col-lg-6">
+                    <label class="form-label">Add discovery</label>
+                    <input type="text" class="form-control" name="disc_category" placeholder="add new discovery">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Add">
+            </form>
+        </div>
+    </section>
 
 
-    <section class="my-4">
+
+    <section class="mt-5">
         <div class="px-5 container-fluid table-responsive-md">
-            <table id="user_list" class="table table-striped dataTable no-footer" style="width:100%">
+            <table id="category_list" class="table table-striped dataTable no-footer" style="width:100%">
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Date of birth</th>
-                        <th>Activation</th>
+                        <th>id</th>
+                        <th>disc_category</th>
                         <th>Status</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    @foreach($users as $user)
+                    @foreach($discoveries as $discovery)
                     <tr>
                         <td></td>
-                        <td>{{$user->username}}</td>
-                        <td>{{$user->email}}</td>
-                        <td>{{$user->date_of_birth}}</td>
-                        <td>{{$user->activation}}</td>
+                        <td>{{$discovery->id}}</td>
+                        <td>{{$discovery->disc_category}}</td>
                         <td>
                             <div class="mt-1 d-grid gap-2 d-md-flex justify-content-md-start">
-                                <form action="{{route('admin.reactivateadmin', ['user' => $user->id])}}" method="post">
-                                    @method('post')
+                                <a href="{{ route('admin.edit_adddiscovery', ['discovery' => $discovery]) }}" class="btn btn-secondary btn-sm">Edit</a>
+                                <form method="post" action="{{ route('admin.destroy_adddiscovery', ['discovery' => $discovery]) }}">
+                                    @method('delete')
                                     @csrf
-                                    <button class="confirm-reactivate btn btn-primary btn-sm" name="reactivate_data" id="reactivate_data">Reactivate</button>
-                                </form>
-                                <form action="{{route('admin.deactivateadmin', ['user' => $user->id])}}" method="post">
-                                    @method('post')
-                                    @csrf
-                                    <button class="confirm-deactivate btn btn-danger btn-sm" name="deactivate_data" id="deactivate_data">Deactivate</button>
+                                    <button class="confirm-delete-discovery btn btn-danger btn-sm" name="delete_category" id="delete_category">Delete</button>
                                 </form>
                             </div>
                         </td>
@@ -138,60 +145,36 @@
 
     <script>
         $(document).ready(function() {
-            $('.confirm-deactivate').click(function(event) {
+            $('.confirm-delete-discovery').click(function(event) {
                 let form = $(this).closest("form");
                 event.preventDefault();
                 Swal.fire({
                     title: 'Are you sure?',
-                    text: "You will deactivate user!",
+                    text: "You will delete category!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, deactivate!'
+                    confirmButtonText: 'Yes, delete!'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         form.submit();
                         Swal.fire(
-                            'Deactivated!',
-                            'admin is inactive.',
+                            'Deleted!',
+                            'category is deleted.',
                             'success'
                         )
                     }
                 })
             })
 
-            $('.confirm-reactivate').click(function(event) {
-                let form = $(this).closest("form");
-                event.preventDefault();
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You will deactivate user!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, reactivate!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        form.submit();
-                        Swal.fire(
-                            'Reactivated!',
-                            'admin is active.',
-                            'success'
-                        )
-                    }
-                })
-            })
-
-            $('#user_list').DataTable();
+            $('#category_list').DataTable();
         });
 
-        $('#user_list').dataTable({
+        $('#category_list').dataTable({
             "ordering": true
         });
     </script>
+    </section>
 
 </body>
-
-</html>

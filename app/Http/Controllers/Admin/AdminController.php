@@ -186,4 +186,39 @@ class AdminController extends Controller
             ->where('disc_category', $disc_category)
             ->value('id');
     }
+
+    public function adddiscovery(){
+        $data = Discovery::all();
+        return view('adminCRUD.adddiscovery', ['discoveries' => $data]);
+    }
+
+
+    public function store_adddiscovery(Request $request){
+
+        $data = $request->validate([
+            'disc_category' => 'required'
+        ]);
+
+        Discovery::create($data);
+        return redirect(route('admin.adddiscovery'))->with('successAdd', 'category berhasil ditambah');
+    }
+
+    public function edit_adddiscovery(Discovery $discovery){
+
+        return view('adminCRUD.editdiscovercategory', ['discovery' => $discovery]);
+    }
+
+    public function update_adddiscovery(Request $request, Discovery $discovery){
+        $data = $request->validate([
+            'disc_category' => 'required'
+        ]);
+
+        $discovery->update($data);
+        return back()->with('success', 'data berhasil diupdate');
+    }
+
+    public function destroy_adddiscovery(Discovery $discovery){
+        Discovery::destroy($discovery->id);
+        return back();
+    }
 }
