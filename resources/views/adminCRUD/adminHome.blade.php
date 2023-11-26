@@ -53,17 +53,19 @@
           </li>
 
           <li class="nav-item">
-            <form method="post" action="{{ route('logout') }}">
-              @csrf
-              <button type="submit" class="nav-link">Logout</button>
-            </form>
-          </li>          <li class="nav-item">
+            <a class="nav-link" href="/admin/discover">Discover</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/adddiscovery">Add Discover</a>
+          </li>
+
+          <li class="nav-item">
             <form method="post" action="{{ route('logout') }}">
               @csrf
               <button type="submit" class="nav-link">Logout</button>
             </form>
           </li>
-
         </ul>
       </div>
     </div>
@@ -84,7 +86,6 @@
       color: #fff;
     }
   </style>
-
 
 
   <section class="my-4">
@@ -134,7 +135,7 @@
 
   <script>
     $(document).ready(function() {
-      $('.confirm-delete').click(function (event) {
+      $('.confirm-delete').click(function(event) {
         let form = $(this).closest("form");
         event.preventDefault();
         Swal.fire({
@@ -148,11 +149,6 @@
         }).then((result) => {
           if (result.isConfirmed) {
             form.submit();
-            Swal.fire(
-              'Deleted!',
-              'Your data has been deleted.',
-              'success'
-            )
           }
         })
       })

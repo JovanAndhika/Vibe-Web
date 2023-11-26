@@ -36,11 +36,11 @@
             </span>
         </li>
         <li class="nav-item d-inline-flex align-items-center my-3">
-            <a class="nav-link text-white @if ($active == 'library') active @endif" href="{{ route('user.library') }}#jumphere"><i
+            <a class="nav-link text-white @if ($active == 'library') active @endif" href="{{ url('/user/playlists') }}#jumphere"><i
                     class="bi bi-collection-play text-white @if ($active == 'library') active @endif"></i></a>
             <span>
                 <a class="nav-link text-white @if ($active == 'library') active @endif"
-                    href="{{ route('user.library') }}#jumphere">Library</a>
+                    href="{{ url('/user/playlists') }}#jumphere">Library</a>
             </span>
 
         </li>

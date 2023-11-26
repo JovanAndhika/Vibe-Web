@@ -8,14 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Music extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'title',
         'artist',
         'genre',
         'file_path',
-        'release_date'
+        'release_date',
+        'category_id'
     ];
+    public $timestamps = false;
+    
 
     // untuk filter search
     // memanggil dengan Music::filter()
