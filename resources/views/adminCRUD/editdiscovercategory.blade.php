@@ -102,6 +102,11 @@
                     </div>
 
                     <div class="col-md-3 mt-3 mb-3">
+                        <label class="form-label">old name category</label>
+                        <input type="text" class="form-control form-control-md" name="old_disc_category" aria-label="Default disable example" value="{{$discovery->disc_category}}" placeholder="Insert new name" disabled>
+                    </div>
+
+                    <div class="col-md-3 mt-3 mb-3">
                         <label class="form-label">Nama baru category</label>
                         <input type="text" class="form-control form-control-md" name="disc_category" aria-label="Default disable example" value="{{$discovery->disc_category}}" placeholder="Insert new name">
                     </div>

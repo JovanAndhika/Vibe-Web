@@ -269,9 +269,7 @@ class AdminController extends Controller
             'new_genre' => 'required|unique:newgenres,new_genre'
         ]);
 
-        DB::table('music')
-        ->where('genre', $request->input('old_newgenre'))
-        ->update(['genre' => $request->input('new_genre')]);
+        Music::where('genre', $newgenre->new_genre)->update(['genre' => $request->input('new_genre')]);
         $newgenre->update($data);
         return back()->with('success', 'data berhasil diupdate');
     }

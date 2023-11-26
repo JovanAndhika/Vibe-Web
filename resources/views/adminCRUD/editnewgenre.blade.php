@@ -73,7 +73,7 @@
 
     <div class="container-md p-3">
         <br>
-        <h1>Edit Discover</h1>
+        <h1>Edit Genre</h1>
         @if($errors->any())
         <div class="alert alert-danger" role="alert">
             <ul>
@@ -102,12 +102,12 @@
                     </div>
 
                     <div class="col-md-3 mt-3 mb-3">
-                        <label class="form-label">Old name</label>
+                        <label class="form-label">Old genre name</label>
                         <input type="text" class="form-control form-control-md" name="old_newgenre" aria-label="Default disable example" value="{{$newgenre->new_genre}}" disabled>
                     </div>
 
                     <div class="col-md-3 mt-3 mb-3">
-                        <label class="form-label">Nama baru category</label>
+                        <label class="form-label">Nama baru genre</label>
                         <input type="text" class="form-control form-control-md" name="new_genre" aria-label="Default disable example" value="{{$newgenre->new_genre}}" placeholder="Insert new name">
                     </div>
 
