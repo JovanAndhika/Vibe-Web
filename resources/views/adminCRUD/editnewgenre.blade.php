@@ -102,6 +102,11 @@
                     </div>
 
                     <div class="col-md-3 mt-3 mb-3">
+                        <label class="form-label">Old name</label>
+                        <input type="text" class="form-control form-control-md" name="old_newgenre" aria-label="Default disable example" value="{{$newgenre->new_genre}}" disabled>
+                    </div>
+
+                    <div class="col-md-3 mt-3 mb-3">
                         <label class="form-label">Nama baru category</label>
                         <input type="text" class="form-control form-control-md" name="new_genre" aria-label="Default disable example" value="{{$newgenre->new_genre}}" placeholder="Insert new name">
                     </div>
