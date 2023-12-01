@@ -23,18 +23,14 @@ class LoginController extends Controller
             'password' => 'required|min:8|max:255'
         ]);
 
-        // cek apakah account disabled
-        $user = User::where('email', $validatedData['email'])->first();
-        if (!$user) {
-            return back()->with('error', 'Login Failed!');
-        }
-
-        if ($user->activation == 0) {
-            return back()->with('error', 'Account disabled! Ask admin to activate your account');
+        // cek apakah akun terdisabled atau tidak
+        if (User::where('email', $validatedData['email'])->first()->activation == 0) {
+            return back()->with('error', 'Your account is disabled. Please contact the administrator');
         }
 
         // cek apakah email dan password benar
         if (Auth::attempt($validatedData)) {
+            // generate session
             $request->session()->regenerate();
             
             // mengecek apakah adalah admin
@@ -45,6 +41,10 @@ class LoginController extends Controller
             {
                 return redirect()->intended('/user');
             }
+        }
+        else
+        {
+            return back()->with('error', 'Email or password is incorrect');
         }
     }
 
@@ -57,7 +57,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         request()->session()->regenerateToken();
 
-        // TODO: pindahkan ke index
         // kembali ke default
         return redirect()->route('login')->with('success', 'Logout successfull');
     }
