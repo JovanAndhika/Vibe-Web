@@ -14,12 +14,11 @@ class PlaylistController extends Controller
     {
         // jika ada request search
         $musics = collect([]);
-        if (request()->filled('search')) {
-            // cari data music berdasarkan judul
-            $musics = Music::where('title', 'LIKE', "%" . request('search') . "%")
-                ->orWhere('artist', 'LIKE', "%" . request('search') . "%")
-                ->get();
-        }
+        // cari data music berdasarkan judul
+        $musics = Music::where('title', 'LIKE', "%" . request('search') . "%")
+            ->orWhere('artist', 'LIKE', "%" . request('search') . "%")
+            ->take(10)
+            ->get();
         return $musics->toArray();
     }
 
@@ -63,12 +62,8 @@ class PlaylistController extends Controller
             'user_id' => auth()->user()->id
         ]);
 
-        foreach ($selectedSongs as $songId) {
-            PlaylistEntities::create([
-                'playlist_id' => $playlist->id,
-                'music_id' => $songId,
-            ]);
-        }
+        // attach selected songs
+        $playlist->musics()->attach($selectedSongs);
 
         return redirect()->back()->with('success', 'Playlist created successfully!');
     }
@@ -78,7 +73,10 @@ class PlaylistController extends Controller
      */
     public function show(Playlist $playlist)
     {
-        return $playlist->load('playlistEntities.music');
+        return [
+            'playlist' => $playlist,
+            'musics' => $playlist->musics
+        ];
     }
 
     /**
@@ -99,7 +97,7 @@ class PlaylistController extends Controller
             'playlist_name' => 'required|string|max:255',
             'selected_songs' => 'required|string'
         ]);
-        
+
         // Fetch data
         $playlistName = $request->input('playlist_name');
         $selectedSongs = json_decode($request->input('selected_songs'), true);

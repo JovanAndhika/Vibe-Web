@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
+use App\Models\Music;
 use App\Models\Discovery;
 use Illuminate\Database\Seeder;
 
@@ -36,5 +37,8 @@ class DatabaseSeeder extends Seeder
         Discovery::create([
             'disc_category' => 'none',
         ]);
+
+        // Music temp
+        Music::factory()->count(20)->create();
     }
 }

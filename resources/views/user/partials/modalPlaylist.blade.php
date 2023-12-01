@@ -31,8 +31,6 @@
                     <div class="input-group my-3">
                         <input type="text" class="form-control fontMonsseratRegular bg-dark text-white"
                             aria-describedby="basic-addon1" style="background-color: darkslategrey" id="keywordCreate">
-                        <button type="button" class="btn btn-outline-light fontMonsseratSemiBold"
-                            id="searchCreate">Search</button>
                     </div>
                     <table class="table table-striped table-hover table-dark mb-5">
                         <thead>
@@ -118,8 +116,6 @@
                     <div class="input-group my-3">
                         <input type="text" class="form-control fontMonsseratRegular bg-dark text-white"
                             aria-describedby="basic-addon1" style="background-color: darkslategrey" id="keywordEdit">
-                        <button type="button" class="btn btn-outline-light fontMonsseratSemiBold"
-                            id="searchEdit">Search</button>
                     </div>
                     <table class="table table-striped table-hover table-dark mb-5">
                         <thead>
@@ -193,7 +189,7 @@
                     @csrf
                     @method('delete')
                     <button type="submit" class="btn btn-outline-dark fontMonsseratSemiBold"
-                    id="deleteButton">Delete</button>
+                        id="deleteButton">Delete</button>
                 </form>
             </div>
         </div>
@@ -204,8 +200,8 @@
 {{-- FOR CREATE MODAL --}}
 <script>
     $(document).ready(function() {
-        // ketika tombol search di klik
-        $("#searchCreate").click(function() {
+        // ketika melakukan search
+        $("#keywordCreate").keypress(function() {
             // mendapatkan text dalam search
             var search = $("#keywordCreate").val();
 
@@ -276,8 +272,10 @@
             // pengecekan input apakah kosong atau tidak
             if ($('#playlistNameCreate').val() == '' || $('#placeholderSearchedCreate').length > 0) {
                 // jika kosong, maka tampilkan peringatan
-                $('#errorNameCreate').css('display', $('#playlistNameCreate').val() == '' ? 'block' : 'none');
-                $('#errorSongCreate').css('display', $('#placeholderSearchedCreate').length > 0 ? 'block' : 'none');
+                $('#errorNameCreate').css('display', $('#playlistNameCreate').val() == '' ? 'block' :
+                    'none');
+                $('#errorSongCreate').css('display', $('#placeholderSearchedCreate').length > 0 ?
+                    'block' : 'none');
                 return;
             }
 
@@ -339,7 +337,7 @@
 <script>
     $(document).ready(function() {
         // FOR EDIT MODAL
-        $("#searchEdit").click(function() {
+        $("#keywordEdit").keypress(function() {
             // mendapatkan text dalam search
             var search = $("#keywordEdit").val();
 
@@ -384,8 +382,10 @@
             // pengecekan error
             if ($('#playlistNameEdit').val() == '' || $('#placeholderSearchedEdit').length > 0) {
                 // jika kosong, maka tampilkan peringatan
-                $('#errorNameEdit').css('display', $('#playlistNameEdit').val() == '' ? 'block' : 'none');
-                $('#errorSongEdit').css('display', $('#placeholderSearchedEdit').length > 0 ? 'block' : 'none');
+                $('#errorNameEdit').css('display', $('#playlistNameEdit').val() == '' ? 'block' :
+                    'none');
+                $('#errorSongEdit').css('display', $('#placeholderSearchedEdit').length > 0 ? 'block' :
+                    'none');
                 return;
             }
 
@@ -427,15 +427,16 @@
                 } else {
                     // jika ada response, maka append ke table semuanya
                     // ubah judul
-                    $("#playlistNameEdit").val(response.name);
-                    $("#editPlaylistForm").attr("action", "{{ url('/user/playlists') }}" + "/" + playlist_id);
-                    $.each(response.playlist_entities, function(index, item) {
+                    $("#playlistNameEdit").val(response.playlist.name);
+                    $("#editPlaylistForm").attr("action", "{{ url('/user/playlists') }}" + "/" +
+                        playlist_id);
+                    $.each(response.musics, function(index, item) {
                         $("#selectedMusicEdit").append(
                             `
-                                <tr id="item${item.music['id']}">
-                                    <th>${item.music['title']}</th>
-                                    <th>${item.music['artist']}</th>
-                                    <th><a href='#' onclick="deleteItemEdit(${item.music['id']})"><i class='bi bi-trash-fill text-white'></i></a></th>
+                                <tr id="item${item.id}">
+                                    <th>${item.title}</th>
+                                    <th>${item.artist}</th>
+                                    <th><a href='#' onclick="deleteItemEdit(${item.id})"><i class='bi bi-trash-fill text-white'></i></a></th>
                                 </tr>
                             `
                         );
