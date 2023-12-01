@@ -18,20 +18,13 @@ class UserController extends Controller
         return view('user.home', [
             "title" => "home",
             "active" => "home",
-            "musics" => Music::get()
+            "musics" => Music::paginate(10)
         ]);
     }
 
     public function search()
     {
-        // BUAT NORMAL SEARCH
-        $musics = collect([]);
-
-        // Pastikan ada request 'artist' atau 'title' dan keduanya tidak kosong
-        if (request()->filled('artist') || request()->filled('title')) {
-            $musics = Music::latest()->filter(request(['artist', 'title']))->get();
-        }
-
+        // dd(request()->all());
         //BUAT DISCOVERY
         $music_discoveries = Music::all();
         $discovers = Discovery::all();
@@ -53,12 +46,12 @@ class UserController extends Controller
         return view('user.search', [
             "title" => "search",
             "active" => "search",
-            "musics" => $musics,
+            "musics" => Music::filter(request('keyword'), request('searchBy'))->paginate(10)->withQueryString(),
             "discovers" => $discovers,
             "music_discoveries" => $music_discoveries,
             "collect_all_music" => $collect_all_music,
             "newgenres" => $allNewGenres
-        ]);
+        ])->withInput(request()->all());
     }
 
 
@@ -67,26 +60,57 @@ class UserController extends Controller
         // cek apakah request playlist atau music
         if (request()->filled('playlist_id')) {
             // jika request adalah playlist
-            $playlist = Playlist::find(request('playlist_id'));
+            $playlist = Playlist::where('id', request('playlist_id'))->where('user_id', auth()->user()->id)->first();
+
+            // jika playlist tidak ditemukan, redirect ke nowPlaying tanpa request
+            if (!$playlist) {
+                return redirect()->route('user.nowPlaying');
+            }
+
+            // fetch music dan simpan history jika ada ditemukan playlist
             $musics = $playlist->musics;
 
-            // simpan ke history untuk lagu pertama
-            if ($musics->first())
-            {
-                $this->storeHistory($musics->first()->id);
+            // fetch music yang diplay sekarang + simpan ke history
+            $index = request('index');
+            if ($index < 0) {
+                $index = 0;
             }
+            if ($index >= $musics->count()) {
+                $index = $musics->count() - 1;
+            }
+            $music = $musics->skip($index)->first();
+            $this->storeHistory($musics->first()->id);
 
             return view('user.nowPlaying', [
                 "title" => "nowPlaying",
                 "active" => "nowPlaying",
                 "playlist" => $playlist,
-                "musics" => $musics
+                "musics" => $musics,
+                "selected" => $music,
             ]);
         } else {
-            // jika request adalah music
-            $music = Music::find(request('music_id'));
+            // jika tidak ada request music (kosong)
+            if (!request()->filled('music_id')) 
+            {
+                // mengambil music paling terakhir history
+                $last_music = History::where('user_id', auth()->user()->id)->latest()->first();
+                if ($last_music)
+                {
+                    $music = $last_music->music;
+                }
+                else
+                {
+                    // jika tidak ditemukan, maka kosong
+                    $music = null;
+                }
+            }
+            else
+            {
+                // jika request adalah music
+                $music = Music::find(request('music_id'));
+            }
 
-            // simpan ke history
+            // simpan ke history jika ada music
             if ($music)
             {
                 $this->storeHistory($music->id);

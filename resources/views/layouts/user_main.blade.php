@@ -85,11 +85,12 @@
     {{-- rgb(239,237,231) --}}
 
     @include('user.partials.navup')
-    @include('user.partials.navleft')
-
-
-    @yield('container')
-
+    <section id="mainSection">
+        <div class="row w-100">
+            @include('user.partials.navleft')
+            @yield('container')
+        </div>
+    </section>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>

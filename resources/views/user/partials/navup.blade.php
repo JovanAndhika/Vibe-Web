@@ -14,5 +14,3 @@
             </form>
         </div>
     </nav>
-    <section id="mainSection">
-        <div class="row">
