@@ -47,7 +47,7 @@
                 <div class="row flex-grow-1">
                     <div class="col d-flex align-items-center justify-content-center m-3">
                         {{-- TODO: tambahkan icon di database music --}}
-                        <img src="@if ($musics[0]->icon) {{ asset('storage/' . $musics[0]->icon) }} @else {{ asset('img/now_playing/empty_icon.jpeg') }} @endif"
+                        <img src="@if ($selected->icon) {{ asset('storage/' . $selected->icon) }} @else {{ asset('img/now_playing/empty_icon.jpeg') }} @endif"
                             alt="Artist Photo" class="img-fluid rounded-3" style="max-width: 300px; max-height: 300px;">
                     </div>
                 </div>
@@ -55,13 +55,13 @@
                 {{-- title --}}
                 <div class="row d-flex justify-content-center">
                     <h1 class="fontMonsseratSemiBold text-center" style="font-size: 30px;" id="myTitle">
-                        {{ $musics[0]->title }}</h1>
+                        {{ $selected->title }}</h1>
                 </div>
 
                 {{-- artist --}}
                 <div class="row d-flex justify-content-center">
                     <h1 class="fontMontserratThin text-center text-white-50" style="font-size: 12px;" id="myArtist">
-                        {{ $musics[0]->artist }}
+                        {{ $selected->artist }}
                     </h1>
                 </div>
 
@@ -70,7 +70,7 @@
                         {{-- TODO: rapikan/hilangkan tampilan play mp3 --}}
                         <i class="bi bi-bookmark-fill mx-3"></i>
                         <audio controls>
-                            <source src="{{ asset('storage/' . $musics[0]->file_path) }}" type="audio/mpeg" id="myAudio">
+                            <source src="{{ asset('storage/' . $selected->file_path) }}" type="audio/mpeg" id="myAudio">
                         </audio>
                         <i class="bi bi-heart-fill mx-3"></i>
                     </div>
@@ -91,7 +91,7 @@
                                 <tr>
                                     <th>{{ $item->title }}</th>
                                     <th>{{ $item->artist }}</th>
-                                    <th><a onclick="changes({{ $item->id }})"><i
+                                    <th><a href="{{ route('user.nowPlaying') . '/?playlist_id=' . request('playlist_id') . '&index=' . $loop->index }}"><i
                                                 class="bi bi-play-fill text-white"></i></a></th>
                                 </tr>
                             @endforeach
@@ -100,73 +100,14 @@
                 </div>
 
                 <script>
-                    var musics = {!! json_encode($musics) !!};
-                    var currentID = 0;
-
-                    function changes(id) {
-                        // simpan history ke ajax
-                        $.ajax({
-                            type: "POST",
-                            url: "{{ url('user/history') }}/" + id,
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            // jika gagal
-                            error: function(data) {
-                                console.log(data);
-                            }
-                        });
-
-                        // Dapatkan data untuk id tertentu dari variabel musics
-                        var selectedMusic = musics.find(function(music) {
-                            return music.id === id;
-                        });
-
-                        var selectedMP3 = selectedMusic.file_path;
-                        var selectedTitle = selectedMusic.title;
-                        var selectedArtist = selectedMusic.artist;
-                        $('#myAudio').attr('src', '{{ asset('storage') }}/' + selectedMP3);
-                        $('#myTitle').text(selectedTitle);
-                        $('#myArtist').text(selectedArtist);
-
-                        currentID = musics.findIndex(function(music) {
-                            return music.id === id;
-                        });
-
-                        $('#myAudio').on('ended', function() {
-                            // Pemutaran lagu selesai, lanjutkan ke lagu selanjutnya
-                            playNextSong();
-                        });
-
-                        function playNextSong() {
-                            // Cek apakah masih ada lagu selanjutnya
-                            if (currentID < musics.length - 1) {
-                                currentID++;
-                                var nextMusic = musics[currentID];
-
-                                // Putar lagu selanjutnya
-                                changes(nextMusic.id);
-                                $('#myAudio')[0].play();
-                            } else {
-                                // Jika tidak ada lagu selanjutnya, kembali ke lagu pertama
-                                currentID = 0;
-                            }
-
-                            changes(musics[currentID].id);
-                            $('#myAudio')[0].play();
-                        }
-
-                    }
+                    // hapus karena sistem berubah
                 </script>
             @else
-                {{-- TODO: rapikan tampilan --}}
                 {{-- jika tidak ada music --}}
-                <div class="container-fluid text-center">
-                    <h1 class="fontMonsseratSemiBold" style="font-size: 20px;">No Music Currently Playing</h1>
+                <div class="container-fluid text-center my-5">
+                    <h1 class="fontMonsseratSemiBold" style="font-size: 20px;">No Music Currently Playing. Play your first music <a href="{{ route('user.index') }}" class="text-warning"> now!</a></h1>
                 </div>
             @endif
         </div>
     </div>
-    </div>
-    </section>
 @endsection
