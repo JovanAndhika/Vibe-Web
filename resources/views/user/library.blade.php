@@ -43,7 +43,7 @@
                                                 <i class="bi bi-trash-fill text-white"></i>
                                             </a>
                                         </th>
-                                        <th><a href="{{ route('user.nowPlaying') . '?playlist_id=' . $playlist->id }}"><i class="bi bi-play-fill text-white"></i></a></th>
+                                        <th><a href="{{ route('user.nowPlaying') . '?playlist_id=' . $playlist->id }}&index=0"><i class="bi bi-play-fill text-white"></i></a></th>
                                     </tr>
                                 @endforeach
                             @endif

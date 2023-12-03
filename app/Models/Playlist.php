@@ -16,13 +16,8 @@ class Playlist extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function playlistEntities()
-    {
-        return $this->hasMany(PlaylistEntities::class);
-    }
-
     public function musics()
     {
-        return $this->belongsToMany(Music::class, 'playlist_entities', 'playlist_id', 'music_id');
+        return $this->belongsToMany(Music::class);
     }
 }

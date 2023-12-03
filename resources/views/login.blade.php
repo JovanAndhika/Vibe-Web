@@ -33,7 +33,7 @@
     <div class="form-container">
         <div class="logo">
             <a class="navbar-brand fontMonsseratExtraBold" style="font-size: 50px; color: rgb(238, 181, 0);"
-        href="#mainSection">Vibe</a>        
+                href="#mainSection">Vibe</a>
         </div>
 
         {{-- flash cards --}}
@@ -55,20 +55,24 @@
             {{-- email --}}
             <div class="input-group mb-3">
                 <button class="btn btn-outline-warning change" type="button" id="button-addon1">Email</button>
-                <input type="text" class="form-control" placeholder="Email"
-                    name="email" required>
+                <input type="text" class="form-control" placeholder="Email" name="email" required>
             </div>
+            @error('email')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
 
             {{-- password --}}
-            <div class="input-group mb-3">
+            <div class="input-group my-3">
                 <button class="btn btn-outline-warning change" type="button" id="button-addon1">Password</button>
-                <input type="password" class="form-control"
-                    placeholder="Password" name="password" required>
+                <input type="password" class="form-control" placeholder="Password" name="password" required>
             </div>
+            @error('password')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
 
             {{-- submit button --}}
-            <button class=" btn btn-outline-warning fontMonsseratSemiBold mb-3"; type="submit">Log In</button>
-            <a href="{{ route('home') }}" class="btn btn-outline-warning font-weight-semibold mb-3">Back</a>
+            <button class=" btn btn-outline-warning fontMonsseratSemiBold my-3" type="submit">Log In</button>
+            <a href="{{ route('home') }}" class="btn btn-outline-warning font-weight-semibold my-3">Back</a>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {

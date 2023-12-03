@@ -17,7 +17,10 @@ class MusicFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->word(),
+            'artist' => $this->faker->name(),
+            'genre' => $this->faker->word(),
+            'release_date' => $this->faker->date(),
         ];
     }
 }

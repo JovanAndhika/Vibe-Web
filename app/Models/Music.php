@@ -22,18 +22,15 @@ class Music extends Model
     // untuk filter search
     // memanggil dengan Music::filter()
     // parameter adalah request apa yang ingin di filter dimana itu berisi keywordnya
-    public function scopeFilter($query, array $filters)
+    public function scopeFilter($query, $keyword, $searchBy)
     {
-        $query->when($filters['artist'] ?? false, function ($query, $artist) {
-            // jika ada request search, maka jalankan query ini
-            return $query->where('artist', 'like', '%' . $artist . '%');
-        });
+        if ($searchBy == 'artist') return $query->where('artist', 'like', '%' . $keyword . '%');
+        if ($searchBy == 'title') return $query->where('title', 'like', '%' . $keyword . '%');
+    }
 
-        $query->when($filters['title'] ?? false, function ($query, $title) {
-            // jika ada request search, maka jalankan query ini
-            return $query->where('title', 'like', '%' . $title . '%');
-        });
-
-        // menambah filter jika diperlukan
+    // Relation
+    public function playlists()
+    {
+        return $this->belongsToMany(Playlist::class);
     }
 }

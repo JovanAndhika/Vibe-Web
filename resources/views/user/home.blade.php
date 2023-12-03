@@ -24,16 +24,10 @@
                     @if ($musics->isEmpty())
                         {{-- jika tidak ada music --}}
                         <div class="container-fluid text-center">
-                            <h1 class="fontMonsseratSemiBold" style="font-size: 20px;">No results found</h1>
+                            <h1 class="fontMonsseratSemiBold" style="font-size: 20px;">No musics out yet. Stay tune!</h1>
                         </div>
                     @else
-                        {{-- jika ada --}}
-                        {{-- judul --}}
-                        <div class="container-fluid text-center">
-                            <h1 class="fontMonsseratSemiBold" style="font-size: 20px;">Results</h1>
-                        </div>
-
-                        {{-- tabel --}}
+                        {{-- jika ada music --}}
                         <div class="container-fluid ">
                             <table class="table table-striped table-hover table-dark">
                                 <thead>
@@ -54,6 +48,11 @@
                                     @endforeach
                                 </tbody>
                             </table>
+
+                            {{-- pagination --}}
+                            <div class="d-flex justify-content-center">
+                                {{ $musics->links() }}
+                            </div>
                         </div>
                     @endif
                 </div>

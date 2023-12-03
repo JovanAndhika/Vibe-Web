@@ -3,9 +3,12 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Playlist;
 use App\Models\User;
+use App\Models\Music;
 use App\Models\Discovery;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -32,9 +35,21 @@ class DatabaseSeeder extends Seeder
             'date_of_birth' => '2000-01-01'
         ]);
 
-        //Default untuk discovery
+        // default untuk discovery
         Discovery::create([
             'disc_category' => 'none',
         ]);
+
+        // membuat music sementara
+        $music_count = 20;
+        Music::factory()->count($music_count)->create();
+
+        // membuat playlist sementara
+        Playlist::factory()->count(3)->create();
+        for ($i = 0; $i < 3; $i++) {
+            for ($j = 0; $j < rand(5, 10); $j++) {
+                Playlist::find($i + 1)->musics()->attach($i + $j + 1);
+            }
+        }
     }
 }
