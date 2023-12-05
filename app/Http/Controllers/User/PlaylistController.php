@@ -17,6 +17,7 @@ class PlaylistController extends Controller
         // cari data music berdasarkan judul
         $musics = Music::where('title', 'LIKE', "%" . request('search') . "%")
             ->orWhere('artist', 'LIKE', "%" . request('search') . "%")
+            ->orderBy('release_date', 'desc')
             ->take(10)
             ->get();
         return $musics->toArray();
