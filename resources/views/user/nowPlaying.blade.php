@@ -1,4 +1,4 @@
-@extends('layouts.user_main')
+@extends('user.layouts.user_main')
 @section('container')
     {{-- untuk ajax --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -11,8 +11,8 @@
                 <div class="row flex-grow-1">
                     <div class="col d-flex align-items-center justify-content-center m-3">
                         {{-- TODO: tambahkan icon di database music --}}
-                        <img src="@if ($music->icon) {{ asset('storage/' . $music->icon) }} @else {{ asset('img/now_playing/empty_icon.jpeg') }} @endif"
-                            alt="Artist Photo" class="img-fluid rounded-3" style="max-width: 300px; max-height: 300px;">
+                        <img src="@if ($music->cover_path) {{ asset('storage/' . $music->cover_path) }} @else {{ asset('img/now_playing/empty_icon.jpeg') }} @endif"
+                            alt="Artist Photo" class="img-fluid rounded-3" style="max-width: 500px; max-height: 500px;">
                     </div>
                 </div>
 
@@ -30,11 +30,9 @@
                 <div class="row">
                     <div class="col d-flex justify-content-center my-3" style="font-size: 30px;">
                         {{-- TODO: rapikan/hilangkan tampilan play mp3 --}}
-                        <i class="bi bi-bookmark-fill mx-3"></i>
                         <audio controls>
                             <source src="{{ asset('storage/' . $music->file_path) }}" type="audio/mpeg" id="myAudio">
                         </audio>
-                        <i class="bi bi-heart-fill mx-3"></i>
                     </div>
                 </div>
             @elseif(isset($playlist->musics))
@@ -68,11 +66,9 @@
                 <div class="row">
                     <div class="col d-flex justify-content-center my-3" style="font-size: 30px;">
                         {{-- TODO: rapikan/hilangkan tampilan play mp3 --}}
-                        <i class="bi bi-bookmark-fill mx-3"></i>
                         <audio controls>
                             <source src="{{ asset('storage/' . $selected->file_path) }}" type="audio/mpeg" id="myAudio">
                         </audio>
-                        <i class="bi bi-heart-fill mx-3"></i>
                     </div>
                 </div>
 

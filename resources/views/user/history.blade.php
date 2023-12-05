@@ -1,4 +1,4 @@
-@extends('layouts.user_main')
+@extends('user.layouts.user_main')
 @section('container')
     <div class="col scrollable-div p-4" id="jumphere">
         <div class="container-fluid vh-100 d-flex flex-column">
@@ -53,8 +53,8 @@
                                             <th>{{ $item->music->artist }}</th>
                                             <th>{{ $ok }}</th>
 
-                                            <th><a href="/nowPlaying"><i class="bi bi-play-fill text-white"></i></a></th>
-
+                                            <th><a href="{{ route('user.nowPlaying') }}?music_id={{ $item->music->id }}#jumphere"><i
+                                                class="bi bi-play-fill text-white"></i></a></th>
                                         </tr>
                                     @endforeach
 
