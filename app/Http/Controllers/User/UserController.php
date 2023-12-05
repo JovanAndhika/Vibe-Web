@@ -18,13 +18,12 @@ class UserController extends Controller
         return view('user.home', [
             "title" => "home",
             "active" => "home",
-            "musics" => Music::paginate(10)
+            "musics" => Music::orderBy('release_date', 'desc')->paginate(10)
         ]);
     }
 
     public function search()
     {
-        // dd(request()->all());
         //BUAT DISCOVERY
         $music_discoveries = Music::all();
         $discovers = Discovery::all();
@@ -46,12 +45,12 @@ class UserController extends Controller
         return view('user.search', [
             "title" => "search",
             "active" => "search",
-            "musics" => Music::filter(request('keyword'), request('searchBy'))->paginate(10)->withQueryString(),
+            "musics" => Music::filter(request('keyword'), request('searchBy'))->orderBy('release_date', 'desc')->paginate(10)->withQueryString(),
             "discovers" => $discovers,
             "music_discoveries" => $music_discoveries,
             "collect_all_music" => $collect_all_music,
             "newgenres" => $allNewGenres
-        ])->withInput(request()->all());
+        ]);
     }
 
 

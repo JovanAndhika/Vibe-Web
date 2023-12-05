@@ -10,28 +10,30 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/admin">Home</a>
+                        <a class="nav-link {{ Request::is('admin')  ||Request::is('admin/editsong/*')? 'active' : '' }}" aria-current="page" href="/admin">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/addsong">Add Song</a>
+                        <a class="nav-link {{ Request::is('admin/addsong') ? 'active' : '' }}" href="/admin/addsong">Add Song</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/viewuser">View User</a>
+                        <a class="nav-link {{ Request::is('admin/viewuser') ? 'active' : '' }}" href="/admin/viewuser">View User</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/viewadmin">View Admin</a>
+                        <a class="nav-link {{ Request::is('admin/viewadmin') ? 'active' : '' }}" href="/admin/viewadmin">View Admin</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/discover">Discover</a>
+                        <a class="nav-link {{ Request::is('admin/discover') ||Request::is('admin/editdiscover/*')? 'active' : '' }}" href="/admin/discover">Discover</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/adddiscovery">Add Discover</a>
+                        <a class="nav-link {{ Request::is('admin/adddiscovery')   ? 'active' : '' }}" href="/admin/adddiscovery">Add Discover</a>
                     </li>
+
+
 
                     {{-- TODO: Jovan sempurnakan tampilannya --}}
                     <li class="nav-item">

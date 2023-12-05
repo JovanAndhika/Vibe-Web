@@ -112,7 +112,7 @@
                                 padding: 0;
                             }
                         </style>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                        <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
                             <form method="post" action="{{ route('user.jazz') }}">
                                 @csrf
                                 @method('post')
@@ -121,7 +121,7 @@
                                         style="object-fit: fit;"></button>
                             </form>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                        <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
                             <form method="post" action="{{ route('user.pop') }}">
                                 @csrf
                                 @method('post')
@@ -129,7 +129,7 @@
                                         alt="" class="img-fluid rounded genre" style="object-fit: cover;"></button>
                             </form>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                        <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
                             <form method="post" action="{{ route('user.dangdut') }}">
                                 @csrf
                                 @method('post')
@@ -138,7 +138,7 @@
                                         class="img-fluid rounded genre" style="object-fit: cover;"></button>
                             </form>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                        <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
                             <form method="post" action="{{ route('user.kpop') }}">
                                 @csrf
                                 @method('post')
@@ -146,7 +146,7 @@
                                         alt="" class="img-fluid rounded genre" style="object-fit: cover;"></button>
                             </form>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                        <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
                             <form method="post" action="{{ route('user.rock') }}">
                                 @csrf
                                 @method('post')
@@ -154,7 +154,7 @@
                                         alt="" class="img-fluid rounded genre" style="object-fit: cover;"></button>
                             </form>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                        <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
                             <form method="post" action="{{ route('user.classical') }}">
                                 @csrf
                                 @method('post')
@@ -163,7 +163,7 @@
                                         class="img-fluid rounded genre" style="object-fit: cover;"></button>
                             </form>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                        <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
                             <form method="post" action="{{ route('user.dance') }}">
                                 @csrf
                                 @method('post')
@@ -172,7 +172,7 @@
                                         class="img-fluid rounded genre" style="object-fit: cover;"></button>
                             </form>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
+                        <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
                             <form method="post" action="{{ route('user.ponk') }}">
                                 @csrf
                                 @method('post')
@@ -184,16 +184,22 @@
 
                         {{-- additional genre from admin --}}
                         @foreach ($newgenres as $newgenre)
-                            <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: 150px;">
-                                <form method="post" action="{{ route('user.newgenre', ['newgenre' => $newgenre]) }}">
-                                    @csrf
-                                    @method('post')
-                                    <button type="submit">
-                                        <p class="img-fluid rounded genre" style="object-fit: cover;">
-                                            {{ $newgenre->new_genre }}</p>
-                                    </button>
-                                </form>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
+                            <div class="card text-dark">
+                                <div class="card-body" style="height: 150px;">
+                                    <form method="post" action="{{ route('user.newgenre', ['newgenre' => $newgenre]) }}">
+                                        @csrf
+                                        @method('post')
+                                    <h5 class="card-title"> {{ $newgenre->new_genre }} </h5>
+                                    <div class="container-fluid text-center p-3">
+                                        <button type="submit" class="btn btn-outline-dark fontMonsseratSemiBold" data-bs-toggle="modal"
+                                               " data-bs-whatever="@mdo">Play</button>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+
                         @endforeach
                     </div>
                 </div>
