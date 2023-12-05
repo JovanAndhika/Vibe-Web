@@ -45,5 +45,14 @@
 
         </li>
 
+        <li class="nav-item d-inline-flex align-items-center my-3">
+            <a class="nav-link text-white @if ($active == 'like') active @endif" href="{{ route('user.like') }}#jumphere"><i
+                    class="bi bi-heart text-white @if ($active == 'like') active @endif"></i></a>
+            <span>
+                <a class="nav-link text-white @if ($active == 'like') active @endif"
+                    href="{{ route('user.like') }}#jumphere">Library</a>
+            </span>
+        </li>
+
     </ul>
 </div>

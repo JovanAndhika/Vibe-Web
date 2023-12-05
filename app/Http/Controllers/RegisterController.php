@@ -40,7 +40,7 @@ class RegisterController extends Controller
 
         Playlist::create([
             'user_id' => $user->id,
-            'name' => 'Liked Songs',
+            'name' => 'liked songs',
         ]);
         
         // return ke page login

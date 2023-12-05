@@ -7,6 +7,7 @@ use App\Models\History;
 use App\Models\Newgenre;
 use App\Models\Playlist;
 use App\Models\Discovery;
+use App\Models\Music_playlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -247,6 +248,27 @@ class UserController extends Controller
 
         return view('user.searchResult.newgenreResult', ['newgenre' => $newgenre, 'songs' => $data]);
     }
+
+    //LIKED SONGS BY USER
+    public function like(){
+        $getIdPlaylist = Playlist::where('user_id', auth()->user()->id)->where('name', 'liked songs')->value('id');
+        $music_playlist = Music_playlist::where('playlist_id', $getIdPlaylist)->get();
+
+        
+
+        $songs_raw = collect([]);
+        foreach ($music_playlist as $m) {
+           $music = Music::where('id', $m->music_id)->first();
+           $songs_raw->put($m->id, ['id_music' => $music->id, 'title' => $music->title, 'artist' => $music->artist, 'genre' => $music->genre, 'file_path' => $music->file_path, 'release_date' => $music->release_date, 'category_id' => $music->category_id]);
+        }
+ 
+        return view('user.getLikedSongs', [
+         "title" => "like",
+         "active" => "like",
+         "musics_raw" => $songs_raw
+     ]);
+
+     }
 
 
 }

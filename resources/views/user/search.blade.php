@@ -194,7 +194,7 @@
                                     <h5 class="card-title"> {{ $newgenre->new_genre }} </h5>
                                     <div class="container-fluid text-center p-3">
                                         <button type="submit" class="btn btn-outline-dark fontMonsseratSemiBold" data-bs-toggle="modal"
-                                               " data-bs-whatever="@mdo">Play</button>
+                                               data-bs-whatever="@mdo">Play</button>
                                     </div>
                                 </div>
                             </div>

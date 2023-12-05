@@ -67,6 +67,9 @@ Route::group(['middleware' => 'auth'], function () {
         // NEW GENRE
         Route::post('/search/{newgenre}', [UserController::class, 'newgenre'])->name('newgenre');
 
+        //Liked Songs
+        Route::get('/likedsongs', [UserController::class, 'like'])->name('like');
+
         // History
         // simpan history, jika perlu akses, harus menggunakan ajax
         Route::post('/history/{music_id}', [UserController::class, 'storeHistory'])->name('history.store');
@@ -74,6 +77,8 @@ Route::group(['middleware' => 'auth'], function () {
         // Playlist
         Route::get('/musics', [PlaylistController::class, 'getAllMusics'])->name('musics');
         Route::resource('playlists', PlaylistController::class);
+
+        
     });
 
 

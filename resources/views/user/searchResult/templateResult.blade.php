@@ -68,13 +68,14 @@
 <body class="text-white bg-dark">
     {{-- rgb(239,237,231) --}}
     <section class="p-5">
+        <a class="btn btn-secondary btn-md mb-3" href="{{ route('user.search') }}">Back</a>
         <div class="px-5 container-fluid table-responsive-lg">
             <table class="table table-striped table-hover dataTable no-footer table-dark" id="jazz_list">
                 <thead>
                     <tr>
                         <th class="fontMonsseratSemiBold" scope="col">Song</th>
                         <th class="fontMonsseratSemiBold" scope="col">Artist</th>
-                        <th class="fontMonsseratSemiBold" scope="col"></th>
+                        <th class="fontMonsseratSemiBold" scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody class="text-left">

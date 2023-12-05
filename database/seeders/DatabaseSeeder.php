@@ -40,6 +40,12 @@ class DatabaseSeeder extends Seeder
             'disc_category' => 'none',
         ]);
 
+        // default untuk playlist like
+        Playlist::create([
+            'name' => 'liked songs',
+            'user_id' => 2
+        ]);
+
         // membuat music sementara
         $music_count = 20;
         Music::factory()->count($music_count)->create();
