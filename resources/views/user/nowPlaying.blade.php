@@ -1,4 +1,4 @@
-@extends('layouts.user_main')
+@extends('user.layouts.user_main')
 @section('container')
     {{-- untuk ajax --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
