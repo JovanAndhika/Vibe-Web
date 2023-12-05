@@ -75,6 +75,7 @@
                             <table class="table table-striped table-hover table-dark">
                                 <thead>
                                     <tr>
+                                        <th></th>
                                         <th class="fontMonsseratSemiBold" scope="col">Song</th>
                                         <th class="fontMonsseratSemiBold" scope="col">Artist</th>
                                         <th class="fontMonsseratSemiBold" scope="col"></th>
@@ -83,6 +84,7 @@
                                 <tbody class="text-left">
                                     @foreach ($musics as $music)
                                         <tr>
+                                            <th><img src="@if ($music->cover_path) {{ asset('storage/' . $music->cover_path) }} @else {{ asset('img/now_playing/empty_icon.jpeg') }} @endif"alt="Artist Photo" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;"></th>
                                             <th>{{ $music->title }}</th>
                                             <th>{{ $music->artist }}</th>
                                             <th><a href="{{ route('user.nowPlaying') }}?music_id={{ $music->id }}"><i

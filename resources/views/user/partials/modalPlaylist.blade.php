@@ -35,6 +35,7 @@
                     <table class="table table-striped table-hover table-dark mb-5">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th class="fontMonsseratSemiBold" scope="col">Song</th>
                                 <th class="fontMonsseratSemiBold" scope="col">Artist</th>
                                 <th class="fontMonsseratSemiBold" scope="col"></th>
@@ -53,6 +54,7 @@
                     <table class="table table-striped table-hover table-dark">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th class="fontMonsseratSemiBold" scope="col">Song</th>
                                 <th class="fontMonsseratSemiBold" scope="col">Artist</th>
                                 <th class="fontMonsseratSemiBold" scope="col"></th>
@@ -120,6 +122,7 @@
                     <table class="table table-striped table-hover table-dark mb-5">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th class="fontMonsseratSemiBold" scope="col">Song</th>
                                 <th class="fontMonsseratSemiBold" scope="col">Artist</th>
                                 <th class="fontMonsseratSemiBold" scope="col"></th>
@@ -138,6 +141,7 @@
                     <table class="table table-striped table-hover table-dark">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th class="fontMonsseratSemiBold" scope="col">Song</th>
                                 <th class="fontMonsseratSemiBold" scope="col">Artist</th>
                                 <th class="fontMonsseratSemiBold" scope="col"></th>
@@ -229,6 +233,7 @@
                             $("#searchMusicCreate").append(
                                 `
                               <tr>
+                                <th>${item.icon}</th>
                                 <th>${item.title}</th>
                                 <th>${item.artist}</th>
                                 <th><a href='#' onclick="addItemCreate(${item.id}, '${item.title}', '${item.artist}')"><i class='bi bi-plus-lg text-white'></i></a></th>
