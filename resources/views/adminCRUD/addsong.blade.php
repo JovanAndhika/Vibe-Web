@@ -59,6 +59,12 @@
                     <br>
                 </div>
 
+                 <div class="col-lg-7">
+                    <label class="form-label">Insert song cover image</label>
+                    <input class="form-control" type="file" id="chfile" name="songCover">
+                    <br>
+                </div>
+
 
                 <div class="col-lg-7">
                     <label class="form-label">Release date</label>

@@ -13,6 +13,7 @@ class Music extends Model
         'artist',
         'genre',
         'file_path',
+        'cover_path',
         'release_date',
         'category_id'
     ];

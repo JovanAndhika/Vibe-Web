@@ -46,6 +46,13 @@ class AdminController extends Controller
             $data['file_path'] = $path;
         }
 
+        if ($request->hasFile('songCover')) {
+            $destinationPath = 'listofcovers';
+            $files = $request->file('songCover'); // will get files
+            $pathCover = $files->store($destinationPath); // store files to destination folder
+            $data['cover_path'] = $pathCover;
+        }
+
         // insert to database
         Music::create($data);
         return back()->with('success', 'Song has been added');
