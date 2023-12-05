@@ -50,7 +50,7 @@ class UserController extends Controller
             "music_discoveries" => $music_discoveries,
             "collect_all_music" => $collect_all_music,
             "newgenres" => $allNewGenres
-        ])->withInput(request()->all());
+        ]);
     }
 
 
