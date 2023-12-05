@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('artist');
             $table->string('genre');
             $table->string('file_path')->nullable(true);
+            $table->string('icon')->nullable(true);
             $table->date('release_date');
             $table->unsignedBigInteger('category_id')->default(1);
             $table->foreign('category_id')->references('id')->on('discoveries')->onDelete('cascade');
