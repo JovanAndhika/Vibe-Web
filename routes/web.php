@@ -70,6 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
         //Liked Songs
         Route::get('/likedsongs', [UserController::class, 'like'])->name('like');
         Route::post('/addlike/{music}', [UserController::class, 'addlike'])->name('addlike');
+        Route::delete('deletelike/{music_playlist}', [UserController::class, 'deletelike'])->name('deletelike');
 
         // History
         // simpan history, jika perlu akses, harus menggunakan ajax
