@@ -117,6 +117,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/destroy_newgenre/{newgenre}', [AdminController::class, 'destroy_newgenre'])->name('destroy_newgenre');
     });
 
+
     // logout
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
