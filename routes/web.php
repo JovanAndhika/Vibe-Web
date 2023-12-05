@@ -117,6 +117,22 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/destroy_newgenre/{newgenre}', [AdminController::class, 'destroy_newgenre'])->name('destroy_newgenre');
     });
 
+    Route::get('audio/{filename}', function ($filename){
+        $path = storage_path('storage' . $filename);
+
+        if (!File::exists($path)) {
+            abort(404);
+        }
+
+        $file = File::get($path);
+        $type = File::mimeType($path);
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", $type);
+
+        return $response;
+    });
+
+
     // logout
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
