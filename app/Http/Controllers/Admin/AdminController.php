@@ -36,6 +36,7 @@ class AdminController extends Controller
             'artist' => 'required',
             'genre' => 'required',
             'chfile' => 'required|file|max:25000',
+            'icon' => 'image|file|max:25000',
             'release_date' => 'required'
         ]);
 
@@ -44,6 +45,13 @@ class AdminController extends Controller
             $files = $request->file('chfile'); // will get files
             $path = $files->store($destinationPath); // store files to destination folder
             $data['file_path'] = $path;
+        }
+
+        if ($request->hasFile('icon')) {
+            $destinationPath = 'listoficons';
+            $files = $request->file('icon'); // will get files
+            $path = $files->store($destinationPath); // store files to destination folder
+            $data['icon'] = $path;
         }
 
         // insert to database
@@ -79,6 +87,20 @@ class AdminController extends Controller
             $data['file_path'] = $path;
         }
 
+        // cek apakah ada input icon
+        if ($request->has('icon'))
+        {
+            // cek apakah terjadi perubahan
+            if ($request->oldicon != $request->icon) {
+                $request->validate(['icon' => 'image|file|max:25000']);
+                Storage::delete($request->oldIcon);
+                $destinationPath = 'listoficons';
+                $files = $request->file('icon'); // will get files
+                $path = $files->store($destinationPath); // store files to destination folder
+                $data['icon'] = $path;
+            }
+        }
+
         $music->update($data);
         return redirect(route('admin.edit', ['music' => $music]))->with('success', 'edit confirmed');
     }
@@ -88,6 +110,10 @@ class AdminController extends Controller
     {
         if ($music->file_path) {
             Storage::delete($music->file_path);
+        }
+
+        if ($music->icon) {
+            Storage::delete($music->icon);
         }
 
         Music::destroy($music->id);
