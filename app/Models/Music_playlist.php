@@ -11,7 +11,9 @@ class Music_playlist extends Model
     protected $table = 'music_playlist';
 
     protected $guarded = [
-        'id'
+        'id',
+        'created_at',
+        'updated_at'
     ];
 
     protected $fillable = [

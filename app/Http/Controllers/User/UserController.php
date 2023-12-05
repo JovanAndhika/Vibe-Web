@@ -124,6 +124,18 @@ class UserController extends Controller
         }
     }
 
+    public function addlike(Music $music){
+        $playlistId = Playlist::where('user_id', auth()->user()->id)->where('name', 'liked songs')->first()->value('id');
+        $musicId = $music->id;
+        $data = [
+            'playlist_id' => $playlistId,
+            'music_id' => $musicId
+        ];
+
+        Music_playlist::create($data);
+        return back();
+    }
+
     public function discoverPlaylist()
     {
         return view('user.discoverPlaylist', [
