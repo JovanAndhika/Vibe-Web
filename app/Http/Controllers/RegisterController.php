@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Playlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -35,9 +36,16 @@ class RegisterController extends Controller
         $validatedData['password'] = Hash::make($validatedData['password']);
 
         // simpan data ke database
-        User::create($validatedData);
+        $user = User::create($validatedData);
+
+        Playlist::create([
+            'user_id' => $user->id,
+            'name' => 'Liked Songs',
+        ]);
         
         // return ke page login
         return redirect()->route('login')->with('success', 'Register successfull! Please Login');
+
+     
     }
 }
