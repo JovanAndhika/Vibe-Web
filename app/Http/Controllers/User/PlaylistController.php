@@ -51,7 +51,7 @@ class PlaylistController extends Controller {
         $playlist_id = request('playlist_id');
         $is_added = request('is_added');
 
-        if($is_added) {
+        if($is_added == 'false') {
             // jika sudah ada, maka hapus
             Music_playlist::where('music_id', $music_id)
                 ->where('playlist_id', $playlist_id)

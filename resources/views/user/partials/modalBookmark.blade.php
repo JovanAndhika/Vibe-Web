@@ -59,6 +59,7 @@
     function updatePlaylist(playlist_id) {
         // cek apakah checkbox di check atau tidak
         var is_added = $('#playlist' + playlist_id).is(':checked');
+        console.log(is_added);
 
         // jika tidak di check
         $.ajax({
