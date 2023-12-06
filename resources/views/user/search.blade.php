@@ -84,7 +84,9 @@
                                 <tbody class="text-left">
                                     @foreach ($musics as $music)
                                         <tr>
-                                            <th><img src="@if ($music->cover_path) {{ asset('storage/' . $music->cover_path) }} @else {{ asset('img/now_playing/empty_icon.jpeg') }} @endif"alt="Artist Photo" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;"></th>
+                                            <th><img src="@if ($music->cover_path) {{ asset('storage/' . $music->cover_path) }} @else {{ asset('img/now_playing/empty_icon.jpeg') }} @endif"alt="Artist Photo"
+                                                    class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;">
+                                            </th>
                                             <th>{{ $music->title }}</th>
                                             <th>{{ $music->artist }}</th>
                                             <th><a href="{{ route('user.nowPlaying') }}?music_id={{ $music->id }}"><i
@@ -103,7 +105,6 @@
                     @endif
                 @endif
 
-
                 {{-- genre --}}
                 <div class="container-fluid my-3">
                     <div class="row h-100" id="mainRow">
@@ -120,175 +121,152 @@
                             }
                         </style>
 
-
-<div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
-    <form id="myForm" method="post" action="{{ route('user.jazz') }}">
-        <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
-            <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
-                @csrf
-                @method('post')
-                <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">JAZZ</h4>
-            </div>
-        </div>
-    </form>
-</div>
-
-<div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
-    <form id="myForm2" method="post" action="{{ route('user.pop') }}">
-        <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
-            <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
-                @csrf
-                @method('post')
-                <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">pop</h4>
-            </div>
-        </div>
-    </form>
-</div>
-
-
-<div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
-    <form id="myForm2" method="post" action="{{ route('user.dangdut') }}">
-        <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
-            <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
-                @csrf
-                @method('post')
-                <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">dangdut</h4>
-            </div>
-        </div>
-    </form>
-</div>
-
-<div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
-    <form id="myForm2" method="post" action="{{ route('user.kpop') }}">
-        <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
-            <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
-                @csrf
-                @method('post')
-                <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">kpop</h4>
-            </div>
-        </div>
-    </form>
-</div>
-
-<div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
-    <form id="myForm2" method="post" action="{{ route('user.dangdut') }}">
-        <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
-            <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
-                @csrf
-                @method('post')
-                <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">dangdut</h4>
-            </div>
-        </div>
-    </form>
-</div>
-
-<div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
-    <form id="myForm2" method="post" action="{{ route('user.rock') }}">
-        <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
-            <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
-                @csrf
-                @method('post')
-                <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">rock</h4>
-            </div>
-        </div>
-    </form>
-</div>
-
-<div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
-    <form id="myForm2" method="post" action="{{ route('user.classical') }}">
-        <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
-            <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
-                @csrf
-                @method('post')
-                <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">classical</h4>
-            </div>
-        </div>
-    </form>
-</div>
-
-<div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
-    <form id="myForm2" method="post" action="{{ route('user.ponk') }}">
-        <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
-            <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
-                @csrf
-                @method('post')
-                <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">ponk</h4>
-            </div>
-        </div>
-    </form>
-</div>
-
-
-
-
-                        {{-- additional genre from admin --}}
-                        @foreach ($newgenres as $newgenre)
-
                         <div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
-                            <form id="myForm2" method="post" action="{{  route('user.newgenre', ['newgenre' => $newgenre])  }}">
+                            <form id="myForm" method="post" action="{{ route('user.jazz') }}">
                                 <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
-                                    <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
+                                    <div class="card-body text-center align-items-center justify-content-center"
+                                        style="height: 150px;">
                                         @csrf
                                         @method('post')
-                                        <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">{{ $newgenre->new_genre }}</h4>
+                                        <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">JAZZ</h4>
                                     </div>
                                 </div>
                             </form>
                         </div>
 
+                        <div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
+                            <form id="myForm2" method="post" action="{{ route('user.pop') }}">
+                                <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
+                                    <div class="card-body text-center align-items-center justify-content-center"
+                                        style="height: 150px;">
+                                        @csrf
+                                        @method('post')
+                                        <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">pop</h4>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
+                            <form id="myForm2" method="post" action="{{ route('user.dangdut') }}">
+                                <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
+                                    <div class="card-body text-center align-items-center justify-content-center"
+                                        style="height: 150px;">
+                                        @csrf
+                                        @method('post')
+                                        <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">dangdut</h4>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
+                            <form id="myForm2" method="post" action="{{ route('user.kpop') }}">
+                                <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
+                                    <div class="card-body text-center align-items-center justify-content-center"
+                                        style="height: 150px;">
+                                        @csrf
+                                        @method('post')
+                                        <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">kpop</h4>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
+                            <form id="myForm2" method="post" action="{{ route('user.dangdut') }}">
+                                <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
+                                    <div class="card-body text-center align-items-center justify-content-center"
+                                        style="height: 150px;">
+                                        @csrf
+                                        @method('post')
+                                        <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">dangdut</h4>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
+                            <form id="myForm2" method="post" action="{{ route('user.rock') }}">
+                                <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
+                                    <div class="card-body text-center align-items-center justify-content-center"
+                                        style="height: 150px;">
+                                        @csrf
+                                        @method('post')
+                                        <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">rock</h4>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
+                            <form id="myForm2" method="post" action="{{ route('user.classical') }}">
+                                <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
+                                    <div class="card-body text-center align-items-center justify-content-center"
+                                        style="height: 150px;">
+                                        @csrf
+                                        @method('post')
+                                        <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">classical</h4>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
+                            <form id="myForm2" method="post" action="{{ route('user.ponk') }}">
+                                <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
+                                    <div class="card-body text-center align-items-center justify-content-center"
+                                        style="height: 150px;">
+                                        @csrf
+                                        @method('post')
+                                        <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">ponk</h4>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        {{-- additional genre from admin --}}
+                        @foreach ($newgenres as $newgenre)
+                            <div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
+                                <form id="myForm2" method="post"
+                                    action="{{ route('user.newgenre', ['newgenre' => $newgenre]) }}">
+                                    <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
+                                        <div class="card-body text-center align-items-center justify-content-center"
+                                            style="height: 150px;">
+                                            @csrf
+                                            @method('post')
+                                            <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">{{ $newgenre->new_genre }}
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         @endforeach
                     </div>
                 </div>
 
-
-
-
-
                 {{-- discover playlist from admin --}}
-
-                {{-- genre --}}
                 <div class="container-fluid my-3">
                     <div class="row h-100" id="mainRow">
                         <h2 class="text-white">Discover Playlists</h2>
-                        <style>
-                            .uppercase {
-                                text-transform: uppercase;
-                            }
-
-                            .btn-genre {
-                                background: none;
-                                color: inherit;
-                                border: none;
-                                padding: 0;
-                            }
-                        </style>
-
-                   
-                                    @include('user.partials.modalDiscoverPlaylist')
-                               
-                                </div>
-                            </div>
-
+                        @include('user.partials.modalDiscoverPlaylist')
                     </div>
                 </div>
+
             </div>
+        </div>
+    </div>
 
-
-
-
-
-
-
-
-                {{-- untuk randomizer body color playlist --}}
-                <script>
-                    window.onload = function() {
-                        var colors = ['#8ADAB2', 'orange', 'yellow', 'green', '#DF826C', '#8ACDD7', 'violet'];
-                        var cards = document.getElementsByClassName('card-body');
-                        for (var i = 0; i < cards.length; i++) {
-                            var random_color = colors[Math.floor(Math.random() * colors.length)];
-                            cards[i].style.backgroundColor = random_color;
-                        }
-                    }
-                </script>
-        @endsection
+    {{-- untuk randomizer body color playlist --}}
+    <script>
+        window.onload = function() {
+            var colors = ['#8ADAB2', 'orange', 'yellow', 'green', '#DF826C', '#8ACDD7', 'violet'];
+            var cards = document.getElementsByClassName('card-body');
+            for (var i = 0; i < cards.length; i++) {
+                var random_color = colors[Math.floor(Math.random() * colors.length)];
+                cards[i].style.backgroundColor = random_color;
+            }
+        }
+    </script>
+@endsection
