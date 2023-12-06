@@ -115,7 +115,7 @@
                 $(".resizable").resizable({
                     handles: 'e',
                     minWidth: 100,
-                    maxWidth: 800,
+                    maxWidth: 350,
                     resize: function(event, ui) {
                         localStorage.setItem('divSize', ui.size.width);
                         checkSize(ui.size.width);
@@ -128,14 +128,42 @@
     </script>
 
 <script>
-    window.onload = function() {
-        var colors = ['#8ADAB2', 'orange', 'yellow', 'green', '#DF826C', '#8ACDD7', 'violet'];
-        var cards = document.getElementsByClassName('card-body');
-        for(var i = 0; i < cards.length; i++) {
-            var random_color = colors[Math.floor(Math.random() * colors.length)];
-            cards[i].style.backgroundColor = random_color;
-        }
+window.onload = function() {
+    var colors = ['#8ADAB2', '#D2DE32', '#F9D949', '#A9B388', '#DF826C', '#8ACDD7', '#F9F3CC', '#E55604', '#C08261', '#9F0D7F'];
+    var cards = document.getElementsByClassName('card-body');
+    var lastColor = '';
+    for(var i = 0; i < cards.length; i++) {
+        var random_color;
+        do {
+            random_color = colors[Math.floor(Math.random() * colors.length)];
+        } while(random_color === lastColor);
+        lastColor = random_color;
+        cards[i].style.backgroundColor = random_color;
+        var animation = cards[i].animate([
+            { backgroundColor: random_color },
+            { backgroundColor: lightenColor(random_color, 20) },
+            { backgroundColor: random_color }
+        ], {
+            duration: 3000,
+            iterations: Infinity
+        });
     }
+}
+
+
+function submitForm() {
+    document.getElementById('myForm').submit();
+}
+
+function lightenColor(color, percent) {
+    var num = parseInt(color.replace("#",""),16),
+    amt = Math.round(2.55 * percent),
+    R = (num >> 16) + amt,
+    G = (num >> 8 & 0x00FF) + amt,
+    B = (num & 0x0000FF) + amt;
+    return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (G<255?G<1?0:G:255)*0x100 + (B<255?B<1?0:B:255)).toString(16).slice(1);
+}
+
 </script>
 
 
