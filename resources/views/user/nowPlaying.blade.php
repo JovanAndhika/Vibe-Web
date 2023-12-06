@@ -29,12 +29,9 @@
 
                 <div class="row">
                     <div class="col d-flex justify-content-center my-3" style="font-size: 30px;">
-                        {{-- TODO: rapikan/hilangkan tampilan play mp3 --}}
-                        <i class="bi bi-bookmark-fill mx-3"></i>
-                        <audio controls>
+                        <audio controls autoplay>
                             <source src="{{ asset('storage/' . $music->file_path) }}" type="audio/mpeg" id="myAudio">
                         </audio>
-                        <i class="bi bi-heart-fill mx-3"></i>
                     </div>
                 </div>
             @elseif(isset($playlist->musics))
@@ -67,12 +64,9 @@
 
                 <div class="row">
                     <div class="col d-flex justify-content-center my-3" style="font-size: 30px;">
-                        {{-- TODO: rapikan/hilangkan tampilan play mp3 --}}
-                        <i class="bi bi-bookmark-fill mx-3"></i>
-                        <audio controls>
+                        <audio controls autoplay>
                             <source src="{{ asset('storage/' . $selected->file_path) }}" type="audio/mpeg" id="myAudio">
                         </audio>
-                        <i class="bi bi-heart-fill mx-3"></i>
                     </div>
                 </div>
 
@@ -110,4 +104,8 @@
             @endif
         </div>
     </div>
+
+    {{-- script untuk play secara otomatis lagu selanjutnya ketika lagu pertama telah selesai --}}
+
+
 @endsection
