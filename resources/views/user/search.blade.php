@@ -103,10 +103,15 @@
                     @endif
                 @endif
 
+
                 {{-- genre --}}
-                <div class="container-fluid my-5">
+                <div class="container-fluid my-3">
                     <div class="row h-100" id="mainRow">
                         <style>
+                            .uppercase {
+                                text-transform: uppercase;
+                            }
+
                             .btn-genre {
                                 background: none;
                                 color: inherit;
@@ -114,106 +119,166 @@
                                 padding: 0;
                             }
                         </style>
-                        <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
-                            <form method="post" action="{{ route('user.jazz') }}">
-                                @csrf
-                                @method('post')
-                                <button class="btn-genre" type="submit"><img src="{{ asset('img/search/jazzCover.png') }}"
-                                        alt="" class="img-fluid rounded genre submit"
-                                        style="object-fit: fit;"></button>
-                            </form>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
-                            <form method="post" action="{{ route('user.pop') }}">
-                                @csrf
-                                @method('post')
-                                <button class="btn-genre" type="submit"><img src="{{ asset('img/search/popCover.png') }}"
-                                        alt="" class="img-fluid rounded genre" style="object-fit: cover;"></button>
-                            </form>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
-                            <form method="post" action="{{ route('user.dangdut') }}">
-                                @csrf
-                                @method('post')
-                                <button class="btn-genre" type="submit"><img
-                                        src="{{ asset('img/search/dangdutCover.png') }}" alt=""
-                                        class="img-fluid rounded genre" style="object-fit: cover;"></button>
-                            </form>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
-                            <form method="post" action="{{ route('user.kpop') }}">
-                                @csrf
-                                @method('post')
-                                <button class="btn-genre" type="submit"><img src="{{ asset('img/search/kpopCover.png') }}"
-                                        alt="" class="img-fluid rounded genre" style="object-fit: cover;"></button>
-                            </form>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
-                            <form method="post" action="{{ route('user.rock') }}">
-                                @csrf
-                                @method('post')
-                                <button class="btn-genre" type="submit"><img src="{{ asset('img/search/rockCover.png') }}"
-                                        alt="" class="img-fluid rounded genre" style="object-fit: cover;"></button>
-                            </form>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
-                            <form method="post" action="{{ route('user.classical') }}">
-                                @csrf
-                                @method('post')
-                                <button class="btn-genre" type="submit"><img
-                                        src="{{ asset('img/search/classicalCover.png') }}" alt=""
-                                        class="img-fluid rounded genre" style="object-fit: cover;"></button>
-                            </form>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
-                            <form method="post" action="{{ route('user.dance') }}">
-                                @csrf
-                                @method('post')
-                                <button class="btn-genre" type="submit"><img
-                                        src="{{ asset('img/search/danceCover.png') }}" alt=""
-                                        class="img-fluid rounded genre" style="object-fit: cover;"></button>
-                            </form>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
-                            <form method="post" action="{{ route('user.ponk') }}">
-                                @csrf
-                                @method('post')
-                                <button class="btn-genre" type="submit"><img
-                                        src="{{ asset('img/search/phonkCover.png') }}" alt=""
-                                        class="img-fluid rounded genre" style="object-fit: cover;"></button>
-                            </form>
-                        </div>
+
+
+<div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
+    <form id="myForm" method="post" action="{{ route('user.jazz') }}">
+        <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
+            <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
+                @csrf
+                @method('post')
+                <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">JAZZ</h4>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
+    <form id="myForm2" method="post" action="{{ route('user.pop') }}">
+        <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
+            <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
+                @csrf
+                @method('post')
+                <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">pop</h4>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
+    <form id="myForm2" method="post" action="{{ route('user.dangdut') }}">
+        <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
+            <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
+                @csrf
+                @method('post')
+                <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">dangdut</h4>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
+    <form id="myForm2" method="post" action="{{ route('user.kpop') }}">
+        <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
+            <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
+                @csrf
+                @method('post')
+                <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">kpop</h4>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
+    <form id="myForm2" method="post" action="{{ route('user.dangdut') }}">
+        <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
+            <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
+                @csrf
+                @method('post')
+                <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">dangdut</h4>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
+    <form id="myForm2" method="post" action="{{ route('user.rock') }}">
+        <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
+            <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
+                @csrf
+                @method('post')
+                <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">rock</h4>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
+    <form id="myForm2" method="post" action="{{ route('user.classical') }}">
+        <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
+            <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
+                @csrf
+                @method('post')
+                <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">classical</h4>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
+    <form id="myForm2" method="post" action="{{ route('user.ponk') }}">
+        <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
+            <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
+                @csrf
+                @method('post')
+                <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">ponk</h4>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
 
                         {{-- additional genre from admin --}}
                         @foreach ($newgenres as $newgenre)
-                            <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
-                                <div class="card text-dark">
-                                    <div class="card-body" style="height: 150px;">
-                                        <form method="post"
-                                            action="{{ route('user.newgenre', ['newgenre' => $newgenre]) }}">
-                                            @csrf
-                                            @method('post')
-                                            <h5 class="card-title"> {{ $newgenre->new_genre }} </h5>
-                                            <div class="container-fluid text-center p-3">
-                                                <button type="submit" class="btn btn-outline-dark fontMonsseratSemiBold"
-                                                    data-bs-toggle="modal" data-bs-whatever="@mdo">Play</button>
-                                            </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
+                            <form id="myForm2" method="post" action="{{  route('user.newgenre', ['newgenre' => $newgenre])  }}">
+                                <div class="card text-dark text-center genre" onclick="this.parentNode.submit()">
+                                    <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
+                                        @csrf
+                                        @method('post')
+                                        <h4 class=" mt-5 uppercase fontMonsseratExtraBold ">{{ $newgenre->new_genre }}</h4>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
+                        </div>
+
                         @endforeach
                     </div>
                 </div>
 
+
+
+
+
                 {{-- discover playlist from admin --}}
-                <div class="col-9">
-                    <div class="container-fluid mt-4">
+
+                {{-- genre --}}
+                <div class="container-fluid my-3">
+                    <div class="row h-100" id="mainRow">
                         <h2 class="text-white">Discover Playlists</h2>
-                        <div class="row d-inline-block">
-                            @include('user.partials.modalDiscoverPlaylist')
-                        </div>
+                        <style>
+                            .uppercase {
+                                text-transform: uppercase;
+                            }
+
+                            .btn-genre {
+                                background: none;
+                                color: inherit;
+                                border: none;
+                                padding: 0;
+                            }
+                        </style>
+
+                   
+                                    @include('user.partials.modalDiscoverPlaylist')
+                               
+                                </div>
+                            </div>
+
                     </div>
                 </div>
+            </div>
+
+
+
+
+
+
+
 
                 {{-- untuk randomizer body color playlist --}}
                 <script>
@@ -226,4 +291,4 @@
                         }
                     }
                 </script>
-            @endsection
+        @endsection

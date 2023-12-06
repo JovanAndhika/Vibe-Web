@@ -115,7 +115,7 @@
                 $(".resizable").resizable({
                     handles: 'e',
                     minWidth: 100,
-                    maxWidth: 500,
+                    maxWidth: 350,
                     resize: function(event, ui) {
                         localStorage.setItem('divSize', ui.size.width);
                         checkSize(ui.size.width);

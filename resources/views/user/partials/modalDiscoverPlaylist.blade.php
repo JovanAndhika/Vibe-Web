@@ -1,18 +1,17 @@
 <!-- Playlist 1 -->
 @foreach ($discovers as $d)
     @if ($d->id != 1)
-        <div class="col-md-4 mb-4">
-            <div class="card bg-warning text-dark">
-                <img src="{{ asset('img/search/classicalCover.png') }}" class="card-img-top" alt="Playlist 1">
-                <div class="card-body">
-                    <h5 class="card-title">Discover {{ $d->disc_category }}</h5>
-                    <div class="container-fluid text-center p-3">
-                        <button type="button" class="btn btn-outline-dark fontMonsseratSemiBold" data-bs-toggle="modal"
-                            data-bs-target="#modalDiscover-{{ $d->id }}" data-bs-whatever="@mdo">Play</button>
-                    </div>
-                </div>
+     
+
+    <div class="col-lg-3 col-md-4 col-sm-6 my-3" style="height: 150px;">
+        <div class="card text-dark text-center genre" data-bs-toggle="modal" data-bs-target="#modalDiscover-{{ $d->id }}" data-bs-whatever="@mdo">
+            <div class="card-body text-center align-items-center justify-content-center" style="height: 150px;">
+                <p class="mt-3 mb-1 uppercase" style="margin-bottom: 0;">Discover:</p>
+                <h3 class="uppercase fontMonsseratExtraBold" style="margin-top: 0;">{{ $d->disc_category }}</h3>
             </div>
         </div>
+    </div>
+    
 
 
         <div class="modal fade" id="modalDiscover-{{ $d->id }}" tabindex="-1"
