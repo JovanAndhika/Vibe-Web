@@ -45,7 +45,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer" style="background-color: rgb(238, 181, 0)">
                         <button type="button" class="btn btn-outline-dark fontMonsseratSemiBold"
                             data-bs-dismiss="modal">Close</button>
                     </div>

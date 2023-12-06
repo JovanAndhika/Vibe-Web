@@ -102,8 +102,8 @@
                     <h1 class="fontMonsseratSemiBold" style="font-size: 20px;">Playlist Name</h1>
                     <div class="input-group my-3">
                         <input type="text" class="form-control fontMonsseratSemiBold bg-dark text-white"
-                            aria-describedby="basic-addon1" style="background-color: darkslategrey" name="playlist_name"
-                            id="playlistNameEdit" required>
+                            aria-describedby="basic-addon1" style="background-color: darkslategrey"
+                            name="playlist_name" id="playlistNameEdit" required>
                     </div>
                     <div class="invalid-feedback mb-5" id="errorNameEdit">
                         Nama tidak boleh kosong!
@@ -220,7 +220,7 @@
                     // reset isi tabel
                     $("#searchMusicCreate").html('');
 
-                    if (response.length == 0) {
+                    if (response.musics.length == 0) {
                         // jika tidak ditemukan hasil, outputkan peringatan
                         $("#searchMusicCreate").append(
                             "<tr>" +
@@ -230,10 +230,17 @@
                     } else {
                         // jika ada response, maka append ke table semuanya
                         $.each(response, function(index, item) {
+                            var src = "";
+                            if (item.icon == null)
+                                src =
+                                "{{ url('img/now_playing/empty_icon.jpeg') }}";
+                            else
+                                src = "{{ url('storage/') }}/" + icon;
+
                             $("#searchMusicCreate").append(
                                 `
                               <tr>
-                                <th><img src="../../storage/${item.icon}" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;" alt=""></th>
+                                <th><img src="${src}" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;" alt=""></th>
                                 <th>${item.title}</th>
                                 <th>${item.artist}</th>
                                 <th><a href='#' onclick="addItemCreate(${item.id}, '${item.title}', '${item.artist}', '${item.icon}')"><i class='bi bi-plus-lg text-white'></i></a></th>
@@ -306,12 +313,17 @@
 
         // cek apakah lagu sudah di add
         if (!$("#item" + id).length) {
-            console.log('masuk');
+            var src = "";
+            if (icon == null)
+                src = "{{ url('img/now_playing/empty_icon.jpeg') }}";
+            else
+                src = "{{ url('storage/') }}/" + icon;
+
             // jika belum ada, maka append ke table
             $("#selectedMusicCreate").append(
                 `
           <tr id=item${id}>
-            <th><img src="../../storage/${icon}" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;" alt=""></th>
+            <th><img src="${src}" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;" alt=""></th>
             <th>${title}</th>
             <th>${artist}</th>
             <th><a href='#' onclick="deleteItemCreate(${id})"><i class='bi bi-trash-fill text-white'></i></a></th>
@@ -368,10 +380,17 @@
                     } else {
                         // jika ada response, maka append ke table semuanya
                         $.each(response, function(index, item) {
+                            var src = "";
+                            if (item.icon == null)
+                                src =
+                                "{{ url('img/now_playing/empty_icon.jpeg') }}";
+                            else
+                                src = "{{ url('storage/') }}/" + icon;
+
                             $("#searchMusicEdit").append(
                                 `
                               <tr>
-                                <th><img src="../../storage/${item.icon}" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;" alt=""></th>
+                                <th><img src="${src}" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;" alt=""></th>
                                 <th>${item.title}</th>
                                 <th>${item.artist}</th>
                                 <th><a href='#' onclick="addItemEdit(${item.id}, '${item.title}', '${item.artist}','${item.icon}')"><i class='bi bi-plus-lg text-white'></i></a></th>
@@ -424,7 +443,12 @@
                 // reset isi tabel
                 $("#selectedMusicEdit").html('');
 
-                if (response.length == 0) {
+                // ubah judul
+                $("#playlistNameEdit").val(response.playlist.name);
+                $("#editPlaylistForm").attr("action", "{{ url('/user/playlists') }}" + "/" +
+                    playlist_id);
+
+                if (response.musics.length == 0) {
                     // jika tidak ditemukan hasil, outputkan peringatan
                     $("#selectedMusicEdit").append(
                         "<tr>" +
@@ -432,16 +456,17 @@
                         "</tr>"
                     );
                 } else {
-                    // jika ada response, maka append ke table semuanya
-                    // ubah judul
-                    $("#playlistNameEdit").val(response.playlist.name);
-                    $("#editPlaylistForm").attr("action", "{{ url('/user/playlists') }}" + "/" +
-                        playlist_id);
                     $.each(response.musics, function(index, item) {
+                        var src = "";
+                        if (item.icon == null)
+                            src = "{{ url('img/now_playing/empty_icon.jpeg') }}";
+                        else
+                            src = "{{ url('storage/') }}/" + item.icon;
+
                         $("#selectedMusicEdit").append(
                             `
                                 <tr id="item${item.id}">
-                                    <th><img src="../../storage/${item.icon}" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;" alt=""></th>
+                                    <th><img src="${src}" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;" alt=""></th>
                                     <th>${item.title}</th>
                                     <th>${item.artist}</th>
                                     <th><a href='#' onclick="deleteItemEdit(${item.id})"><i class='bi bi-trash-fill text-white'></i></a></th>
@@ -460,11 +485,18 @@
 
         // cek apakah lagu sudah di add
         if (!$("#item" + id).length) {
+            // menentukan src
+            var src = "";
+            if (icon == null)
+                src = "{{ url('img/now_playing/empty_icon.jpeg') }}";
+            else
+                src = "{{ url('storage/') }}/" + icon;
+
             // jika belum ada, maka append ke table
             $("#selectedMusicEdit").append(
                 `
           <tr id=item${id}>
-            <th><img src="../../storage/${icon}" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;" alt=""></th>
+            <th><img src="${src}" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;" alt=""></th>
             <th>${title}</th>
             <th>${artist}</th>
             <th><a href='#' onclick="deleteItemEdit(${id})"><i class='bi bi-trash-fill text-white'></i></a></th>
