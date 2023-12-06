@@ -11,7 +11,8 @@
                 <div class="row flex-grow-1">
                     <div class="col d-flex align-items-center justify-content-center m-3">
                         {{-- TODO: tambahkan icon di database music --}}
-                        <img src="@if ($music->cover_path) {{ asset('storage/' . $music->cover_path) }} @else {{ asset('img/now_playing/empty_icon.jpeg') }} @endif"
+                        
+                        <img src="@if ($music->icon) {{ asset('storage/' . $music->icon) }} @else {{ asset('img/now_playing/empty_icon.jpeg') }} @endif"
                             alt="Artist Photo" class="img-fluid rounded-3" style="max-width: 500px; max-height: 500px;">
                     </div>
                 </div>
@@ -30,7 +31,7 @@
                 <div class="row">
                     <div class="col d-flex justify-content-center my-3" style="font-size: 30px;">
                         {{-- TODO: rapikan/hilangkan tampilan play mp3 --}}
-                        <audio controls>
+                        <audio controls autoplay>
                             <source src="{{ asset('storage/' . $music->file_path) }}" type="audio/mpeg" id="myAudio">
                         </audio>
                     </div>
@@ -46,7 +47,7 @@
                     <div class="col d-flex align-items-center justify-content-center m-3">
                         {{-- TODO: tambahkan icon di database music --}}
                         <img src="@if ($selected->icon) {{ asset('storage/' . $selected->icon) }} @else {{ asset('img/now_playing/empty_icon.jpeg') }} @endif"
-                            alt="Artist Photo" class="img-fluid rounded-3" style="max-width: 300px; max-height: 300px;">
+                            alt="Artist Photo" class="img-fluid rounded-3" style="max-width: 500px; max-height: 500px;">
                     </div>
                 </div>
 
@@ -66,7 +67,7 @@
                 <div class="row">
                     <div class="col d-flex justify-content-center my-3" style="font-size: 30px;">
                         {{-- TODO: rapikan/hilangkan tampilan play mp3 --}}
-                        <audio controls>
+                        <audio controls autoplay>
                             <source src="{{ asset('storage/' . $selected->file_path) }}" type="audio/mpeg" id="myAudio">
                         </audio>
                     </div>
@@ -86,7 +87,7 @@
                         <tbody>
                             @foreach ($musics as $item)
                                 <tr>
-                                    <th><img src="@if ($item->cover_path) {{ asset('storage/' . $item->cover_path) }} @else {{ asset('img/now_playing/empty_icon.jpeg') }} @endif"alt="Artist Photo" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;"></th>
+                                    <th><img src="@if ($item->icon) {{ asset('storage/' . $item->icon) }} @else {{ asset('img/now_playing/empty_icon.jpeg') }} @endif"alt="Artist Photo" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;"></th>
                                     <th>{{ $item->title }}</th>
                                     <th>{{ $item->artist }}</th>
                                     <th><a href="{{ route('user.nowPlaying') . '/?playlist_id=' . request('playlist_id') . '&index=' . $loop->index }}"><i
