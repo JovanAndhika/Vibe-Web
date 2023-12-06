@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\User;
+
 use Carbon\Carbon;
 use App\Models\Music;
 use App\Models\History;
@@ -12,10 +13,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
-class UserController extends Controller
-{
-    public function index()
-    {
+class UserController extends Controller {
+    public function index() {
         return view('user.home', [
             "title" => "home",
             "active" => "home",
@@ -23,19 +22,18 @@ class UserController extends Controller
         ]);
     }
 
-    public function search()
-    {
+    public function search() {
         //BUAT DISCOVERY
         $music_discoveries = Music::all();
         $discovers = Discovery::all();
 
         $songs = collect([]);
-        foreach ($music_discoveries as $m) {
-            $songs->put($m->id, ['id'=> $m->id, 'title' => $m->title, 'artist' => $m->artist, 'genre' => $m->genre, 'file_path' => $m->file_path, 'release_date' => $m->release_date, 'category_id' => $m->category_id]);
+        foreach($music_discoveries as $m) {
+            $songs->put($m->id, ['id' => $m->id, 'title' => $m->title, 'artist' => $m->artist, 'genre' => $m->genre, 'file_path' => $m->file_path, 'release_date' => $m->release_date, 'category_id' => $m->category_id]);
         }
-        
+
         $collect_all_music = collect([]);
-        foreach($discovers as $d){
+        foreach($discovers as $d) {
             $temp = $songs->where('category_id', $d->id);
             $collect_all_music->put($d->id, $temp);
         }
@@ -55,91 +53,114 @@ class UserController extends Controller
     }
 
 
-    public function nowPlaying()
-    {
-        // cek apakah request playlist atau music
-        if (request()->filled('playlist_id')) {
+    public function nowPlaying() {
+        // variable untuk dikirim ke views
+        $variables = [
+            "title" => "nowPlaying",
+            "active" => "nowPlaying"
+        ];
+
+        // cek request
+        if(request()->filled('playlist_id')) {
             // jika request adalah playlist
             $playlist = Playlist::where('id', request('playlist_id'))->where('user_id', auth()->user()->id)->first();
 
-            // jika playlist tidak ditemukan, redirect ke nowPlaying tanpa request
-            if (!$playlist) {
-                return redirect()->route('user.nowPlaying');
+            // jika playlist tidak ditemukan, fetch musik terakhir kali dimainkan
+            if(!$playlist) {
+                $this->lastPlayed($variables);
             }
-
-            // fetch music dan simpan history jika ada ditemukan playlist
-            $musics = $playlist->musics;
-
-            // fetch music yang diplay sekarang + simpan ke history
-            $index = request('index');
-            if ($index < 0) {
-                $index = 0;
-            }
-            if ($index >= $musics->count()) {
-                $index = $musics->count() - 1;
-            }
-            $music = $musics->skip($index)->first();
-            $this->storeHistory($musics->first()->id);
-
-            return view('user.nowPlaying', [
-                "title" => "nowPlaying",
-                "active" => "nowPlaying",
-                "playlist" => $playlist,
-                "musics" => $musics,
-                "selected" => $music,
-            ]);
-        } else {
-            // jika tidak ada request music (kosong)
-            if (!request()->filled('music_id')) 
-            {
-                // mengambil music paling terakhir history
-                $last_music = History::where('user_id', auth()->user()->id)->latest()->first();
-                if ($last_music)
-                {
-                    $music = $last_music->music;
+            else {
+                // fetch semua music di playlist
+                $musics = $playlist->musics;
+    
+                // fetch music yang diplay sekarang + simpan ke history
+                $index = request('index');
+                if($index < 0) {
+                    $index = 0;
+                    request()->merge(['index' => $index]);
                 }
-                else
-                {
-                    // jika tidak ditemukan, maka kosong
-                    $music = null;
+                if($index >= $musics->count()) {
+                    $index = $musics->count() - 1;
+                    request()->merge(['index' => $index]);
                 }
-            }
-            else
-            {
-                // jika request adalah music
-                $music = Music::find(request('music_id'));
-            }
-
-            // simpan ke history jika ada music
-            if ($music)
-            {
+                $music = $musics->skip($index)->first();
                 $this->storeHistory($music->id);
+    
+                // cek apakah musik sudah di like atau belum
+                $this->isLiked($music, $variables);
+    
+                // simpan variable
+                $variables['playlist'] = $playlist;
+                $variables['musics'] = $musics;
+                $variables['music'] = $music;
             }
 
-            return view('user.nowPlaying', [
-                "title" => "nowPlaying",
-                "active" => "nowPlaying",
-                "music" => $music
-            ]);
+        } else if(request()->filled('music_id')) {
+            // jika request adalah single music
+            $music = Music::find(request('music_id'));
+
+            if($music) {
+                // simpan ke history jika ada music
+                $this->storeHistory($music->id);
+
+                // cek apakah musik sudah di like atau belum
+                $this->isLiked($music, $variables);
+
+                // simpan variable
+                $variables['music'] = $music;
+            } else {
+                // jika id music invalid, ambil music terakhir yang di play
+                $this->lastPlayed($variables);
+            }
+
+        } else {
+            // jika tidak ada request, ambil music terakhir yang di play
+            $this->lastPlayed($variables);
+        }
+
+        return view('user.nowPlaying', $variables);
+    }
+
+    // function untuk mengambil musik terakhir yang di play
+    function lastPlayed(&$variables) {
+        // mengambil music paling terakhir history
+        $last_music = History::where('user_id', auth()->user()->id)->latest()->first();
+        if($last_music) {
+            $variables['music'] = $last_music->music;
+            $this->isLiked($last_music->music, $variables);
         }
     }
 
-    public function discoverPlaylist()
+    // function untuk cek apakah lagu sudah di like atau belum
+    private function isLiked($music, &$variables)
     {
+        // mengambil playlist liked songs milik user
+        $getIdPlaylist = Playlist::where('user_id', auth()->user()->id)->where('name', 'liked songs')->value('id');
+        if(Music_playlist::where('playlist_id', $getIdPlaylist)->where('music_id', $music->id)->first()) {
+            // jika ditemukan di playlist like
+            $variables['isLiked'] = true;
+        }
+        else
+        {
+            // jika tidak ditemukan di playlist like
+            $variables['isLiked'] = false;
+        }
+    }
+
+    public function discoverPlaylist() {
         return view('user.discoverPlaylist', [
             "title" => "discoverPlaylist",
             "active" => "discoverPlaylist"
         ]);
     }
 
-    public function history()
-    {
+    public function history() {
         // fetch semua history yang dimiliki user
         $history = History::with('music')->where("user_id", auth()->user()->id)->latest()->get();
         $hasil = [];
 
         // cek semua history
-        foreach ($history as $isi) {
+        foreach($history as $isi) {
             // mengakses tanggal dan waktu
             $playedDate = Carbon::parse($isi->created_at)->format('l, d M Y');
             $playedTime = Carbon::parse($isi->created_at)->format('H:i:s');
@@ -156,13 +177,12 @@ class UserController extends Controller
     }
 
     // disarankan mengakses pakai ajax/UserController saja
-    public function storeHistory($music_id)
-    {
+    public function storeHistory($music_id) {
         // cari music
         $music = Music::find($music_id);
 
         // jika music ditemukan
-        if ($music) {
+        if($music) {
             // disimpan ke history
             History::create([
                 'music_id' => $music->id,
@@ -172,64 +192,56 @@ class UserController extends Controller
     }
 
     // genre search
-    public function jazz()
-    {
+    public function jazz() {
         $jazz = DB::table('music')->where('genre', 'Jazz')->get();
 
         return view('user.searchResult.jazzResult', ['jazz' => $jazz])
             ->with('genreJazz', 'genreJazz searched');
     }
 
-    public function pop()
-    {
+    public function pop() {
         $pop = DB::table('music')->where('genre', 'Pop')->get();
 
         return view('user.searchResult.popResult', ['pop' => $pop])
             ->with('genrePop', 'genrePop searched');
     }
 
-    public function dangdut()
-    {
+    public function dangdut() {
         $song = DB::table('music')->where('genre', 'Dangdut')->get();
 
         return view('user.searchResult.dangdutResult', ['dangdut' => $song])
             ->with('genreDangdut', 'genreDangdut searched');
     }
 
-    public function kpop()
-    {
+    public function kpop() {
         $song = DB::table('music')->where('genre', 'Kpop')->get();
 
         return view('user.searchResult.kpopResult', ['kpop' => $song])
             ->with('genreKpop', 'genreKpop searched');
     }
 
-    public function rock()
-    {
+    public function rock() {
         $song = DB::table('music')->where('genre', 'Rock')->get();
 
         return view('user.searchResult.rockResult', ['rock' => $song])
             ->with('genreRock', 'genreRock searched');
     }
 
-    public function classical()
-    {
+    public function classical() {
         $song = DB::table('music')->where('genre', 'Classical')->get();
 
         return view('user.searchResult.classicalResult', ['classical' => $song])
             ->with('genreClassical', 'genreClassical searched');
     }
 
-    public function dance()
-    {
+    public function dance() {
         $song = DB::table('music')->where('genre', 'Dance')->get();
 
         return view('user.searchResult.danceResult', ['dance' => $song])
             ->with('genreDance', 'genreDance searched');
     }
 
-    public function ponk()
-    {
+    public function ponk() {
         $song = DB::table('music')->where('genre', 'Ponk')->get();
 
         return view('user.searchResult.ponkResult', ['ponk' => $song])
@@ -237,42 +249,42 @@ class UserController extends Controller
     }
 
 
-    public function newgenre(Newgenre $newgenre){
+    public function newgenre(Newgenre $newgenre) {
 
         $value_newgenre = $newgenre->new_genre;
-       
+
         $data = DB::table('music')
-        ->join('newgenres', 'music.genre', '=', 'newgenres.new_genre')
-        ->where('music.genre', $value_newgenre)
-        ->get();
+            ->join('newgenres', 'music.genre', '=', 'newgenres.new_genre')
+            ->where('music.genre', $value_newgenre)
+            ->get();
 
         return view('user.searchResult.newgenreResult', ['newgenre' => $newgenre, 'songs' => $data]);
     }
 
     //LIKED SONGS BY USER
-    public function like(){
+    public function like() {
         $getIdPlaylist = Playlist::where('user_id', auth()->user()->id)->where('name', 'liked songs')->value('id');
         $music_playlist = Music_playlist::where('playlist_id', $getIdPlaylist)->get();
 
-        
+
 
         $songs_raw = collect([]);
-        foreach ($music_playlist as $m) {
-           $music = Music::where('id', $m->music_id)->first();
-           $songs_raw->put($m->id, ['id_music' => $music->id, 'title' => $music->title, 'artist' => $music->artist, 'genre' => $music->genre, 'file_path' => $music->file_path, 'release_date' => $music->release_date, 'category_id' => $music->category_id]);
+        foreach($music_playlist as $m) {
+            $music = Music::where('id', $m->music_id)->first();
+            $songs_raw->put($m->id, ['id_music' => $music->id, 'title' => $music->title, 'artist' => $music->artist, 'genre' => $music->genre, 'file_path' => $music->file_path, 'release_date' => $music->release_date, 'category_id' => $music->category_id]);
         }
- 
+
         return view('user.getLikedSongs', [
-         "title" => "like",
-         "active" => "like",
-         "musics_raw" => $songs_raw
-     ]);
+            "title" => "like",
+            "active" => "like",
+            "musics_raw" => $songs_raw
+        ]);
 
-     }
+    }
 
 
-     public function addlike(Music $music){
-        $playlistId = Playlist::where('user_id', auth()->user()->id)->where('name', 'liked songs')->first()->value('id');
+    public function addlike(Music $music) {
+        $playlistId = Playlist::where('user_id', auth()->user()->id)->where('name', 'liked songs')->value('id');
         $musicId = $music->id;
         $data = [
             'playlist_id' => $playlistId,
@@ -283,9 +295,9 @@ class UserController extends Controller
         return back();
     }
 
-    
-    public function deletelike(Music_playlist $music_playlist){
-        
+
+    public function deletelike(Music_playlist $music_playlist) {
+
         Music_playlist::destroy($music_playlist->id);
         return back();
     }

@@ -78,9 +78,9 @@ Route::group(['middleware' => 'auth'], function () {
 
         // Playlist
         Route::get('/musics', [PlaylistController::class, 'getAllMusics'])->name('musics');
+        Route::get('/bookmark', [PlaylistController::class, 'getAllPlaylist'])->name('playlists');
+        Route::post('/bookmark', [PlaylistController::class, 'updateMusic'])->name('bookmark.store');
         Route::resource('playlists', PlaylistController::class);
-
-        
     });
 
 

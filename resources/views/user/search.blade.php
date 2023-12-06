@@ -184,22 +184,21 @@
 
                         {{-- additional genre from admin --}}
                         @foreach ($newgenres as $newgenre)
-
-                        <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
-                            <div class="card text-dark">
-                                <div class="card-body" style="height: 150px;">
-                                    <form method="post" action="{{ route('user.newgenre', ['newgenre' => $newgenre]) }}">
-                                        @csrf
-                                        @method('post')
-                                    <h5 class="card-title"> {{ $newgenre->new_genre }} </h5>
-                                    <div class="container-fluid text-center p-3">
-                                        <button type="submit" class="btn btn-outline-dark fontMonsseratSemiBold" data-bs-toggle="modal"
-                                               data-bs-whatever="@mdo">Play</button>
+                            <div class="col-lg-3 col-md-4 col-sm-6 my-5" style="height: 150px;">
+                                <div class="card text-dark">
+                                    <div class="card-body" style="height: 150px;">
+                                        <form method="post"
+                                            action="{{ route('user.newgenre', ['newgenre' => $newgenre]) }}">
+                                            @csrf
+                                            @method('post')
+                                            <h5 class="card-title"> {{ $newgenre->new_genre }} </h5>
+                                            <div class="container-fluid text-center p-3">
+                                                <button type="submit" class="btn btn-outline-dark fontMonsseratSemiBold"
+                                                    data-bs-toggle="modal" data-bs-whatever="@mdo">Play</button>
+                                            </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
                         @endforeach
                     </div>
                 </div>
@@ -213,4 +212,16 @@
                         </div>
                     </div>
                 </div>
+
+                {{-- untuk randomizer body color playlist --}}
+                <script>
+                    window.onload = function() {
+                        var colors = ['#8ADAB2', 'orange', 'yellow', 'green', '#DF826C', '#8ACDD7', 'violet'];
+                        var cards = document.getElementsByClassName('card-body');
+                        for (var i = 0; i < cards.length; i++) {
+                            var random_color = colors[Math.floor(Math.random() * colors.length)];
+                            cards[i].style.backgroundColor = random_color;
+                        }
+                    }
+                </script>
             @endsection

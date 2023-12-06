@@ -127,19 +127,6 @@
         });
     </script>
 
-<script>
-    window.onload = function() {
-        var colors = ['#8ADAB2', 'orange', 'yellow', 'green', '#DF826C', '#8ACDD7', 'violet'];
-        var cards = document.getElementsByClassName('card-body');
-        for(var i = 0; i < cards.length; i++) {
-            var random_color = colors[Math.floor(Math.random() * colors.length)];
-            cards[i].style.backgroundColor = random_color;
-        }
-    }
-</script>
-
-
-
 </body>
 
 </html>
