@@ -40,7 +40,7 @@
                         <a data-id="{{ $music->id }}" data-bs-toggle="modal" data-bs-target="#bookmark-modal" id="bookmark-btn"><i class="bi bi-bookmark-fill mx-3"></i></a>
 
                         {{-- Audio --}}
-                        <audio controls>
+                        <audio controls autoplay>
                             <source src="{{ asset('storage/' . $music->file_path) }}" type="audio/mpeg" id="myAudio">
                         </audio>
 
