@@ -16,7 +16,7 @@
                 <div class="row flex-grow-1">
                     <div class="col d-flex align-items-center justify-content-center m-3">
                         <img src="@if ($music->icon) {{ asset('storage/' . $music->icon) }} @else {{ asset('img/now_playing/empty_icon.jpeg') }} @endif"
-                            alt="Artist Photo" class="img-fluid rounded-3" style="max-width: 300px; max-height: 300px;">
+                            alt="Artist Photo" class="img-fluid rounded-3" style="max-width: 500px; max-height: 500px;">
                     </div>
                 </div>
 
@@ -37,7 +37,8 @@
                 <div class="row">
                     <div class="col d-flex justify-content-center my-3" style="font-size: 30px;">
                         {{-- Bookmark --}}
-                        <a data-id="{{ $music->id }}" data-bs-toggle="modal" data-bs-target="#bookmark-modal" id="bookmark-btn"><i class="bi bi-bookmark-fill mx-3"></i></a>
+                        <a data-id="{{ $music->id }}" data-bs-toggle="modal" data-bs-target="#bookmark-modal"
+                            id="bookmark-btn"><i class="bi bi-bookmark-fill mx-3"></i></a>
 
                         {{-- Audio --}}
                         <audio controls autoplay>
@@ -62,6 +63,7 @@
                         <table class="table table-striped table-hover table-dark fontMonsseratRegular">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th scope="col">Song</th>
                                     <th scope="col">Artist</th>
                                     <th scope="col"></th>
@@ -70,6 +72,8 @@
                             <tbody>
                                 @foreach ($musics as $item)
                                     <tr>
+                                        <th><img src="@if ($item->icon) {{ asset('storage/' . $item->icon) }} @else {{ asset('img/now_playing/empty_icon.jpeg') }} @endif"alt="Artist Photo"
+                                                class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;"></th>
                                         <th>{{ $item->title }}</th>
                                         <th>{{ $item->artist }}</th>
                                         <th><a
@@ -84,7 +88,7 @@
                     <script></script>
                 @endif
 
-                {{-- WITHOUT MUSIC SECTION --}}
+            {{-- WITHOUT MUSIC SECTION --}}
             @else
                 <div class="container-fluid text-center my-5">
                     <h1 class="fontMonsseratSemiBold" style="font-size: 20px;">No Music Currently Playing. Play your first

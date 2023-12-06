@@ -35,7 +35,11 @@
             color: yellow !important;
         }
 
-        .navbar a {
+        .navbar a  {
+            color: #fff;
+        }
+
+        .navbar button {
             color: #fff;
         }
     </style>

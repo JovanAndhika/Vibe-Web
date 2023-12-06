@@ -35,6 +35,7 @@
                     <table class="table table-striped table-hover table-dark mb-5">
                         <thead>
                             <tr>
+                                <th class="fontMonsseratSemiBold" scope="col"> </th>
                                 <th class="fontMonsseratSemiBold" scope="col">Song</th>
                                 <th class="fontMonsseratSemiBold" scope="col">Artist</th>
                                 <th class="fontMonsseratSemiBold" scope="col"></th>
@@ -43,7 +44,7 @@
                         <tbody class="text-left" id="searchMusicCreate">
                             {{-- placeholder --}}
                             <tr>
-                                <th colspan="3" class="text-secondary">Type and search the music you desire...</th>
+                                <th colspan="4" class="text-secondary">Type and search the music you desire...</th>
                             </tr>
                         </tbody>
                     </table>
@@ -53,6 +54,7 @@
                     <table class="table table-striped table-hover table-dark">
                         <thead>
                             <tr>
+                                <th class="fontMonsseratSemiBold" scope="col"> </th>
                                 <th class="fontMonsseratSemiBold" scope="col">Song</th>
                                 <th class="fontMonsseratSemiBold" scope="col">Artist</th>
                                 <th class="fontMonsseratSemiBold" scope="col"></th>
@@ -61,7 +63,7 @@
                         <tbody class="text-left" id="selectedMusicCreate">
                             {{-- placeholder --}}
                             <tr id="placeholderSearchedCreate">
-                                <th colspan="3" class="text-secondary">No musics selected...</th>
+                                <th colspan="4" class="text-secondary">No musics selected...</th>
                             </tr>
                         </tbody>
                     </table>
@@ -120,6 +122,7 @@
                     <table class="table table-striped table-hover table-dark mb-5">
                         <thead>
                             <tr>
+                                <th class="fontMonsseratSemiBold" scope="col"> </th>
                                 <th class="fontMonsseratSemiBold" scope="col">Song</th>
                                 <th class="fontMonsseratSemiBold" scope="col">Artist</th>
                                 <th class="fontMonsseratSemiBold" scope="col"></th>
@@ -128,7 +131,7 @@
                         <tbody class="text-left" id="searchMusicEdit">
                             {{-- placeholder --}}
                             <tr>
-                                <th colspan="3" class="text-secondary">Type and search the music you desire...</th>
+                                <th colspan="4" class="text-secondary">Type and search the music you desire...</th>
                             </tr>
                         </tbody>
                     </table>
@@ -138,7 +141,8 @@
                     <table class="table table-striped table-hover table-dark">
                         <thead>
                             <tr>
-                                <th class="fontMonsseratSemiBold" scope="col">Song</th>
+                                <th class="fontMonsseratSemiBold" scope="col"> </th>
+                                <th class="fontMonsseratSemiBold" scope="col~">Song</th>
                                 <th class="fontMonsseratSemiBold" scope="col">Artist</th>
                                 <th class="fontMonsseratSemiBold" scope="col"></th>
                             </tr>
@@ -146,7 +150,7 @@
                         <tbody class="text-left" id="selectedMusicEdit">
                             {{-- placeholder --}}
                             <tr id="placeholderSearchedEdit">
-                                <th colspan="3" class="text-secondary">No musics selected...</th>
+                                <th colspan="4" class="text-secondary">No musics selected...</th>
                             </tr>
                         </tbody>
                     </table>
@@ -220,7 +224,7 @@
                         // jika tidak ditemukan hasil, outputkan peringatan
                         $("#searchMusicCreate").append(
                             "<tr>" +
-                            "<th colspan='3' class='text-secondary'>No music found</th>" +
+                            "<th colspan='4' class='text-secondary'>No music found</th>" +
                             "</tr>"
                         );
                     } else {
@@ -229,9 +233,10 @@
                             $("#searchMusicCreate").append(
                                 `
                               <tr>
+                                <th><img src="../../storage/${item.icon}" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;" alt=""></th>
                                 <th>${item.title}</th>
                                 <th>${item.artist}</th>
-                                <th><a href='#' onclick="addItemCreate(${item.id}, '${item.title}', '${item.artist}')"><i class='bi bi-plus-lg text-white'></i></a></th>
+                                <th><a href='#' onclick="addItemCreate(${item.id}, '${item.title}', '${item.artist}', '${item.icon}')"><i class='bi bi-plus-lg text-white'></i></a></th>
                               </tr>
                               `
                             );
@@ -250,7 +255,7 @@
             $("#searchMusicCreate").html('');
             $("#searchMusicCreate").append(
                 "<tr>" +
-                "<th colspan='3' class='text-secondary'>Type and search the music you desire...</th>" +
+                "<th colspan='4' class='text-secondary'>Type and search the music you desire...</th>" +
                 "</tr>"
             );
 
@@ -258,7 +263,7 @@
             $("#selectedMusicCreate").html('');
             $("#selectedMusicCreate").append(
                 "<tr id='placeholderSearchedCreate'>" +
-                "<th colspan='3' class='text-secondary'>No musics selected...</th>" +
+                "<th colspan='4' class='text-secondary'>No musics selected...</th>" +
                 "</tr>"
             );
 
@@ -295,7 +300,7 @@
         });
     });
 
-    function addItemCreate(id, title, artist) {
+    function addItemCreate(id, title, artist, icon) {
         // hapus placeholder
         $("#placeholderSearchedCreate").remove();
 
@@ -306,6 +311,7 @@
             $("#selectedMusicCreate").append(
                 `
           <tr id=item${id}>
+            <th><img src="../../storage/${icon}" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;" alt=""></th>
             <th>${title}</th>
             <th>${artist}</th>
             <th><a href='#' onclick="deleteItemCreate(${id})"><i class='bi bi-trash-fill text-white'></i></a></th>
@@ -325,7 +331,7 @@
             $("#selectedMusicCreate").append(
                 `
           <tr id="placeholderSearchedCreate">
-            <th colspan="3" class="text-secondary">No musics selected...</th>
+            <th colspan="4" class="text-secondary">No musics selected...</th>
           </tr>
           `
             );
@@ -356,7 +362,7 @@
                         // jika tidak ditemukan hasil, outputkan peringatan
                         $("#searchMusicEdit").append(
                             "<tr>" +
-                            "<th colspan='3' class='text-secondary'>No music found</th>" +
+                            "<th colspan='4' class='text-secondary'>No music found</th>" +
                             "</tr>"
                         );
                     } else {
@@ -365,9 +371,10 @@
                             $("#searchMusicEdit").append(
                                 `
                               <tr>
+                                <th><img src="../../storage/${item.icon}" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;" alt=""></th>
                                 <th>${item.title}</th>
                                 <th>${item.artist}</th>
-                                <th><a href='#' onclick="addItemEdit(${item.id}, '${item.title}', '${item.artist}')"><i class='bi bi-plus-lg text-white'></i></a></th>
+                                <th><a href='#' onclick="addItemEdit(${item.id}, '${item.title}', '${item.artist}','${item.icon}')"><i class='bi bi-plus-lg text-white'></i></a></th>
                               </tr>
                               `
                             );
@@ -421,7 +428,7 @@
                     // jika tidak ditemukan hasil, outputkan peringatan
                     $("#selectedMusicEdit").append(
                         "<tr>" +
-                        "<th colspan='3' class='text-secondary'>No music found</th>" +
+                        "<th colspan='4' class='text-secondary'>No music found</th>" +
                         "</tr>"
                     );
                 } else {
@@ -434,6 +441,7 @@
                         $("#selectedMusicEdit").append(
                             `
                                 <tr id="item${item.id}">
+                                    <th><img src="../../storage/${item.icon}" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;" alt=""></th>
                                     <th>${item.title}</th>
                                     <th>${item.artist}</th>
                                     <th><a href='#' onclick="deleteItemEdit(${item.id})"><i class='bi bi-trash-fill text-white'></i></a></th>
@@ -446,7 +454,7 @@
         });
     }
 
-    function addItemEdit(id, title, artist) {
+    function addItemEdit(id, title, artist, icon) {
         // hapus placeholder
         $("#placeholderSearchedEdit").remove();
 
@@ -456,6 +464,7 @@
             $("#selectedMusicEdit").append(
                 `
           <tr id=item${id}>
+            <th><img src="../../storage/${icon}" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;" alt=""></th>
             <th>${title}</th>
             <th>${artist}</th>
             <th><a href='#' onclick="deleteItemEdit(${id})"><i class='bi bi-trash-fill text-white'></i></a></th>
@@ -475,7 +484,7 @@
             $("#selectedMusicEdit").append(
                 `
           <tr id="placeholderSearchedEdit">
-            <th colspan="3" class="text-secondary">No musics selected...</th>
+            <th colspan="4" class="text-secondary">No musics selected...</th>
           </tr>
           `
             );

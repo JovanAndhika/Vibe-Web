@@ -38,24 +38,25 @@
                             <table class="table table-striped table-hover table-dark fontMonsseratRegular">
                                 <thead>
                                     <tr>
+                                        <th scope="col"></th>
                                         <th scope="col">Song</th>
                                         <th scope="col">Artist</th>
                                         <th scope="col">Last Played</th>
                                         <th scope="col"></th>
-
-
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($history as $ok => $item)
+                                        @if ($item->music)
                                         <tr>
+                                            <th><img src="@if ($item->music->icon) {{ asset('storage/' . $item->music->icon) }} @else {{ asset('img/now_playing/empty_icon.jpeg') }} @endif"alt="Artist Photo" class="img-fluid rounded-3" style="max-width: 50px; max-height: 50px;"></th>
                                             <th>{{ $item->music->title }}</th>
                                             <th>{{ $item->music->artist }}</th>
                                             <th>{{ $ok }}</th>
-
                                             <th><a href="{{ route('user.nowPlaying') }}?music_id={{ $item->music->id }}#jumphere"><i
                                                 class="bi bi-play-fill text-white"></i></a></th>
                                         </tr>
+                                        @endif
                                     @endforeach
 
 
