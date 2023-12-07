@@ -220,7 +220,7 @@
                     // reset isi tabel
                     $("#searchMusicCreate").html('');
 
-                    if (response.musics.length == 0) {
+                    if (response.length == 0) {
                         // jika tidak ditemukan hasil, outputkan peringatan
                         $("#searchMusicCreate").append(
                             "<tr>" +
@@ -230,12 +230,14 @@
                     } else {
                         // jika ada response, maka append ke table semuanya
                         $.each(response, function(index, item) {
+
+                            console.log(item);
                             var src = "";
                             if (item.icon == null)
                                 src =
                                 "{{ url('img/now_playing/empty_icon.jpeg') }}";
                             else
-                                src = "{{ url('storage/') }}/" + icon;
+                                src = "{{ url('storage/') }}/" + item.icon;
 
                             $("#searchMusicCreate").append(
                                 `
